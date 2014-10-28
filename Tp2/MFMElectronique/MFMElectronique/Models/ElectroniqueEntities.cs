@@ -74,6 +74,11 @@ namespace MFMElectronique.Models
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<ProductBrand>()
+                .HasMany(e => e.Product)
+                .WithOptional(e => e.ProductBrand)
+                .HasForeignKey(e => e.BrandID);
+
             modelBuilder.Entity<ProductCategory>()
                 .HasMany(e => e.Product)
                 .WithOptional(e => e.ProductCategory)
