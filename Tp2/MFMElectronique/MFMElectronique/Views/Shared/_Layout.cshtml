@@ -2,11 +2,30 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>*@
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Page d'acceuil de Site de Vente de Tablette,de Téléphones et de montre" />
+    <meta name="revisit-after" content="15 days">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/MFMCSS/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/MFMCSS/form.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="~/Scripts/MFMScripts/jquery1.min.js"></script>
+    <!-- start menu -->
+    <link href="~/Content/MFMCSS/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/Scripts/MFMScripts/megamenu.js"></script>
+    <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+    <!--start slider -->
+    <link rel="stylesheet" href="~/Content/MFMCSS/fwslider.css" media="all">
+    <script src="~/Scripts/MFMScripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/MFMScripts/css3-mediaqueries.js"></script>
+    <script src="~/Scripts/MFMScripts/fwslider.js"></script>
+    <!--end slider -->
+    <script src="~/Scripts/MFMScripts/jquery.easydropdown.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -37,8 +56,9 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

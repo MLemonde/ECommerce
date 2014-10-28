@@ -194,6 +194,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MFMCSS\default.css" />
+    <Content Include="Content\MFMCSS\form.css" />
+    <Content Include="Content\MFMCSS\fwslider.css" />
+    <Content Include="Content\MFMCSS\magnific-popup.css" />
+    <Content Include="Content\MFMCSS\megamenu.css" />
+    <Content Include="Content\MFMCSS\nivo-slider.css" />
+    <Content Include="Content\MFMCSS\style.css" />
+    <Content Include="Content\MFMCSS\zoome-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -208,6 +216,19 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MFMScripts\css3-mediaqueries.js" />
+    <Content Include="Scripts\MFMScripts\fwslider.js" />
+    <Content Include="Scripts\MFMScripts\jquery-ui.min.js" />
+    <Content Include="Scripts\MFMScripts\jquery.easydropdown.js" />
+    <Content Include="Scripts\MFMScripts\jquery.flexisel.js" />
+    <Content Include="Scripts\MFMScripts\jquery.jscrollpane.min.js" />
+    <Content Include="Scripts\MFMScripts\jquery.magnific-popup.js" />
+    <Content Include="Scripts\MFMScripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\MFMScripts\jquery1.min.js" />
+    <Content Include="Scripts\MFMScripts\login.js" />
+    <Content Include="Scripts\MFMScripts\megamenu.js" />
+    <Content Include="Scripts\MFMScripts\slides.min.jquery.js" />
+    <Content Include="Scripts\MFMScripts\zoome-e.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
