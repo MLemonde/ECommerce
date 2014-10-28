@@ -13,6 +13,7 @@ namespace MFMElectronique.Models
             AspNetUserClaims = new HashSet<AspNetUserClaims>();
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             Comment = new HashSet<Comment>();
+            Order = new HashSet<Order>();
             AspNetRoles = new HashSet<AspNetRoles>();
         }
 
@@ -43,11 +44,37 @@ namespace MFMElectronique.Models
         [StringLength(256)]
         public string UserName { get; set; }
 
+        [StringLength(255)]
+        public string FirstName { get; set; }
+
+        [StringLength(255)]
+        public string Lastname { get; set; }
+
+        [StringLength(255)]
+        public string Address { get; set; }
+
+        [StringLength(255)]
+        public string City { get; set; }
+
+        [StringLength(255)]
+        public string State { get; set; }
+
+        [StringLength(50)]
+        public string PostalCode { get; set; }
+
+        [StringLength(255)]
+        public string Country { get; set; }
+
+        [StringLength(50)]
+        public string Phone { get; set; }
+
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
 
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
 
         public virtual ICollection<Comment> Comment { get; set; }
+
+        public virtual ICollection<Order> Order { get; set; }
 
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }

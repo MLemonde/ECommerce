@@ -18,16 +18,12 @@ namespace MFMElectronique.Models
 
         public DateTime? DateCreated { get; set; }
 
-        public int? HistoriqueID { get; set; }
-
         public int? ProductID { get; set; }
 
         [StringLength(128)]
         public string UserID { get; set; }
 
         public virtual AspNetUsers AspNetUsers { get; set; }
-
-        public virtual OrderHistory OrderHistory { get; set; }
 
         public virtual Product Product { get; set; }
     }

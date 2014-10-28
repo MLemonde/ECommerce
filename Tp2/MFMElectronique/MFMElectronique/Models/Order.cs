@@ -9,12 +9,14 @@ namespace MFMElectronique.Models
     [Table("Order")]
     public partial class Order
     {
+        public Order()
+        {
+            OrderDetail = new HashSet<OrderDetail>();
+        }
+
         public int Id { get; set; }
 
         public DateTime? OrderDate { get; set; }
-
-        [StringLength(50)]
-        public string UserName { get; set; }
 
         [StringLength(255)]
         public string FirstName { get; set; }
@@ -31,7 +33,7 @@ namespace MFMElectronique.Models
         [StringLength(255)]
         public string State { get; set; }
 
-        [StringLength(255)]
+        [StringLength(50)]
         public string PostalCode { get; set; }
 
         [StringLength(255)]
@@ -40,14 +42,15 @@ namespace MFMElectronique.Models
         [StringLength(50)]
         public string Phone { get; set; }
 
-        [StringLength(255)]
-        public string Email { get; set; }
-
         [Column(TypeName = "money")]
         public decimal? Total { get; set; }
 
         [Required]
-        [StringLength(126)]
+        [StringLength(128)]
         public string UserID { get; set; }
+
+        public virtual AspNetUsers AspNetUsers { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

@@ -9,7 +9,16 @@ namespace MFMElectronique.Models
     [Table("ProductCategory")]
     public partial class ProductCategory
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public ProductCategory()
+        {
+            Product = new HashSet<Product>();
+        }
+
         public int Id { get; set; }
+
+        [StringLength(50)]
+        public string Name { get; set; }
+
+        public virtual ICollection<Product> Product { get; set; }
     }
 }
