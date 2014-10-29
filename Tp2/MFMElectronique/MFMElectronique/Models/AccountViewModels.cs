@@ -80,13 +80,34 @@ namespace MFMElectronique.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Required]
+        [Display(Name = "Address")]
         public string Address { get; set; }
+        [Required]
+        [Display(Name = "Your city")]
         public string City { get; set; }
+        [Required]
+        [Display(Name = "Province/State")]
         public string State { get; set; }
+        [Required]
+        [Display(Name = "Postal Code")]
+        //[DataType(DataType.PostalCode, ErrorMessage="Zip Code is not valid")]
+        [RegularExpression(@"(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$)", ErrorMessage = "Postal Code is invalide")]
         public string PostalCode { get; set; }
+        [Required]
+        [Display(Name = "Your country")]
         public string Country { get; set; }
+        [Required]
+        [Display(Name = "Phone Number")]
+        //[DataType(DataType.PhoneNumber, ErrorMessage="Your phone number is not valid")]
+        [RegularExpression(@"^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$", ErrorMessage = "Phone number is not valid")]
         public string Phone { get; set; }
     }
 
