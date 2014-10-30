@@ -52,3 +52,6 @@ C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.dll
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Migrations.InitialMigrations.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csproj.GenerateResource.Cache

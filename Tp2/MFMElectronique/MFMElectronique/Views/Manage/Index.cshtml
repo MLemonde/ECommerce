@@ -23,6 +23,15 @@
             }
             ]
         </dd>
+        <dt>Your informations:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your informations", "ChangeInformations")
+            }
+            ]
+        </dd>
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [

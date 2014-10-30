@@ -46,6 +46,8 @@ namespace MFMElectronique.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeInformationsSuccess ? "Your information has been changed."
+
                 : "";
 
             var model = new IndexViewModel
@@ -234,6 +236,38 @@ namespace MFMElectronique.Controllers
         }
 
         //
+        // GET: /Manage/ChangeInformations
+        public ActionResult ChangeInformations()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Manage/ChangeInformations
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ChangeInformations(ChangeInformationsViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        ApplicationUser user = UserManager.FindByName(HttpContext.User.Identity.Name);
+        //        user.FullName = model.FirstName;
+        //        user.BirthDate = model.BirthDate;
+        //        user.Bio = model.Bio;
+        //        IdentityResult result = userManager.Update(user);
+        //        if (result.Succeeded)
+        //        {
+        //            ViewBag.Message = "Profile updated successfully.";
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Error while saving profile.");
+        //        }
+        //    }
+        //    return View(model);
+        //}
+
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
@@ -365,6 +399,7 @@ namespace MFMElectronique.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ChangeInformationsSuccess,
             Error
         }
 
