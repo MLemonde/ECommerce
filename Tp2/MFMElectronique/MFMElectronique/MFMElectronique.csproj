@@ -164,14 +164,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410282324068_InitialMigrations.cs" />
-    <Compile Include="Migrations\201410282324068_InitialMigrations.Designer.cs">
-      <DependentUpon>201410282324068_InitialMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201410300155353_InitialMigrations.cs" />
+    <Compile Include="Migrations\201410300155353_InitialMigrations.Designer.cs">
+      <DependentUpon>201410300155353_InitialMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\SqlMigrator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRoles.cs" />
     <Compile Include="Models\AspNetUserClaims.cs" />
@@ -186,9 +190,14 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductBrand.cs" />
     <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\ShoppingCart.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -205,8 +214,70 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Products\nexus5.png" />
+    <Content Include="Images\Products\nexus6.png" />
+    <Content Include="Images\Static\3.png" />
+    <Content Include="Images\Static\a-img.jpg" />
+    <Content Include="Images\Static\a-img1.jpg" />
+    <Content Include="Images\Static\a-img2.jpg" />
+    <Content Include="Images\Static\arrow.png" />
+    <Content Include="Images\Static\arrow1.png" />
+    <Content Include="Images\Static\arrow2.gif" />
+    <Content Include="Images\Static\arrows.png" />
+    <Content Include="Images\Static\b-arrow.png" />
+    <Content Include="Images\Static\banner.jpg" />
+    <Content Include="Images\Static\banner1.jpg" />
+    <Content Include="Images\Static\banner2.jpg" />
+    <Content Include="Images\Static\banner3.jpg" />
+    <Content Include="Images\Static\cart.png" />
+    <Content Include="Images\Static\cart2.png" />
+    <Content Include="Images\Static\cart3.png" />
+    <Content Include="Images\Static\down-arrow.png" />
+    <Content Include="Images\Static\f-icon.png" />
+    <Content Include="Images\Static\f-tw.png" />
+    <Content Include="Images\Static\header_arrow.png" />
+    <Content Include="Images\Static\img-sprite.png" />
+    <Content Include="Images\Static\left-banner1.jpg" />
+    <Content Include="Images\Static\list_marker.png" />
+    <Content Include="Images\Static\logo.png" />
+    <Content Include="Images\Static\magnify-alt.png" />
+    <Content Include="Images\Static\minus.gif" />
+    <Content Include="Images\Static\MS-Surface-Keyboard 129,99.jpg" />
+    <Content Include="Images\Static\pic.jpg" />
+    <Content Include="Images\Static\pic1.jpg" />
+    <Content Include="Images\Static\pic2.jpg" />
+    <Content Include="Images\Static\pic3.jpg" />
+    <Content Include="Images\Static\pic4.jpg" />
+    <Content Include="Images\Static\pic5.jpg" />
+    <Content Include="Images\Static\pic6.jpg" />
+    <Content Include="Images\Static\pic7.jpg" />
+    <Content Include="Images\Static\pic8.jpg" />
+    <Content Include="Images\Static\plus.gif" />
+    <Content Include="Images\Static\s-img.jpg" />
+    <Content Include="Images\Static\s-img1.jpg" />
+    <Content Include="Images\Static\s-img2.jpg" />
+    <Content Include="Images\Static\s-img3.jpg" />
+    <Content Include="Images\Static\s1.jpg" />
+    <Content Include="Images\Static\s2.jpg" />
+    <Content Include="Images\Static\s3.jpg" />
+    <Content Include="Images\Static\s4.jpg" />
+    <Content Include="Images\Static\s5.jpg" />
+    <Content Include="Images\Static\s6.jpg" />
+    <Content Include="Images\Static\s7.jpg" />
+    <Content Include="Images\Static\s8.jpg" />
+    <Content Include="Images\Static\s9.jpg" />
+    <Content Include="Images\Static\search.png" />
+    <Content Include="Images\Static\t-img1.jpg" />
+    <Content Include="Images\Static\t-img2.jpg" />
+    <Content Include="Images\Static\t-img3.jpg" />
+    <Content Include="Images\Static\tag.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Images\Static\cart.psd" />
+    <Content Include="Images\Static\cart2.psd" />
+    <Content Include="Images\Static\img-sprite.psd" />
+    <Content Include="Images\Static\logo.psd" />
+    <Content Include="Images\Static\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -287,8 +358,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410282324068_InitialMigrations.resx">
-      <DependentUpon>201410282324068_InitialMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410300155353_InitialMigrations.resx">
+      <DependentUpon>201410300155353_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

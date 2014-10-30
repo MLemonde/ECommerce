@@ -21,6 +21,8 @@
     <!--start slider -->
     <link rel="stylesheet" href="~/Content/MFMCSS/fwslider.css" media="all">
     <script src="~/Scripts/MFMScripts/jquery-ui.min.js"></script>
+
+    <script src="~/Scripts/MFMScripts/jquery.flexisel.js"></script>
     <script src="~/Scripts/MFMScripts/css3-mediaqueries.js"></script>
     <script src="~/Scripts/MFMScripts/fwslider.js"></script>
     <!--end slider -->
@@ -42,6 +44,8 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

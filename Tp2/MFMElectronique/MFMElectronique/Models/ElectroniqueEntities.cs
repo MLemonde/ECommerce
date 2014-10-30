@@ -22,7 +22,7 @@ namespace MFMElectronique.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductBrand> ProductBrand { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
-        public virtual DbSet<ShoppingCart> ShoppingCart { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -83,10 +83,6 @@ namespace MFMElectronique.Models
                 .HasMany(e => e.Product)
                 .WithOptional(e => e.ProductCategory)
                 .HasForeignKey(e => e.CategoryID);
-
-            modelBuilder.Entity<ShoppingCart>()
-                .Property(e => e.CartID)
-                .IsFixedLength();
         }
     }
 }

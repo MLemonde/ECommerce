@@ -9,7 +9,10 @@ namespace MFMElectronique.Migrations
     {
         public Configuration()
         {
+            //AutomaticMigrationsEnabled = true;
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
+            SetSqlGenerator("System.Data.SqlClient", new SqlMigrator());
         }
 
         protected override void Seed(MFMElectronique.Models.ElectroniqueEntities context)

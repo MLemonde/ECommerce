@@ -43,7 +43,7 @@ namespace MFMElectronique.Models
         public string Phone { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Total { get; set; }
+        public decimal Total { get; set; }
 
         [Required]
         [StringLength(128)]

@@ -6,77 +6,184 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductBrand.Name)
-        </dt>
+<div class="mens">
+    <div class="main">
+        <div class="wrap">
+            <ul class="breadcrumb breadcrumb__t"><a class="home" href="Vente-Telephone-Phoneland.html">Home</a> / <a href="category.html">Category</a> / ItemName</ul>
+            <div class="cont span_2_of_3">
+                <div class="grid images_3_of_2">
+                    <div id="container">
+                        <div id="products_example">
+                            <div id="products">
+                                <div class="slides_container">
+                                    <a href="#">@*<img class="a" id="img1" src="@Url.Content(Model.PictureURL)" alt="" rel="images/LGG.jpg" />*@</a>
+                                </div>
+                                    <a href="#"><img src="@Url.Content(Model.PictureURL)" alt="1144953 3 2x"></a>
+                                <ul class="pagination">
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc1 span_3_of_2">
+                    <h3 class="m_3">Lorem ipsum dolor sit amet</h3>
+                    <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a></p>
+                    <div class="btn_form">
+                        <form>
+                            <p class="button">
+                                @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, "")
+                            </p>
+                            @*<input type="submit" value="buy" title="">*@
+                        </form>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductBrand.Name)
-        </dd>
+                    <p class="m_text2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit </p>
+                </div>
+                <div class="clear"></div>
+                <div class="clients">
+                    <h3 class="m_3">Other Products in the same category</h3>
+                    <ul id="flexiselDemo3">
+                        <li><img src="images/Lumia520.png" /><a href="#">Category</a><p>Rs 600</p></li>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductCategory.Name)
-        </dt>
+                    </ul>
+                    <script type="text/javascript">
+		$(window).load(function() {
+			$("#flexiselDemo1").flexisel();
+			$("#flexiselDemo2").flexisel({
+				enableResponsiveBreakpoints: true,
+		    	responsiveBreakpoints: {
+		    		portrait: {
+		    			changePoint:480,
+		    			visibleItems: 1
+		    		},
+		    		landscape: {
+		    			changePoint:640,
+		    			visibleItems: 2
+		    		},
+		    		tablet: {
+		    			changePoint:768,
+		    			visibleItems: 3
+		    		}
+		    	}
+		    });
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductCategory.Name)
-        </dd>
+			$("#flexiselDemo3").flexisel({
+				visibleItems: 5,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+		    	responsiveBreakpoints: {
+		    		portrait: {
+		    			changePoint:480,
+		    			visibleItems: 1
+		    		},
+		    		landscape: {
+		    			changePoint:640,
+		    			visibleItems: 2
+		    		},
+		    		tablet: {
+		    			changePoint:768,
+		    			visibleItems: 3
+		    		}
+		    	}
+		    });
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+		});
+                    </script>
+                    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <h1>RATINGS</h1>
+                <h1>COMMENTAIRES</h1>
+                @*<div class="toogle">
+                    <h3 class="m_3">Product Details</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>
+                <div class="toogle">
+                    <h3 class="m_3">More Information</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>*@
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DescriptionFR)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescriptionFR)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DescriptionEN)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DescriptionEN)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.discontinued)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.discontinued)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PictureURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PictureURL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-    </dl>
+            <div class="clear"></div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+    @*<div>
+            <h4>Product</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductBrand.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductBrand.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductCategory.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductCategory.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DescriptionFR)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DescriptionFR)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DescriptionEN)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DescriptionEN)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.discontinued)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.discontinued)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PictureURL)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PictureURL)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>*@

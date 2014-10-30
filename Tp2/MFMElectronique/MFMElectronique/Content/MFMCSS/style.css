@@ -479,7 +479,7 @@ p.title a:hover{
 }
 .cart-right {
 	float: right;
-	background: url(../images/cart2.png)2px 0px #7db122;
+	background: url(/Images/Static/cart2.png)2px 0px #7db122;
 	border-radius: 100px;
 	-webkit-border-radius: 100px;
 	-moz-border-radius: 100px;
@@ -491,7 +491,7 @@ p.title a:hover{
 }
 .span_1_of_3:hover .cart-right{
 	float: right;
-	background: url(../images/cart3.png)2px 0px #000;
+	background: url(/Images/Static/cart3.png)2px 0px #000;
 	border-radius: 100px;
 	width: 40px;
 	height: 40px;

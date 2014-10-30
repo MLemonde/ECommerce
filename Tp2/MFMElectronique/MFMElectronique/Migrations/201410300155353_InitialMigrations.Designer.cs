@@ -13,7 +13,7 @@ namespace MFMElectronique.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201410282324068_InitialMigrations"; }
+            get { return "201410300155353_InitialMigrations"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,72 +4,92 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="mens">
+    <div class="main">
+        <div class="wrap">
+            <div class="cont span_2_of_3">
+                <h2 class="head">Phones</h2>
+                
+                
+                <div class="mens-toolbar">
+                    <div class="sort">
+                        <div class="sort-by">
+                            <label>Sort By</label>
+                            <select>
+                                <option value="">
+                                    Position
+                                </option>
+                                <option value="">
+                                    Name
+                                </option>
+                                <option value="">
+                                    Price
+                                </option>
+                            </select>
+                            <a href=""><img src="~/Images/Static/arrow2.gif" alt="" class="v-middle"></a>
+                        </div>
+                    </div>
+                    <div class="pager">
+                        <div class="limiter visible-desktop">
+                            <label>Show</label>
+                            <select>
+                                <option value="" selected="selected">
+                                    9
+                                </option>
+                                <option value="">
+                                    15
+                                </option>
+                                <option value="">
+                                    30
+                                </option>
+                            </select> per page
+                        </div>
+                        <ul class="dc_pagination dc_paginationA dc_paginationA06">
+                            <li><a href="#" class="previous">Pages</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductBrand.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductCategory.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescriptionFR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescriptionEN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.discontinued)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PictureURL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductBrand.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductCategory.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescriptionFR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescriptionEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.discontinued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PictureURL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                <div class="top-box">
+                @foreach (var item in Model)
+                {
+                    <div class="col_1_of_3 span_1_of_3">
+                        <div class="inner_content clearfix">
+                            @*<div class="price1">
+                                @*POUR L'INTERFACE ADMINISTRATEUR
+                                <a href="@Url.Action("Edit", "Products", new { id = item.Id })"><span class="actual">[EDIT]</span></a> 
+                                <a href="@Url.Action("Delete", "Products", new { id = item.Id })"><span class="actual">[DELETE]</span></a>
+                            </div><br />*@
+                            <a href="@Url.Action("Details", "Products", new { id = item.Id })">
+                                <div class="product_image">
+                                    <img src="@Url.Content(item.PictureURL)" alt="" />
+                                </div>
+                                <div class="sale-box"><span class="on_sale title_shop">New</span></div>
+                                <div class="price">
+                                    <div class="cart-left">
+                                        <p class="title">@item.Name</p>
+                                        <div class="price1">
+                                            <span class="actual">$@String.Format("{0:0.00}", item.Price)</span><br />
+                                        </div>
+                                    </div>
+                                    <div class="cart-right"> </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </a>
 
-</table>
+                        </div>
+                    </div>
+                }
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

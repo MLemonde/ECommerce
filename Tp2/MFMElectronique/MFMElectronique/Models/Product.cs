@@ -30,11 +30,11 @@ namespace MFMElectronique.Models
         public string PictureURL { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
-        public int? CategoryID { get; set; }
+        public int CategoryID { get; set; }
 
-        public int? BrandID { get; set; }
+        public int BrandID { get; set; }
 
         public virtual ICollection<Comment> Comment { get; set; }
 
