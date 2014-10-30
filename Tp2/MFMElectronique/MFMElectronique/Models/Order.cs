@@ -16,7 +16,7 @@ namespace MFMElectronique.Models
 
         public int Id { get; set; }
 
-        public DateTime? OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [StringLength(255)]
         public string FirstName { get; set; }

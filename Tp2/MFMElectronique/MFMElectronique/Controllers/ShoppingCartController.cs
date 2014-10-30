@@ -28,7 +28,7 @@ namespace MFMElectronique.Controllers
         }
         //
         // GET: /Store/AddToCart/5
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id, string returnUrl)
         {
             // Retrieve the album from the database
             var addedProduct = storeDB.Product
@@ -37,7 +37,8 @@ namespace MFMElectronique.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
             cart.AddToCart(addedProduct);
             // Go back to the main store page for more shopping
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return Redirect(returnUrl);
         }
 
         //

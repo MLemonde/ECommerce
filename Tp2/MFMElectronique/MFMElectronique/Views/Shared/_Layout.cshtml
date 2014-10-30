@@ -45,9 +45,12 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                    <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
 
                 </ul>
                 @Html.Partial("_LoginPartial")
+
+
             </div>
         </div>
     </div>

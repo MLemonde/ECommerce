@@ -16,13 +16,13 @@ namespace MFMElectronique.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductBrand> ProductBrand { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
-        public virtual DbSet<Cart> Cart { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,14 +43,19 @@ namespace MFMElectronique.Models
 
             modelBuilder.Entity<AspNetUsers>()
                 .HasMany(e => e.Comment)
-                .WithOptional(e => e.AspNetUsers)
-                .HasForeignKey(e => e.UserID);
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<AspNetUsers>()
                 .HasMany(e => e.Order)
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Cart>()
+                .Property(e => e.CartID)
+                .IsFixedLength();
 
             modelBuilder.Entity<Order>()
                 .Property(e => e.Total)
@@ -70,19 +75,31 @@ namespace MFMElectronique.Models
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
+                .HasMany(e => e.Cart)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Comment)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
                 .HasMany(e => e.OrderDetail)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductBrand>()
                 .HasMany(e => e.Product)
-                .WithOptional(e => e.ProductBrand)
-                .HasForeignKey(e => e.BrandID);
+                .WithRequired(e => e.ProductBrand)
+                .HasForeignKey(e => e.BrandID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductCategory>()
                 .HasMany(e => e.Product)
-                .WithOptional(e => e.ProductCategory)
-                .HasForeignKey(e => e.CategoryID);
+                .WithRequired(e => e.ProductCategory)
+                .HasForeignKey(e => e.CategoryID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

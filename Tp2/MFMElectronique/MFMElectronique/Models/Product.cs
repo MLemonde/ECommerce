@@ -11,22 +11,27 @@ namespace MFMElectronique.Models
     {
         public Product()
         {
+            Cart = new HashSet<Cart>();
             Comment = new HashSet<Comment>();
             OrderDetail = new HashSet<OrderDetail>();
         }
 
         public int Id { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
+        [Required]
         public string DescriptionFR { get; set; }
 
+        [Required]
         [StringLength(255)]
         public string DescriptionEN { get; set; }
 
-        public bool? discontinued { get; set; }
+        public bool discontinued { get; set; }
 
+        [Required]
         public string PictureURL { get; set; }
 
         [Column(TypeName = "money")]
@@ -35,6 +40,8 @@ namespace MFMElectronique.Models
         public int CategoryID { get; set; }
 
         public int BrandID { get; set; }
+
+        public virtual ICollection<Cart> Cart { get; set; }
 
         public virtual ICollection<Comment> Comment { get; set; }
 

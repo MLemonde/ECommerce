@@ -30,12 +30,15 @@
                     <h3 class="m_3">Lorem ipsum dolor sit amet</h3>
                     <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a></p>
                     <div class="btn_form">
+                        @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
+                        {
                         <form>
-                            <p class="button">
-                                @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.Id }, "")
-                            </p>
-                            @*<input type="submit" value="buy" title="">*@
+                            @*<p class="button">
+                                @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }, "")
+                            </p>*@
+                            <input type="submit" value="buy" title="">
                         </form>
+                        }
                     </div>
 
                     <p class="m_text2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit </p>

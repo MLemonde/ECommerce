@@ -11,15 +11,17 @@ namespace MFMElectronique.Models
     {
         public int Id { get; set; }
 
-        public int? Rating { get; set; }
+        public int Rating { get; set; }
 
         [Column("Comment")]
+        [Required]
         public string Comment1 { get; set; }
 
         public DateTime? DateCreated { get; set; }
 
-        public int? ProductID { get; set; }
+        public int ProductID { get; set; }
 
+        [Required]
         [StringLength(128)]
         public string UserID { get; set; }
 

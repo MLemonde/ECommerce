@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,7 +31,7 @@ namespace MFMElectronique.Models
         public void AddToCart(Product product)
         {
             // Get the matching cart and album instances
-            var cartItem = storeDB.Cart.SingleOrDefault(c => c.CartId == ShoppingCartId
+            var cartItem = storeDB.Cart.SingleOrDefault(c => c.CartID == ShoppingCartId
             && c.ProductID == product.Id);
 
             if (cartItem == null)
@@ -39,7 +40,7 @@ namespace MFMElectronique.Models
                 cartItem = new Cart
                 {
                     ProductID = product.Id,
-                    CartId = ShoppingCartId,
+                    CartID = ShoppingCartId,
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
@@ -52,16 +53,33 @@ namespace MFMElectronique.Models
                 cartItem.Count++;
             }
 
-            // Save changes
-            storeDB.SaveChanges();
+            try
+            {
+                // Save changes
+                storeDB.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
 
         public int RemoveFromCart(int id)
         {
             // Get the cart
             var cartItem = storeDB.Cart.Single(
-            cart => cart.CartId == ShoppingCartId
-            && cart.RecordId == id);
+            cart => cart.CartID == ShoppingCartId
+            && cart.RecordID == id);
 
             int itemCount = 0;
 
@@ -86,7 +104,7 @@ namespace MFMElectronique.Models
 
         public void EmptyCart()
         {
-            var cartItems = storeDB.Cart.Where(cart => cart.CartId == ShoppingCartId);
+            var cartItems = storeDB.Cart.Where(cart => cart.CartID == ShoppingCartId);
 
             foreach (var cartItem in cartItems)
             {
@@ -99,14 +117,14 @@ namespace MFMElectronique.Models
 
         public List<Cart> GetCartItems()
         {
-            return storeDB.Cart.Where(cart => cart.CartId == ShoppingCartId).ToList();
+            return storeDB.Cart.Where(cart => cart.CartID == ShoppingCartId).ToList();
         }
 
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
             int? count = (from cartItems in storeDB.Cart
-                          where cartItems.CartId == ShoppingCartId
+                          where cartItems.CartID == ShoppingCartId
                           select (int?)cartItems.Count).Sum();
 
             // Return 0 if all entries are null
@@ -119,7 +137,7 @@ namespace MFMElectronique.Models
             // the current price for each of those albums in the cart
             // sum all album price totals to get the cart total
             decimal? total = (from cartItems in storeDB.Cart
-                              where cartItems.CartId == ShoppingCartId
+                              where cartItems.CartID == ShoppingCartId
                               select (int?)cartItems.Count * cartItems.Product.Price).Sum();
             return total ?? decimal.Zero;
         }
@@ -187,11 +205,11 @@ namespace MFMElectronique.Models
         // be associated with their username
         public void MigrateCart(string userName)
         {
-            var shoppingCart = storeDB.Cart.Where(c => c.CartId == ShoppingCartId);
+            var shoppingCart = storeDB.Cart.Where(c => c.CartID == ShoppingCartId);
 
             foreach (Cart item in shoppingCart)
             {
-                item.CartId = userName;
+                item.CartID = userName;
             }
             storeDB.SaveChanges();
         }
