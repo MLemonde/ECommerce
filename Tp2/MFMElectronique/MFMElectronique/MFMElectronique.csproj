@@ -161,7 +161,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -220,7 +219,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\Products\nexus5.png" />
     <Content Include="Images\Products\nexus6.png" />
+    <Content Include="Images\Static\2.png" />
     <Content Include="Images\Static\3.png" />
+    <Content Include="Images\Static\3am-logo.png" />
     <Content Include="Images\Static\a-img.jpg" />
     <Content Include="Images\Static\a-img1.jpg" />
     <Content Include="Images\Static\a-img2.jpg" />
@@ -353,11 +354,6 @@
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Manage\ChangeInformations.cshtml" />
-    <Content Include="Views\AspNetUsers\Create.cshtml" />
-    <Content Include="Views\AspNetUsers\Delete.cshtml" />
-    <Content Include="Views\AspNetUsers\Details.cshtml" />
-    <Content Include="Views\AspNetUsers\Edit.cshtml" />
-    <Content Include="Views\AspNetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

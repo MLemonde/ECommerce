@@ -30,7 +30,149 @@
     <script src="~/Scripts/MFMScripts/jquery.easydropdown.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="header-top">
+    <div class="wrap">
+        <div class="header-top-left">
+            <div class="box">
+                <select tabindex="4" class="dropdown">
+                    <option value="" class="label">Language :</option>
+                    <option value="1">English</option>
+                    <option value="2">French</option>
+
+                </select>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+        <div class="cssmenu">
+            <ul>
+                <li class="active">@Html.Partial("_LoginPartial")</li>
+                @*<li class="active"><a href="login.html">Account</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="register.html">Sign Up</a></li>*@
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+    <div class="header-bottom">
+        <div class="wrap">
+            <div class="header-bottom-left">
+                <div class="logo">
+                    <a href="/"><img src="~/Images/Static/3am-logo.png" alt="Logo de l'entreprise PhoneLand" /></a>
+                </div>
+                <div class="menu">
+                    <ul class="megamenu skyblue">
+                        <li class="active grid"><a href="/">Home</a></li>
+                        <li>
+                            <a class="color4" href="category.html">@Html.ActionLink("Phones", "Index", "Products")</a>
+                        <div class="megapanel">
+                            <div class="row">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Android</h4>
+                                        <ul>
+                                            <li><a href="category.html">Nexus 5</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Windows Phone</h4>
+                                        <ul>
+                                            <li><a href="category.html">Nokia</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        </li>
+                        <li>
+                            <a class="color5" href="category.html">Tablette</a>
+                            <div class="megapanel">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Android</h4>
+                                        <ul>
+                                            <li><a href="category.html">Nexus 7</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Windows</h4>
+                                        <ul>
+                                            <li><a href="category.html">Surface</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <a class="color6" href="category.html">Watches</a>
+                            <div class="megapanel">
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>LG</h4>
+                                        <ul>
+                                            <li><a href="category.html">LG G Watch</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <h4>Samsung</h4>
+                                        <ul>
+                                            <li><a href="category.html">Samsung Gear watch</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li><a class="color7" href="#">Purchases</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header-bottom-right">
+                <div class="search">
+                    <input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                    <input type="submit" value="Subscribe" id="submit" name="submit">
+                    <div id="response"> </div>
+                </div>
+                <div class="tag-list">
+                    <ul class="icon1 sub-icon1 profile_img">
+                        <li>
+                            <a class="active-icon c1" href="#"> </a>
+                            <ul class="sub-icon1 list">
+                                <li><h3>Bouton</h3><a href=""></a></li>
+                                <li><p>Ye bin beau </p></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="icon1 sub-icon1 profile_img">
+                        <li>
+                            <a class="active-icon c2" href="#"> </a>
+                            <ul class="sub-icon1 list">
+                                <li><h3>Cart</h3><a href=""></a></li>
+                                <li><p>Bin vla ton panier</p></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="last"><li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li></ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -54,13 +196,125 @@
 
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <div class="footer">
+            <div class="footer-top">
+                <div class="wrap">
+                    <div class="section group example">
+                        <div class="col_1_of_2 span_1_of_2">
+                            <ul class="f-list">
+                                <li><img src="~/Images/Static/2.png" alt="Camion de Livraison"><span class="f-text">Shipping on orders </span><div class="clear"></div></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_2 span_1_of_2">
+                            <ul class="f-list">
+                                <li><img src="~/Images/Static/3.png" alt="Telephone"><span class="f-text">Call us! toll free-222-555-6666 </span><div class="clear"></div></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle">
+                <div class="wrap">
+                    <div class="section group example">
+                        <div class="col_1_of_f_1 span_1_of_f_1">
+                            <div class="section group example">
+                                <div class="col_1_of_f_2 span_1_of_f_2">
+                                    <h3>Facebook</h3>
+
+                                    <div class="like_box">
+                                        <div class="fb-like-box" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+                                    </div>
+                                </div>
+                                <div class="col_1_of_f_2 span_1_of_f_2">
+                                    <h3>From Twitter</h3>
+                                    <div class="recent-tweet">
+                                        <div class="recent-tweet-icon">
+                                            <span> </span>
+                                        </div>
+                                        <div class="recent-tweet-info">
+                                            <p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
+                                        </div>
+                                        <div class="clear"> </div>
+                                    </div>
+                                    <div class="recent-tweet">
+                                        <div class="recent-tweet-icon">
+                                            <span> </span>
+                                        </div>
+                                        <div class="recent-tweet-info">
+                                            <p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
+                                        </div>
+                                        <div class="clear"> </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="col_1_of_f_1 span_1_of_f_1">
+                            <div class="section group example">
+                                <div class="col_1_of_f_2 span_1_of_f_2">
+                                    <h3>Information</h3>
+                                    <ul class="f-list1">
+                                        <li><a href="#"> des trucs  </a>
+                                        <li><a href="#"> des trucs  </a>
+                                        <li><a href="#"> des trucs </a>
+                                        <li><a href="#"> des trucs </a>
+                                        <li><a href="#"> des trucs  </a>
+                                        <li><a href="#"> des trucs </a>
+                                    </ul>
+                                </div>
+                                <div class="col_1_of_f_2 span_1_of_f_2">
+                                    <h3>Contact us</h3>
+                                    <div class="company_address">
+                                        <p>500 Lorem Ipsum Dolor Sit,</p>
+                                        <p>22-56-2-9 Sit Amet, Lorem,</p>
+                                        <p>USA</p>
+                                        <p>Phone:(00) 222 666 444</p>
+                                        <p>Fax: (000) 000 00 00 0</p>
+                                        <p>Email: <span>mail[at]leoshop.com</span></p>
+
+                                    </div>
+                                    <div class="social-media">
+                                        <ul>
+                                            <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Google"><a href="#" target="_blank"> </a></span></li>
+                                            <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Linked in"><a href="#" target="_blank"> </a> </span></li>
+                                            <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Rss"><a href="#" target="_blank"> </a></span></li>
+                                            <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Facebook"><a href="#" target="_blank"> </a></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="wrap">
+                    <div class="copy">
+                        <p>© 2014 PhoneLand
+                    </div>
+                    <div class="f-list2">
+                        <ul>
+                            <li class="active"><a href="about.html">About Us</a></li>
+                            <li><a href="delivery.html">Delivery & Returns</a></li>
+                            <li><a href="delivery.html">Terms & Conditions</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact.html">Plan du Site</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        </footer>*@
     </div>
 
     @*@Scripts.Render("~/bundles/jquery")

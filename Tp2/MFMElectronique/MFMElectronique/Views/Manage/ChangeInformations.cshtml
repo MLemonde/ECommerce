@@ -1,15 +1,14 @@
-﻿@model MFMElectronique.Models.ChangeInformationsViewModel
+﻿@model MFMElectronique.Models.ApplicationUser
 @{
     ViewBag.Title = "Change Password";
 }
 
 <h2>@ViewBag.Title.</h2>
 
-<form>
+@using (Html.BeginForm("ChangeInformations", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
     <div class="col_1_of_2 span_1_of_2">
-        @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
-
-        @*Name*@
         @Html.LabelFor(m => m.FirstName)
         <div>
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
@@ -22,7 +21,7 @@
             @Html.ValidationMessageFor(m => m.LastName)
         </div><br />
     </div>
-    <div class="col_1_of_2 span_1_of_2">
+    <div class="col_1_of_2 ">
         @Html.LabelFor(m => m.Address)
         <div>
             @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
@@ -65,7 +64,7 @@
     <div class="clear">
         <h4>Allo test</h4>
     </div>
-</form>
+}
 
 @*@using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {

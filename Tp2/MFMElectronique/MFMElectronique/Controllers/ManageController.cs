@@ -239,33 +239,43 @@ namespace MFMElectronique.Controllers
         // GET: /Manage/ChangeInformations
         public ActionResult ChangeInformations()
         {
-            return View();
+            //var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
+            //ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
+            //return View(linkedAccounts);
+            ApplicationUser user = UserManager.FindByName(HttpContext.User.Identity.Name);
+
+            return View(user);
         }
 
         //
         // POST: /Manage/ChangeInformations
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> ChangeInformations(ChangeInformationsViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ApplicationUser user = UserManager.FindByName(HttpContext.User.Identity.Name);
-        //        user.FullName = model.FirstName;
-        //        user.BirthDate = model.BirthDate;
-        //        user.Bio = model.Bio;
-        //        IdentityResult result = userManager.Update(user);
-        //        if (result.Succeeded)
-        //        {
-        //            ViewBag.Message = "Profile updated successfully.";
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Error while saving profile.");
-        //        }
-        //    }
-        //    return View(model);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeInformations(ApplicationUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = UserManager.FindByName(HttpContext.User.Identity.Name);
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Address = model.Address;
+                user.City = model.City;
+                user.State = model.State;
+                user.PostalCode = model.PostalCode;
+                user.Country = model.Country;
+                user.Phone = model.Phone;
+                IdentityResult result = UserManager.Update(user);
+                if (result.Succeeded)
+                {
+                    ViewBag.Message = "Profile updated successfully.";
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error while saving profile.");
+                }
+            }
+            return View(model);
+        }
 
         //
         // GET: /Manage/SetPassword
