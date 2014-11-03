@@ -88,8 +88,8 @@ namespace MFMElectronique.Controllers
             foreach (var items in cartItems)
             {
                 encoder["L_PAYMENTREQUEST_0_NAME" + i] = items.Product.Name;
-                //encoder["L_PAYMENTREQUEST_0_AMT" + i] = items.Product.Price.ToString().Replace(",", ".");
-                encoder["L_PAYMENTREQUEST_0_AMT" + i] = "750.00";
+                decimal twoDec = Math.Round(items.Product.Price, 2); // Important de mettre 2 chiffres après la virgule sinon ça fuck paypal.
+                encoder["L_PAYMENTREQUEST_0_AMT" + i] = twoDec.ToString().Replace(",", ".");
                 encoder["L_PAYMENTREQUEST_0_QTY" + i] = items.Count.ToString();
                 i++;
 

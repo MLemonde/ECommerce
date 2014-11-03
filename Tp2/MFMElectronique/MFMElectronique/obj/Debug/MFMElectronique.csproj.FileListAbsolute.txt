@@ -54,3 +54,4 @@ C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Migrations.InitialMigrations.resources
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csproj.GenerateResource.Cache
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
