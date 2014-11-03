@@ -2,6 +2,67 @@
 @{
     ViewBag.Title = "Shopping Cart";
 }
+
+@*<h3>
+    <em>Review</em> your cart:
+</h3>*@
+<p class="button">
+    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
+    {
+
+        <input type='submit' name="payment_amt" value="CheckOut" />
+    }
+</p>
+
+<div class="register_account">
+    <div class="wrap">
+        @if (Model.CartItems.Any())
+        {
+            <h4 class="title">Your shopping cart</h4>
+            <div id="update-message">
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Product</th>
+                    <th>
+                        Price (each)
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="row-@item.RecordID">
+                        <td>@Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)</td>
+                        <td>
+                            @item.Product.Price
+                        </td>
+                        <td id="item-count-@item.RecordID">
+                            @item.Count
+                        </td>
+                        <td>
+                            <a href="#" class="RemoveLink" data-id="@item.RecordID">Remove from cart</a>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total</td>
+                    <td id="cart-total">@Model.CartTotal</td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <h4 class="title">Shopping cart is empty</h4>
+            <p class="cart">You have no items in your shopping cart.<br>Click<a href="index.html"> here</a> to continue shopping</p>
+        }
+    </div>
+</div>
+
 <script src="/Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
@@ -23,6 +84,10 @@
                     $('#cart-total').text(data.CartTotal);
                     $('#update-message').text(data.Message);
                     $('#cart-status').text('Cart (' + data.CartCount + ')');
+
+                    if (data.ItemCount == 0) {
+                        window.location = "/ShoppingCart/EmptyCard/"
+                    }
                 });
             }
         });
@@ -42,64 +107,3 @@
         $('#cart-status').text('Cart (' + data.CartCount + ')');
     }
 </script>
-<h3>
-    <em>Review</em> your cart:
-</h3>
-<p class="button">
-
-
-    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
-    {
-
-        <input type='submit' name="payment_amt" value="CheckOut" />
-    }
-
-</p>
-<div id="update-message">
-</div>
-<table>
-    <tr>
-        <th>
-            Album Name
-        </th>
-        <th>
-            Price (each)
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in
-Model.CartItems)
-    {
-        <tr id="row-@item.RecordID">
-            <td>
-                @Html.ActionLink(item.Product.Name, "Details", "Store", new { id = item.ProductID }, null)
-            </td>
-            <td>
-                @item.Product.Price
-            </td>
-            <td id="item-count-@item.RecordID">
-                @item.Count
-            </td>
-            <td>
-                <a href="#" class="RemoveLink"
-                   data-id="@item.RecordID">
-                    Remove
-                    from cart
-                </a>
-            </td>
-        </tr>
-    }
-    <tr>
-        <td>
-            Total
-        </td>
-        <td></td>
-        <td></td>
-        <td id="cart-total">
-            @Model.CartTotal
-        </td>
-    </tr>
-</table>

@@ -161,8 +161,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CheckoutPaypalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaypalNVAPICaller.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs">
       <SubType>Code</SubType>
@@ -212,6 +214,7 @@
     <Content Include="Content\MFMCSS\megamenu.css" />
     <Content Include="Content\MFMCSS\nivo-slider.css" />
     <Content Include="Content\MFMCSS\style.css" />
+    <Content Include="Content\MFMCSS\table.css" />
     <Content Include="Content\MFMCSS\zoome-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -354,6 +357,11 @@
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Manage\ChangeInformations.cshtml" />
+    <Content Include="Views\ShoppingCart\EmptyCard.cshtml" />
+    <Content Include="Views\CheckoutPaypal\APIError.cshtml" />
+    <Content Include="Views\CheckoutPaypal\ConfirmPaiement.cshtml" />
+    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
+    <Content Include="Views\Checkout\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

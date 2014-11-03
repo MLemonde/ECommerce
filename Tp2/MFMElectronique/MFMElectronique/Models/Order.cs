@@ -43,6 +43,8 @@ namespace MFMElectronique.Models
         public string Phone { get; set; }
 
         [Column(TypeName = "money")]
+        [ScaffoldColumn(true)]
+        [DataType(DataType.Currency)]
         public decimal Total { get; set; }
 
         [Required]

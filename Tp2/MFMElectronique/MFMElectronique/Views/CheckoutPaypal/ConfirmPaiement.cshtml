@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmPaiement";
+}
+
+<h2>ConfirmPaiement</h2>
+<p>
+    @ViewBag.shippingAdress
+</p>
+@using(Html.BeginForm("ConfirmerTransaction", "CheckoutPaypal", FormMethod.Post))
+{
+    <input type="submit" name="ConfirmationPaiement" value="Confirmation Ultime" />
+}

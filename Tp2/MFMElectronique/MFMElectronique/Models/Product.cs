@@ -35,6 +35,8 @@ namespace MFMElectronique.Models
         public string PictureURL { get; set; }
 
         [Column(TypeName = "money")]
+        [ScaffoldColumn(true)]
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
         public int CategoryID { get; set; }
