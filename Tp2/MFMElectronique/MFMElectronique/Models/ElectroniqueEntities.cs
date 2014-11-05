@@ -12,43 +12,43 @@ namespace MFMElectronique.Models
         {
         }
 
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<Comment> Comment { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductBrand> ProductBrand { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductBrand> ProductBrands { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetRoles>()
+            modelBuilder.Entity<AspNetRole>()
                 .HasMany(e => e.AspNetUsers)
                 .WithMany(e => e.AspNetRoles)
                 .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
 
-            modelBuilder.Entity<AspNetUsers>()
+            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.AspNetUserClaims)
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserId);
 
-            modelBuilder.Entity<AspNetUsers>()
+            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.AspNetUserLogins)
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserId);
 
-            modelBuilder.Entity<AspNetUsers>()
-                .HasMany(e => e.Comment)
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.Comments)
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<AspNetUsers>()
-                .HasMany(e => e.Order)
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.Orders)
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);

@@ -31,7 +31,7 @@ namespace MFMElectronique.Models
         public void AddToCart(Product product)
         {
             // Get the matching cart and album instances
-            var cartItem = storeDB.Cart.SingleOrDefault(c => c.CartID == ShoppingCartId
+            var cartItem = storeDB.Carts.SingleOrDefault(c => c.CartID == ShoppingCartId
             && c.ProductID == product.Id);
 
             if (cartItem == null)
@@ -45,7 +45,7 @@ namespace MFMElectronique.Models
                     DateCreated = DateTime.Now
                 };
 
-                storeDB.Cart.Add(cartItem);
+                storeDB.Carts.Add(cartItem);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace MFMElectronique.Models
         public int RemoveFromCart(int id)
         {
             // Get the cart
-            var cartItem = storeDB.Cart.Single(
+            var cartItem = storeDB.Carts.Single(
             cart => cart.CartID == ShoppingCartId
             && cart.RecordID == id);
 
@@ -92,7 +92,7 @@ namespace MFMElectronique.Models
                 }
                 else
                 {
-                    storeDB.Cart.Remove(cartItem);
+                    storeDB.Carts.Remove(cartItem);
                 }
 
                 // Save changes
@@ -104,11 +104,11 @@ namespace MFMElectronique.Models
 
         public void EmptyCart()
         {
-            var cartItems = storeDB.Cart.Where(cart => cart.CartID == ShoppingCartId);
+            var cartItems = storeDB.Carts.Where(cart => cart.CartID == ShoppingCartId);
 
             foreach (var cartItem in cartItems)
             {
-                storeDB.Cart.Remove(cartItem);
+                storeDB.Carts.Remove(cartItem);
             }
 
             // Save changes
@@ -117,13 +117,13 @@ namespace MFMElectronique.Models
 
         public List<Cart> GetCartItems()
         {
-            return storeDB.Cart.Where(cart => cart.CartID == ShoppingCartId).ToList();
+            return storeDB.Carts.Where(cart => cart.CartID == ShoppingCartId).ToList();
         }
 
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
-            int? count = (from cartItems in storeDB.Cart
+            int? count = (from cartItems in storeDB.Carts
                           where cartItems.CartID == ShoppingCartId
                           select (int?)cartItems.Count).Sum();
 
@@ -136,7 +136,7 @@ namespace MFMElectronique.Models
             // Multiply album price by count of that album to get 
             // the current price for each of those albums in the cart
             // sum all album price totals to get the cart total
-            decimal? total = (from cartItems in storeDB.Cart
+            decimal? total = (from cartItems in storeDB.Carts
                               where cartItems.CartID == ShoppingCartId
                               select (int?)cartItems.Count * cartItems.Product.Price).Sum();
             return total ?? decimal.Zero;
@@ -162,7 +162,7 @@ namespace MFMElectronique.Models
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count * item.Product.Price);
 
-                storeDB.OrderDetail.Add(orderDetail);
+                storeDB.OrderDetails.Add(orderDetail);
 
             }
 
@@ -205,7 +205,7 @@ namespace MFMElectronique.Models
         // be associated with their username
         public void MigrateCart(string userName)
         {
-            var shoppingCart = storeDB.Cart.Where(c => c.CartID == ShoppingCartId);
+            var shoppingCart = storeDB.Carts.Where(c => c.CartID == ShoppingCartId);
 
             foreach (Cart item in shoppingCart)
             {

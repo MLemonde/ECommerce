@@ -6,15 +6,15 @@ namespace MFMElectronique.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AspNetUsers
+    public partial class AspNetUser
     {
-        public AspNetUsers()
+        public AspNetUser()
         {
-            AspNetUserClaims = new HashSet<AspNetUserClaims>();
-            AspNetUserLogins = new HashSet<AspNetUserLogins>();
-            Comment = new HashSet<Comment>();
-            Order = new HashSet<Order>();
-            AspNetRoles = new HashSet<AspNetRoles>();
+            AspNetUserClaims = new HashSet<AspNetUserClaim>();
+            AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            Comments = new HashSet<Comment>();
+            Orders = new HashSet<Order>();
+            AspNetRoles = new HashSet<AspNetRole>();
         }
 
         public string Id { get; set; }
@@ -68,14 +68,14 @@ namespace MFMElectronique.Models
         [StringLength(50)]
         public string Phone { get; set; }
 
-        public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
 
-        public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
 
-        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
-        public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }

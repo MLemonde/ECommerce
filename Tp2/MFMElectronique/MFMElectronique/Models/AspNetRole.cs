@@ -6,11 +6,11 @@ namespace MFMElectronique.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class AspNetRoles
+    public partial class AspNetRole
     {
-        public AspNetRoles()
+        public AspNetRole()
         {
-            AspNetUsers = new HashSet<AspNetUsers>();
+            AspNetUsers = new HashSet<AspNetUser>();
         }
 
         public string Id { get; set; }
@@ -19,6 +19,6 @@ namespace MFMElectronique.Models
         [StringLength(256)]
         public string Name { get; set; }
 
-        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

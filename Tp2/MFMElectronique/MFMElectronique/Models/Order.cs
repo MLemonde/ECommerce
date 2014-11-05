@@ -51,7 +51,7 @@ namespace MFMElectronique.Models
         [StringLength(128)]
         public string UserID { get; set; }
 
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual AspNetUser AspNetUsers { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }

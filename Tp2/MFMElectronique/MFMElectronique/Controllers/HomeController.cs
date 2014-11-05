@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MFMElectronique.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -10,28 +11,29 @@ namespace MFMElectronique.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Page d'accueil du site...
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        /// <summary>
+        /// Méthode permettante de sélectionner un nouveau language et de refraichir la page
+        /// </summary>
+        /// <param name="language"></param>
+        /// <returns></returns>
+        [HttpPost, AllowAnonymous]
+        public ActionResult SelectLanguage(string language, string returnUrl)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult SelectLanguage(string language)
-        {
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    ElectroniqueEntities context = new ElectroniqueEntities();
+            //    AspNetUser user = context.AspNetUsers.First(u => u.Email == User.Identity.Name);
+            //    context.Dispose();
+            //}
             HttpContext.Session["Culture"] = language;
             return RedirectToAction("Index", "Home");
         }

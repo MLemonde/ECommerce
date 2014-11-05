@@ -47,7 +47,7 @@ namespace MFMElectronique.Controllers
         public ActionResult AddToCart(int id, string returnUrl)
         {
             // Retrieve the album from the database
-            var addedProduct = storeDB.Product
+            var addedProduct = storeDB.Products
             .Single(produit => produit.Id == id);
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -65,7 +65,7 @@ namespace MFMElectronique.Controllers
             // Remove the item from the cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
             // Get the name of the album to display confirmation
-            string productName = storeDB.Cart.Single(item => item.RecordID == id).Product.Name;
+            string productName = storeDB.Carts.Single(item => item.RecordID == id).Product.Name;
             // Remove from cart
             int itemCount = cart.RemoveFromCart(id);
             // Display the confirmation message

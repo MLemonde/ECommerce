@@ -34,7 +34,7 @@
 </head>
 <body>
     @{UICulture = Context.Session["Culture"] == null ? "fr" : Context.Session["Culture"].ToString();}
-
+    
     <div class="header-top">
         <div class="wrap">
             <div class="header-top-left">
@@ -45,7 +45,7 @@
                             {
                                 new SelectListItem { Text = "Français", Value = "fr", Selected = UICulture == "fr"},
                                 new SelectListItem { Text = "English", Value = "en", Selected = UICulture == "en"},
-                            }, new { onchange = "this.form.submit();", name = "language", @class = "dropdown" })
+                            }, new { onchange = "this.form.submit();", name = "language", returnUrl = Request.Url, @class = "dropdown" })
                     }
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="menu">
                     <ul class="megamenu skyblue">
-                        <li class="active grid"><a href="/">Home</a></li>
+                        <li class="active grid"><a href="">@MFMElectronique.Views.Shared.Resources.Home</a></li>
                         <li>
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Phones, "Index", "Products")
                             <div class="megapanel">
@@ -149,27 +149,12 @@
                     <input type="submit" value="Subscribe" id="submit" name="submit">
                     <div id="response"> </div>
                 </div>
-                <div class="tag-list">
-                    <ul class="icon1 sub-icon1 profile_img">
-                        <li>
-                            <a class="active-icon c1" href="#"> </a>
-                            <ul class="sub-icon1 list">
-                                <li><h3>Bouton</h3><a href=""></a></li>
-                                <li><p>Ye bin beau </p></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="icon1 sub-icon1 profile_img">
-                        <li>
-                            <a class="active-icon c2" href="#"> </a>
-                            <ul class="sub-icon1 list">
-                                <li><h3>@MFMElectronique.Views.Shared.Resources.Cart</h3><a href=""></a></li>
-                                <li><p>Bin vla ton panier</p></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="last"><li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li></ul>
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="tag-list">
+                        <ul class="last"><li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li></ul>
+                    </div>
+                }
             </div>
             <div class="clear"></div>
         </div>

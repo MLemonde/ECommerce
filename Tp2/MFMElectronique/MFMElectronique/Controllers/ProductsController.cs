@@ -17,7 +17,7 @@ namespace MFMElectronique.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var product = db.Product.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
+            var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
             return View(product.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace MFMElectronique.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace MFMElectronique.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.BrandID = new SelectList(db.ProductBrand, "Id", "Name");
-            ViewBag.CategoryID = new SelectList(db.ProductCategory, "Id", "Name");
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace MFMElectronique.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Product.Add(product);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BrandID = new SelectList(db.ProductBrand, "Id", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.ProductCategory, "Id", "Name", product.CategoryID);
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
             return View(product);
         }
 
@@ -70,13 +70,13 @@ namespace MFMElectronique.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.BrandID = new SelectList(db.ProductBrand, "Id", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.ProductCategory, "Id", "Name", product.CategoryID);
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
             return View(product);
         }
 
@@ -93,8 +93,8 @@ namespace MFMElectronique.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BrandID = new SelectList(db.ProductBrand, "Id", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.ProductCategory, "Id", "Name", product.CategoryID);
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
             return View(product);
         }
 
@@ -105,7 +105,7 @@ namespace MFMElectronique.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace MFMElectronique.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
-            db.Product.Remove(product);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
