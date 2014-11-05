@@ -9,6 +9,7 @@ namespace MFMElectronique.Models
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
+        [Key]
         public int Id { get; set; }
 
         public int Quantity { get; set; }

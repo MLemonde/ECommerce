@@ -154,9 +154,18 @@ namespace MFMElectronique.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, 
-                Address = model.Address, City = model.City, Country = model.Country, PostalCode = model.PostalCode,
-                FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone};
+                ApplicationUser user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    Address = model.Address, 
+                    City = model.City, 
+                    Country = model.Country, 
+                    PostalCode = model.PostalCode,
+                    FirstName = model.FirstName, 
+                    LastName = model.LastName, 
+                    Phone = model.Phone
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -173,7 +182,6 @@ namespace MFMElectronique.Controllers
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

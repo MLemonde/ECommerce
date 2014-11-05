@@ -8,7 +8,7 @@
 @using (Html.BeginForm("ChangeInformations", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <div class="col_1_of_2 span_1_of_2">
+    <div style="text-align:center">
         @Html.LabelFor(m => m.FirstName)
         <div>
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
@@ -20,50 +20,48 @@
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.LastName)
         </div><br />
-    </div>
-    <div class="col_1_of_2 ">
+        
         @Html.LabelFor(m => m.Address)
         <div>
             @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Address)
-        </div><br>
+        </div><br />
 
         @Html.LabelFor(m => m.City)
         <div>
             @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.City)
-        </div><br>
+        </div><br />
 
         @Html.LabelFor(m => m.PostalCode)
         <div>
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.PostalCode)
-        </div><br>
+        </div><br />
 
         @Html.LabelFor(m => m.Country)
         <div>
             @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Country)
-        </div><br>
+        </div><br />
 
 
         @Html.LabelFor(m => m.State)
         <div>
             @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.State)
-        </div><br>
+        </div><br />
 
         @Html.LabelFor(m => m.Phone)
         <div>
             @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Phone)
-        </div><br>
-        <button class="grey">Submit</button>
-        <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
+        </div><br />
+        <button type="submit" class="grey" style="text-align:center">Submit</button>
+        <br />
+        <p class="terms" style="text-align:center">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
     </div>
-    <div class="clear">
-        <h4>Allo test</h4>
-    </div>
+    <br />
 }
 
 @*@using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

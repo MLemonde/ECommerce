@@ -17,7 +17,6 @@
                 <div class="col_1_of_2 span_1_of_2">
                     @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
 
-                    @*Name*@
                     @Html.LabelFor(m => m.FirstName)
                     <div>@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.FirstName, "")</div><br />
@@ -33,6 +32,7 @@
                     @Html.LabelFor(m => m.Password)
                     <div>@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Password)</div>
+                    
                     @Html.LabelFor(m => m.ConfirmPassword)
                     <div>@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.ConfirmPassword)</div>
@@ -58,7 +58,6 @@
                     @Html.LabelFor(m => m.Country)
                     <div>@Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Country)</div><br>
-
 
                     @Html.LabelFor(m => m.State)
                     <div>@Html.TextBoxFor(m => m.State, new { @class = "form-control" })
