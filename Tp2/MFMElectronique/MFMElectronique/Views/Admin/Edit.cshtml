@@ -1,10 +1,79 @@
-﻿@model MFMElectronique.Models.Product
+﻿@model MFMElectronique.ViewModels.ProductAdminViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<form action="" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div style="text-align:center">
+        <h2>@ViewBag.Title</h2>
+
+        <div class="clear"></div>
+        <div class="register_account">
+            <div class="wrap">
+                <h4 class="title">Create a new item</h4>
+                <div>
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "inputbox" })
+                    @Html.ValidationMessageFor(m => m.Name, "")
+                </div>
+                <br />
+
+                <div>
+                    @Html.LabelFor(m => m.Price)
+                    @Html.TextBoxFor(m => m.Price, "{0:c}")
+                    @Html.ValidationMessageFor(m => m.Price)
+                    |
+                    @Html.LabelFor(m => m.CategoryID)
+                    @Html.DropDownListFor(m => m.CategoryID, null)
+                    @Html.ValidationMessageFor(m => m.CategoryID)
+                    |
+                    @Html.LabelFor(m => m.BrandID)
+                    @Html.DropDownListFor(m => m.BrandID, null)
+                    @Html.ValidationMessageFor(m => m.BrandID)
+                </div>
+                <br />
+
+                <div>
+                    @Html.LabelFor(m => m.DescriptionFR)
+                    @Html.TextAreaFor(m => m.DescriptionFR, new { @class = "ckeditor", @id = "text-details" })
+                    @Html.ValidationMessageFor(m => m.DescriptionFR)
+                </div>
+                <br />
+
+                <div>
+                    @Html.LabelFor(m => m.DescriptionEN)
+                    @Html.TextAreaFor(m => m.DescriptionEN, new { @class = "ckeditor", @id = "text-details" })
+                    @Html.ValidationMessageFor(m => m.DescriptionEN)
+                </div>
+                <br />
+
+                @*<div>
+                        @Html.LabelFor(m => m.discontinued)
+                        @Html.EditorFor(m => m.discontinued)
+                        @Html.ValidationMessageFor(m => m.discontinued)
+                    </div>
+                    <br />*@
+
+                <div>
+                    @Html.LabelFor(m => m.ImageUpload)
+                    @Html.EditorFor(m => m.ImageUpload)
+                    @Html.ValidationMessageFor(m => m.ImageUpload)
+                </div>
+                <br />
+                <div class="button1">
+                    <input type="submit" class="button" value="Create Item" name="Create Item">
+                </div>
+                <div class="clear"></div>
+                <br />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@*<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -89,7 +158,7 @@
             </div>
         </div>
     </div>
-}
+}*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")

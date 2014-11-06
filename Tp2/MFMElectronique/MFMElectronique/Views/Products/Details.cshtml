@@ -40,7 +40,10 @@
                         }
                     </div>
 
-                    <p class="m_text2">@Html.DisplayFor(model => model.DescriptionFR)</p>
+                    @*<p class="m_text2">@Html.DisplayFor(model => model.DescriptionEN)</p>*@
+                    <p class="cke_dialog_ui_input_textarea">@Html.DisplayFor(model => model.DescriptionEN, "")</p>
+
+                    @*<div class="text">@Html.DisplayFor(model => model.DescriptionEN)</div>*@
                 </div>
                 <div class="clear"></div>
                 <div class="clients">
@@ -131,6 +134,13 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+$(document).ready(function(){
+    $("p").removeClass("main");
+  });
+</script>
+
     @*<div>
             <h4>Product</h4>
             <hr />
