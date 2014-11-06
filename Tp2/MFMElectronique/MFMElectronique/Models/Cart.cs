@@ -22,6 +22,14 @@ namespace MFMElectronique.Models
 
         public DateTime? DateCreated { get; set; }
 
+        public decimal GST { get; set; }
+
+        public decimal QST { get; set; }
+
+        public decimal Shipping { get; set; }
+
+        public decimal TotalPerItem { get; set; }
+
         public virtual Product Product { get; set; }
     }
 }

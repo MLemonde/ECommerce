@@ -13,9 +13,6 @@ namespace MFMElectronique.Models
 
         public int Quantity { get; set; }
 
-        [Column(TypeName = "money")]
-        [ScaffoldColumn(true)]
-        [DataType(DataType.Currency)]
         public decimal UnitPrice { get; set; }
 
         public int OrderId { get; set; }

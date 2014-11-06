@@ -34,6 +34,15 @@ namespace MFMElectronique.Models
             var cartItem = storeDB.Carts.SingleOrDefault(c => c.CartID == ShoppingCartId
             && c.ProductID == product.Id);
 
+            decimal GSTRate = 0.05M;
+            decimal QSTRate = 0.09975M;
+            decimal ShippingPrice = 16.99M;
+
+            decimal productGST = product.Price * GSTRate;
+            decimal productQST = (product.Price + productGST) * QSTRate;
+            decimal productShipping = ShippingPrice;
+            decimal productTotal = product.Price + productGST + productQST + productShipping;
+
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists
@@ -42,6 +51,10 @@ namespace MFMElectronique.Models
                     ProductID = product.Id,
                     CartID = ShoppingCartId,
                     Count = 1,
+                    GST = productGST,
+                    QST = productQST,
+                    Shipping = productShipping,
+                    TotalPerItem = productTotal,
                     DateCreated = DateTime.Now
                 };
 
@@ -138,7 +151,7 @@ namespace MFMElectronique.Models
             // sum all album price totals to get the cart total
             decimal? total = (from cartItems in storeDB.Carts
                               where cartItems.CartID == ShoppingCartId
-                              select (int?)cartItems.Count * cartItems.Product.Price).Sum();
+                              select (int?)cartItems.Count * cartItems.TotalPerItem).Sum();
             return total ?? decimal.Zero;
         }
 
@@ -157,6 +170,7 @@ namespace MFMElectronique.Models
                     OrderId = order.Id,
                     UnitPrice = item.Product.Price,
                     Quantity = item.Count
+                    
                 };
 
                 // Set the order total of the shopping cart

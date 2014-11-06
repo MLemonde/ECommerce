@@ -25,7 +25,12 @@ th {
 }
 
 .table tbody > tr > td{
+    /*border-top: 1px solid #dddddd;*/
+}
+
+#trCart{
     border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
 }
 
 

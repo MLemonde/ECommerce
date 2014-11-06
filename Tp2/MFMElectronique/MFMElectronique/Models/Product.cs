@@ -2,9 +2,11 @@ namespace MFMElectronique.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Product")]
     public partial class Product
@@ -23,10 +25,15 @@ namespace MFMElectronique.Models
         public string Name { get; set; }
 
         [Required]
+        [DefaultValue("")]
+        [AllowHtml]
+        [DataType(DataType.Html)]
         public string DescriptionFR { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [DefaultValue("")]
+        [AllowHtml]
+        [DataType(DataType.Html)]
         public string DescriptionEN { get; set; }
 
         public bool discontinued { get; set; }
@@ -34,9 +41,7 @@ namespace MFMElectronique.Models
         [Required]
         public string PictureURL { get; set; }
 
-        [Column(TypeName = "money")]
-        [ScaffoldColumn(true)]
-        [DataType(DataType.Currency)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         public decimal Price { get; set; }
 
         public int CategoryID { get; set; }

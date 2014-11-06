@@ -58,21 +58,9 @@ namespace MFMElectronique.Models
                 .IsFixedLength();
 
             modelBuilder.Entity<Order>()
-                .Property(e => e.Total)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Order>()
                 .HasMany(e => e.OrderDetail)
                 .WithRequired(e => e.Order)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<OrderDetail>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Price)
-                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Cart)

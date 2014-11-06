@@ -2,9 +2,11 @@ namespace MFMElectronique.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Comment")]
     public partial class Comment
@@ -15,6 +17,9 @@ namespace MFMElectronique.Models
 
         [Column("Comment")]
         [Required]
+        [DefaultValue("")]
+        [AllowHtml]
+        [DataType(DataType.Html)]
         public string Comment1 { get; set; }
 
         public DateTime? DateCreated { get; set; }
