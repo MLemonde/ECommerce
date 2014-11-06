@@ -1,24 +1,34 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@if (User.Identity.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li>@Html.ActionLink("[Change your password]", "ChangePassword", "Manage")</li>
-        <li>@Html.ActionLink("[Change your informations]", "ChangeInformations", "Manage")</li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        Html.AntiForgeryToken();
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>
+                @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourPassword, "ChangePassword", "Manage")
+            </li>
+            <li>
+                @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourInformations, "ChangeInformations", "Manage")
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">
+                    @MFMElectronique.Views.Shared.Resources.LogOff
+                </a>
+            </li>
+        </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        </li>
+        <li>
+            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.LogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </li>
     </ul>
 }
