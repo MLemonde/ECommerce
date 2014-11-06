@@ -1,13 +1,17 @@
 ﻿@model MFMElectronique.Models.Product
-
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = MFMElectronique.Views.Products.Resources.Details;
 }
-
+<h2>@MFMElectronique.Views.Products.Resources.Details</h2>
 <div class="mens">
     <div class="main">
         <div class="wrap">
-            <ul class="breadcrumb breadcrumb__t"><a class="home" href="Vente-Telephone-Phoneland.html">Home</a> / <a href="category.html">Category</a> / ItemName</ul>
+            <ul class="breadcrumb breadcrumb__t">
+                @*<a class="home" href="Vente-Telephone-Phoneland.html">
+                        @MFMElectronique.Views.Shared.Resources.Home
+                    </a> /*@
+                <a href="category.html">@Model.ProductCategory.Name</a> / @Model.Name
+            </ul>
             <div class="cont span_2_of_3">
                 <div class="grid images_3_of_2">
                     <div id="container">
@@ -39,18 +43,13 @@
                             </form>
                         }
                     </div>
-
-                    @*<p class="m_text2">@Html.DisplayFor(model => model.DescriptionEN)</p>*@
-                    <p class="cke_dialog_ui_input_textarea">@Html.DisplayFor(model => model.DescriptionEN, "")</p>
-
-                    @*<div class="text">@Html.DisplayFor(model => model.DescriptionEN)</div>*@
+                    <p class="m_text2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit </p>
                 </div>
                 <div class="clear"></div>
                 <div class="clients">
                     <h3 class="m_3">Other Products in the same category</h3>
                     <ul id="flexiselDemo3">
                         <li><img src="images/Lumia520.png" /><a href="#">Category</a><p>Rs 600</p></li>
-
                     </ul>
                     <script type="text/javascript">
                         $(window).load(function () {
@@ -100,7 +99,6 @@
                     </script>
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
                 </div>
-
                 <h1>RATINGS</h1>
                 <h1>COMMENTAIRES</h1>
                 @*<div class="toogle">
@@ -116,102 +114,94 @@
         </div>
     </div>
 </div>
-
 <div id="fb-root"></div>
 @*<script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>*@
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>*@
 <script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+@*<div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductBrand.Name)
+            </dt>
 
-<script>
-$(document).ready(function(){
-    $("p").removeClass("main");
-  });
-</script>
+            <dd>
+                @Html.DisplayFor(model => model.ProductBrand.Name)
+            </dd>
 
-    @*<div>
-            <h4>Product</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductBrand.Name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductCategory.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductBrand.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductCategory.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductCategory.Name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductCategory.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionFR)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionFR)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.DescriptionFR)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionEN)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.DescriptionFR)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionEN)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.DescriptionEN)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.discontinued)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.DescriptionEN)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.discontinued)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.discontinued)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PictureURL)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.discontinued)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PictureURL)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.PictureURL)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.PictureURL)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
-
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>*@
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

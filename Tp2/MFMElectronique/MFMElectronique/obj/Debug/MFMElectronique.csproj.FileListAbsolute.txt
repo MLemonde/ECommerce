@@ -172,3 +172,5 @@ C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\en\MFMElectronique.resources.dll
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.dll
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
+C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.resources
+C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.en.resources
