@@ -22,7 +22,7 @@ namespace MFMElectronique.Views.Shared {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MFMElectronique.Views.Shared {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MFMElectronique.Views.Shared.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace MFMElectronique.Views.Shared {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Appelez nous 222-555-6666.
         /// </summary>
-        internal static string CallUs {
+        public static string CallUs {
             get {
                 return ResourceManager.GetString("CallUs", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à [Changer vos informations].
         /// </summary>
-        internal static string ChangeYourInformations {
+        public static string ChangeYourInformations {
             get {
                 return ResourceManager.GetString("ChangeYourInformations", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à [Changer votre mot de passe].
         /// </summary>
-        internal static string ChangeYourPassword {
+        public static string ChangeYourPassword {
             get {
                 return ResourceManager.GetString("ChangeYourPassword", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à SMFElectronique..
         /// </summary>
-        internal static string contactLine01 {
+        public static string contactLine01 {
             get {
                 return ResourceManager.GetString("contactLine01", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à 3000 Avenue Boullé.
         /// </summary>
-        internal static string contactLine02 {
+        public static string contactLine02 {
             get {
                 return ResourceManager.GetString("contactLine02", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Saint-Hyacinthe.
         /// </summary>
-        internal static string contactLine03 {
+        public static string contactLine03 {
             get {
                 return ResourceManager.GetString("contactLine03", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Québec J2S 1H9.
         /// </summary>
-        internal static string contactLine04 {
+        public static string contactLine04 {
             get {
                 return ResourceManager.GetString("contactLine04", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à (514) 875-4445.
         /// </summary>
-        internal static string contactLine05 {
+        public static string contactLine05 {
             get {
                 return ResourceManager.GetString("contactLine05", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
-        internal static string contactLine06 {
+        public static string contactLine06 {
             get {
                 return ResourceManager.GetString("contactLine06", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Nous contacter.
         /// </summary>
-        internal static string ContactUs {
+        public static string ContactUs {
             get {
                 return ResourceManager.GetString("ContactUs", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Erreur..
         /// </summary>
-        internal static string Error01 {
+        public static string Error01 {
             get {
                 return ResourceManager.GetString("Error01", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors du traitement de votre demande..
         /// </summary>
-        internal static string Error02 {
+        public static string Error02 {
             get {
                 return ResourceManager.GetString("Error02", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Bonjour .
         /// </summary>
-        internal static string Hello {
+        public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Accueil.
         /// </summary>
-        internal static string Home {
+        public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Venez nous rejoindre à .
         /// </summary>
-        internal static string infoLine01 {
+        public static string infoLine01 {
             get {
                 return ResourceManager.GetString("infoLine01", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Saint-Hyacinthe!.
         /// </summary>
-        internal static string infoLine02 {
+        public static string infoLine02 {
             get {
                 return ResourceManager.GetString("infoLine02", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Nous avons un excellent.
         /// </summary>
-        internal static string infoLine03 {
+        public static string infoLine03 {
             get {
                 return ResourceManager.GetString("infoLine03", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à service de livraison.
         /// </summary>
-        internal static string infoLine04 {
+        public static string infoLine04 {
             get {
                 return ResourceManager.GetString("infoLine04", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à et nous acceptons.
         /// </summary>
-        internal static string infoLine05 {
+        public static string infoLine05 {
             get {
                 return ResourceManager.GetString("infoLine05", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à les enveloppes brunes!.
         /// </summary>
-        internal static string infoLine06 {
+        public static string infoLine06 {
             get {
                 return ResourceManager.GetString("infoLine06", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Verrouillé..
         /// </summary>
-        internal static string Lockout01 {
+        public static string Lockout01 {
             get {
                 return ResourceManager.GetString("Lockout01", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Ce compte a été bloqué , se il vous plaît réessayer plus tard..
         /// </summary>
-        internal static string Lockout02 {
+        public static string Lockout02 {
             get {
                 return ResourceManager.GetString("Lockout02", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Se connecter.
         /// </summary>
-        internal static string LogIn {
+        public static string LogIn {
             get {
                 return ResourceManager.GetString("LogIn", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Se déconnecter.
         /// </summary>
-        internal static string LogOff {
+        public static string LogOff {
             get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Téléphones.
         /// </summary>
-        internal static string Phones {
+        public static string Phones {
             get {
                 return ResourceManager.GetString("Phones", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Achats.
         /// </summary>
-        internal static string Purchases {
+        public static string Purchases {
             get {
                 return ResourceManager.GetString("Purchases", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à S&apos;enregistrer.
         /// </summary>
-        internal static string Register {
+        public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Rechercher.
         /// </summary>
-        internal static string Search {
+        public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Livraison rapide!.
         /// </summary>
-        internal static string ShippingText {
+        public static string ShippingText {
             get {
                 return ResourceManager.GetString("ShippingText", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Tablettes.
         /// </summary>
-        internal static string Tablets {
+        public static string Tablets {
             get {
                 return ResourceManager.GetString("Tablets", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace MFMElectronique.Views.Shared {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Montres.
         /// </summary>
-        internal static string Watches {
+        public static string Watches {
             get {
                 return ResourceManager.GetString("Watches", resourceCulture);
             }
