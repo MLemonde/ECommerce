@@ -24,10 +24,28 @@
                     </div>
                 </div>
                 <div class="desc1 span_3_of_2">
-                    <h3 class="m_3">Lorem ipsum dolor sit amet</h3>
+                    <h3 class="m_3">@Model.Name by @Model.ProductBrand.Name</h3>
                     @*<div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>*@<br />
                     <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />
-                    <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a></p>
+                    <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a></p><br />
+                    @if (Model.Comment.Any())
+                    {
+                        decimal total = 0;
+                        decimal moyenne = 0;
+                        //Retourner la moyenne des commentaires!
+                        foreach (var evaluation in Model.Comment)
+                        {
+                            total += evaluation.Rating;
+                        }
+                        moyenne = total / Model.Comment.Count;
+
+                        <text>Moyenne : </text> <b>@String.Format("{0:0.00}", moyenne)</b> <br />
+                        <text>Nombre d'évalutions : </text>    <b>@ViewBag.RateComments.Count.ToString()</b>
+                    }
+                    else
+                    {
+                        <text>Ce produit n'a aucune évaluation pour le moment!</text>
+                    }
                     <div class="btn_form">
                         @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
                         {
@@ -41,9 +59,12 @@
                     </div>
 
                     @*<p class="m_text2">@Html.DisplayFor(model => model.DescriptionEN)</p>*@
-                    <p class="cke_dialog_ui_input_textarea">@Html.DisplayFor(model => model.DescriptionEN, "")</p>
 
                     @*<div class="text">@Html.DisplayFor(model => model.DescriptionEN)</div>*@
+                </div>
+                <div class="clear"></div>
+                <div class="">
+                    <p class="text-center">@Html.DisplayFor(model => model.DescriptionEN, "")</p>
                 </div>
                 <div class="clear"></div>
                 <div class="clients">
@@ -101,117 +122,223 @@
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
                 </div>
 
-                <h1>RATINGS</h1>
-                <h1>COMMENTAIRES</h1>
-                @*<div class="toogle">
-                        <h3 class="m_3">Product Details</h3>
-                        <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-                    </div>
-                    <div class="toogle">
-                        <h3 class="m_3">More Information</h3>
-                        <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-                    </div>*@
+                <h4>Ajouter une note</h4>
+                @using Microsoft.AspNet.Identity;
+                @if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    bool userAlreadyRatedProduct = false;
+                    string userRatingOnProduct = "";
+
+                    foreach (var item in Model.Comment)
+                    {
+                        if (item.UserID == userId && item.ProductID == Model.Id)
+                        {
+                            userAlreadyRatedProduct = true;
+                            userRatingOnProduct = item.Rating.ToString();
+                        }
+                    }
+
+                    if (!userAlreadyRatedProduct)
+                    {
+                        using (Html.BeginForm("Create", "Ratings", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            var values = new SelectList(Enumerable.Range(1, 5));
+                            @Html.DropDownList("rating", values)
+                            <input type="submit" value="Create">
+                        }
+                    }
+                    else
+                    {
+                        <b>Vous avez déjà donner une note au produit : @userRatingOnProduct</b>
+                    }
+                }
+                else
+                {
+                    <text>Vous devez être authentifié pour pouvoir Évaluer un produit</text>
+                }
+
+                <h4>Commentaires</h4>
+                @if (Model.Comment.Any())
+                {
+                    foreach (var commentaire in Model.Comment)
+                    {
+                        @commentaire.AspNetUsers.UserName <br />
+                        @commentaire.DateCreated<br />
+
+                        @Html.DisplayFor(comment => commentaire.Comment1);
+                    }
+                }
+                else
+                {
+                    <text>Aucun commentaire jusqu'à présent :(</text>
+                }
+
+                <h4>YOUR OPINION</h4>
+                @using Microsoft.AspNet.Identity;
+                @if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    
+                    bool userAlreadyRatedProduct = false;
+                    string userRatingOnProduct = "";
+
+                    foreach (var item in Model.Comment)
+                    {
+                        if (item.UserID == userId && item.ProductID == Model.Id)
+                        {
+                            userAlreadyRatedProduct = true;
+                            userRatingOnProduct = item.Rating.ToString();
+                        }
+                    }
+
+                    if (!userAlreadyRatedProduct)
+                    {
+                        using (Html.BeginForm("Create", "Ratings", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+
+                            <input type="submit" value="Create">
+                        }
+                    }
+                    else
+                    {
+                        <b>Vous avez déjà donner une note au produit : @userRatingOnProduct</b>
+                    }
+
+                    using (Html.BeginForm("Create", "Comments", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                            
+                        var values = new SelectList(Enumerable.Range(1, 5));
+                        @Html.DropDownList("rating", values);
+                                
+
+                        <div class="cke_bottom"><input type="submit" value="Create"></div>
+                        <textarea class="ckeditor" name="Commentaire"></textarea>
+                    }
+                }
+                else
+                {
+                    <text>Vous devez être authentifié pour pouvoir commenter</text>
+                }
+                <br />
             </div>
-            <div class="clear"></div>
+
+            @*<div class="toogle">
+                    <h3 class="m_3">Product Details</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>
+                <div class="toogle">
+                    <h3 class="m_3">More Information</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>*@
         </div>
+        <div class="clear"></div>
     </div>
 </div>
 
 <div id="fb-root"></div>
 @*<script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>*@
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>*@
 <script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <script>
-$(document).ready(function(){
-    $("p").removeClass("main");
-  });
+    $(document).ready(function () {
+        $("p").removeClass("main");
+    });
 </script>
 
-    @*<div>
-            <h4>Product</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductBrand.Name)
-                </dt>
+@*<div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductBrand.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductBrand.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductBrand.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.ProductCategory.Name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductCategory.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.ProductCategory.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductCategory.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.DescriptionFR)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionFR)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.DescriptionFR)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionFR)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.DescriptionEN)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DescriptionEN)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.DescriptionEN)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DescriptionEN)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.discontinued)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.discontinued)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.discontinued)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.discontinued)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.PictureURL)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PictureURL)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.PictureURL)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PictureURL)
+            </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>*@
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

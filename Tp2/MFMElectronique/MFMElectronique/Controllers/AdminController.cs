@@ -123,9 +123,19 @@ namespace MFMElectronique.Controllers
             {
                 return HttpNotFound();
             }
+
+            var model = new ProductAdminViewModel
+            {
+                Name = product.Name,
+                CategoryID = product.CategoryID,
+                BrandID = product.BrandID,
+                DescriptionEN = product.DescriptionEN,
+                DescriptionFR = product.DescriptionFR
+            };
+
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
-            return View(product);
+            return View(model);
         }
 
         // POST: Admin/Edit/5

@@ -62,8 +62,8 @@
                             <div class="inner_content clearfix">
                                 <div class="price1">
                                         @*POUR L'INTERFACE ADMINISTRATEUR*@
-                                        <a href="@Url.Action("Edit", "Products", new { id = item.Id })"><span class="actual">[EDIT]</span></a>
-                                        <a href="@Url.Action("Delete", "Products", new { id = item.Id })"><span class="actual">[DELETE]</span></a>
+                                        <a href="@Url.Action("Edit", "Admin", new { id = item.Id })"><span class="actual">[EDIT]</span></a>
+                                        <a href="@Url.Action("Delete", "Admin", new { id = item.Id })"><span class="actual">[DELETE]</span></a>
                                     </div><br />
                                 <a href="@Url.Action("Details", "Products", new { id = item.Id })">
                                     <div class="product_image">
