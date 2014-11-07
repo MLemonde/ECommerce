@@ -33,13 +33,6 @@ namespace MFMElectronique.Controllers
             {
                 return HttpNotFound();
             }
-
-            //var CommentQuery = from d in db.Comments
-            //                  where d.ProductID == id
-            //                  select d;
-
-            //ViewBag.RateComments = CommentQuery;
-
             return View(comment);
         }
 

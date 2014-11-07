@@ -27,7 +27,7 @@
                     <h3 class="m_3">@Model.Name by @Model.ProductBrand.Name</h3>
                     @*<div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>*@<br />
                     <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />
-                    <p class="m_5">Rs. 888 <span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a></p><br />
+                    <p class="m_5">$@Model.Price @*<span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a>*@</p><br />
                     @if (Model.Comment.Any())
                     {
                         decimal total = 0;
