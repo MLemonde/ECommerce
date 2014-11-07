@@ -706,6 +706,9 @@ ul.f-list span.f-text {
 	background:#fff;
 	width: 108.5%;
 }
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
 .facebook{
 	color:#fff;
 	font-size:0.8125em;

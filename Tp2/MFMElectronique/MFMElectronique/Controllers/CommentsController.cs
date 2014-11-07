@@ -49,13 +49,15 @@ namespace MFMElectronique.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Rating,Comment1,DateCreated,ProductID,UserID")] Comment comment)
+        public ActionResult Create([Bind(Include = "Id,Rating,Comment1,DateCreated,ProductID,UserID")] Comment comment, string returnUrl)
         {
+            comment.DateCreated = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction(returnUrl);
             }
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", comment.UserID);

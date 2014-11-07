@@ -25,7 +25,6 @@
                 </div>
                 <div class="desc1 span_3_of_2">
                     <h3 class="m_3">@Model.Name by @Model.ProductBrand.Name</h3>
-                    @*<div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>*@<br />
                     <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />
                     <p class="m_5">$@Model.Price @*<span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a>*@</p><br />
                     @if (Model.Comment.Any())
@@ -40,7 +39,7 @@
                         moyenne = total / Model.Comment.Count;
 
                         <text>Moyenne : </text> <b>@String.Format("{0:0.00}", moyenne)</b> <br />
-                        <text>Nombre d'évalutions : </text>    <b>@ViewBag.RateComments.Count.ToString()</b>
+                        <text>Nombre d'évalutions : </text>    <b>@Model.Comment.Count.ToString()</b>
                     }
                     else
                     {
@@ -122,7 +121,7 @@
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
                 </div>
 
-                <h4>Ajouter une note</h4>
+                @*<h4>Ajouter une note</h4>
                 @using Microsoft.AspNet.Identity;
                 @if (Request.IsAuthenticated)
                 {
@@ -136,30 +135,14 @@
                         {
                             userAlreadyRatedProduct = true;
                             userRatingOnProduct = item.Rating.ToString();
+                            break;
                         }
-                    }
-
-                    if (!userAlreadyRatedProduct)
-                    {
-                        using (Html.BeginForm("Create", "Ratings", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true)
-
-                            var values = new SelectList(Enumerable.Range(1, 5));
-                            @Html.DropDownList("rating", values)
-                            <input type="submit" value="Create">
-                        }
-                    }
-                    else
-                    {
-                        <b>Vous avez déjà donner une note au produit : @userRatingOnProduct</b>
                     }
                 }
                 else
                 {
                     <text>Vous devez être authentifié pour pouvoir Évaluer un produit</text>
-                }
+                }*@
 
                 <h4>Commentaires</h4>
                 @if (Model.Comment.Any())
@@ -174,7 +157,7 @@
                 }
                 else
                 {
-                    <text>Aucun commentaire jusqu'à présent :(</text>
+                    <text>There's not a single comment for this product at the moment :(</text>
                 }
 
                 <h4>YOUR OPINION</h4>
@@ -182,7 +165,6 @@
                 @if (Request.IsAuthenticated)
                 {
                     string userId = User.Identity.GetUserId();
-                    
                     bool userAlreadyRatedProduct = false;
                     string userRatingOnProduct = "";
 
@@ -192,36 +174,32 @@
                         {
                             userAlreadyRatedProduct = true;
                             userRatingOnProduct = item.Rating.ToString();
+                            break;
                         }
-                    }
-
-                    if (!userAlreadyRatedProduct)
-                    {
-                        using (Html.BeginForm("Create", "Ratings", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true)
-
-
-                            <input type="submit" value="Create">
-                        }
-                    }
-                    else
-                    {
-                        <b>Vous avez déjà donner une note au produit : @userRatingOnProduct</b>
                     }
 
                     using (Html.BeginForm("Create", "Comments", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                            
-                        var values = new SelectList(Enumerable.Range(1, 5));
-                        @Html.DropDownList("rating", values);
-                                
 
-                        <div class="cke_bottom"><input type="submit" value="Create"></div>
-                        <textarea class="ckeditor" name="Commentaire"></textarea>
+                        <textarea class="ckeditor" name="Comment1"></textarea>
+                        var values = new SelectList(Enumerable.Range(1, 5));
+
+                        <div class="cke_bottom">
+                        Votre note du produit : 
+
+                        @if(!userAlreadyRatedProduct)
+                        {
+                            @Html.DropDownList("rating", values)
+                        }
+                        else
+                        {
+                            @userRatingOnProduct
+                        }
+                        </div>
+                    
+                        <div class="button1"><div class="cke_bottom"><input type="submit" value="Create"></div></div>
                     }
                 }
                 else

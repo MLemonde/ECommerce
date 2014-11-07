@@ -2,7 +2,7 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        Html.AntiForgeryToken();
+        @Html.AntiForgeryToken();
         <ul class="nav navbar-nav navbar-right">
             <li>
                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
@@ -14,8 +14,8 @@
                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourInformations, "ChangeInformations", "Manage")
             </li>
             <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">
-                    @MFMElectronique.Views.Shared.Resources.LogOff
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log Off
+                    @*@MFMElectronique.Views.Shared.Resources.LogOff*@
                 </a>
             </li>
         </ul>
