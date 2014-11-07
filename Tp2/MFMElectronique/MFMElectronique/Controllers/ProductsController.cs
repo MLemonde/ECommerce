@@ -124,6 +124,50 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("Index");
         }
 
+
+        /// <summary>
+        /// Permet de faire la recherche des produits à partir du textbox recherche.
+        /// </summary>
+        /// <param name="productCategory"></param>
+        /// <param name="productPrice"></param>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
+        public ActionResult SearchIndex(string productCategory, string productPrice, string searchString)
+        {
+
+            var GenreLst = new List<string>();
+            var GenreQry = from d in db.Products
+                           orderby d.ProductCategory.Name
+                           select d.ProductCategory.Name;
+            GenreLst.AddRange(GenreQry.Distinct()); // Il reste à passer la liste en viewbag
+            ViewBag.productCategory = new SelectList(GenreLst);
+
+            //var PriceLst = new List<string>();
+            //var PriceQry = from d in db.Products
+            //               orderby d.ProductCategory.Id
+            //               select d.ProductCategory.Name;
+            //PriceLst.AddRange(PriceQry.Distinct());
+            //ViewBag.productPrice = new SelectList(PriceLst);
+
+            var products = from m in db.Products
+                           select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString) || s.ProductBrand.Name.Contains(searchString));
+
+            }
+
+
+            if (String.IsNullOrEmpty(productCategory))
+                return View(products);
+            else
+            {
+                products = products.Where(x => x.ProductCategory.Name == productCategory);
+                return View(products);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

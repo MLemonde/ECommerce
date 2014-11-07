@@ -42,6 +42,7 @@ namespace MFMElectronique.Models
         public string PictureURL { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
+        [UIHint("Currency")]
         public decimal Price { get; set; }
 
         public int CategoryID { get; set; }
