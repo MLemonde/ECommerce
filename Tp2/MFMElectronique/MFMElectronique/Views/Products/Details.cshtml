@@ -187,19 +187,21 @@
                         var values = new SelectList(Enumerable.Range(1, 5));
 
                         <div class="cke_bottom">
-                        Votre note du produit : 
+                            <p style="color: #ffffff">
+                                Votre note du produit :
 
-                        @if(!userAlreadyRatedProduct)
-                        {
-                            @Html.DropDownList("rating", values)
-                        }
-                        else
-                        {
-                            @userRatingOnProduct
-                        }
+                                @if (!userAlreadyRatedProduct)
+                                {
+                                    @Html.DropDownList("rating", values)
+                                }
+                                else
+                                {
+                                    @userRatingOnProduct
+                                }
+                            </p>
                         </div>
                     
-                        <div class="button1"><div class="cke_bottom"><input type="submit" value="Create"></div></div>
+                        <div class="button1"><input type="submit" value="Create"></div>
                     }
                 }
                 else

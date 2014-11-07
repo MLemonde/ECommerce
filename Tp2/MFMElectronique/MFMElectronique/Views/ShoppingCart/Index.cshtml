@@ -6,14 +6,9 @@
 @*<h3>
     <em>Review</em> your cart:
 </h3>*@
-<p class="button">
-    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
-    {
-        <input type='submit' name="payment_amt" value="CheckOut" />
-    }
-</p>
 
-<div class="register_account">
+
+@*<div class="register_account">*@
     <div class="wrap">
         @if (Model.CartItems.Any())
         {
@@ -57,6 +52,21 @@
                     <td id="cart-total">@Model.CartTotal</td>
                 </tr>
             </table>
+
+            if(User.Identity.IsAuthenticated)
+            { 
+                <div class="button1">
+                    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
+                    {
+                        <input type='submit' name="payment_amt" value="CheckOut" />
+                    }
+                </div>
+            }   
+            else
+            {
+                < class="alert-danger">You must be connected to buy the product(s)</>
+            }
+            <div class="clear"></div>
         }
         else
         {
