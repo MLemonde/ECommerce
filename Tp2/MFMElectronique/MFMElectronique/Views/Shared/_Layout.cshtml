@@ -102,7 +102,10 @@
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Purchases, "Index", "Products")
                         </li>
                         <li>
-                            @Html.ActionLink("Admin", "Index", "Admin")
+                            @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Admin", "Index", "Admin")
+                            }
                         </li>
                     </ul>
                 </div>
@@ -112,7 +115,6 @@
                     @using (Html.BeginForm("SearchIndex", "Products", FormMethod.Post))
                     {
                         @Html.TextBox("SearchString", "", new { @class = "textbox", Value = "Search", onfocus = "this.value = '';", onblur = "if (this.value == '') {this.value = 'Search';}" })
-                        @*<input type="text" name="text" class="textbox" value="@MFMElectronique.Views.Shared.Resources.Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">*@
                         <input type="submit" value="Search" id="submit" name="submit">
                     }
                 </div>
@@ -273,11 +275,26 @@
                             </ul>
                         </div>
                         <div class="clear"></div>
+
+                        <script type="text/javascript">
+                            var LHCChatOptions = {};
+                            LHCChatOptions.opt = { widget_height: 340, widget_width: 300, popup_height: 520, popup_width: 500, domain: '3am-eternal.org' };
+                            (function () {
+                                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                var refferer = (document.referrer) ? encodeURIComponent(document.referrer.substr(document.referrer.indexOf('://') + 1)) : '';
+                                var location = (document.location) ? encodeURIComponent(window.location.href.substring(window.location.protocol.length)) : '';
+                                po.src = 'http://support.3am-eternal.org/index.php/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(check_operator_messages)/true/(top)/350/(units)/pixels/(leaveamessage)/true/(noresponse)/true?r=' + refferer + '&l=' + location;
+                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        @RenderSection("scripts", required: false)
     </footer>
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>

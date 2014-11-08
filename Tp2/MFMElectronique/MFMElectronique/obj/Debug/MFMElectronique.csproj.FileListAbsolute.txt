@@ -179,3 +179,4 @@ C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Shared.Resources.en.resources
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\en\MFMElectronique.resources.dll
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\en\MFMElectronique.resources.dll
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
