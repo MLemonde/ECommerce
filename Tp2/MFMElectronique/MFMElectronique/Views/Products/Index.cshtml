@@ -61,11 +61,6 @@
                 {
                     <div class="col_1_of_3 span_1_of_3">
                         <div class="inner_content clearfix">
-                            @*<div class="price1">
-                                @*POUR L'INTERFACE ADMINISTRATEUR
-                                <a href="@Url.Action("Edit", "Products", new { id = item.Id })"><span class="actual">[EDIT]</span></a> 
-                                <a href="@Url.Action("Delete", "Products", new { id = item.Id })"><span class="actual">[DELETE]</span></a>
-                            </div><br />*@
                             <a href="@Url.Action("Details", "Products", new { id = item.Id })">
                                 <div class="product_image">
                                     <img src="@Url.Content(item.PictureURL)" alt="" />

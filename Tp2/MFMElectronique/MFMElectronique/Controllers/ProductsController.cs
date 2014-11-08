@@ -21,6 +21,51 @@ namespace MFMElectronique.Controllers
             return View(product.ToList());
         }
 
+        /// <summary>
+        /// GET : Liste des téléphones
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Phones()
+        {
+            var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
+
+            var phoneQuery = from d in product
+                           where d.ProductCategory.Id == 1
+                           select d;
+
+            return View(phoneQuery.ToList());
+        }
+
+        /// <summary>
+        /// GET : Liste des tablettes
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Tablets()
+        {
+            var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
+
+            var tabletQuery = from d in product
+                             where d.ProductCategory.Id == 2
+                             select d;
+
+            return View(tabletQuery.ToList());
+        }
+
+        /// <summary>
+        /// GET : Liste des montres
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Watches()
+        {
+            var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
+
+            var watchQuery = from d in product
+                             where d.ProductCategory.Id == 3
+                             select d;
+
+            return View(watchQuery.ToList());
+        }
+
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {

@@ -544,6 +544,7 @@
     <Content Include="ckeditor\styles.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MFMCSS\media.css" />
     <Content Include="Content\MFMCSS\default.css" />
     <Content Include="Content\MFMCSS\form.css" />
     <Content Include="Content\MFMCSS\fwslider.css" />

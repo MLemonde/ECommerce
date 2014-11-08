@@ -121,39 +121,22 @@
                     </script>
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
                 </div>
-
-                @*<h4>Ajouter une note</h4>
-                @using Microsoft.AspNet.Identity;
-                @if (Request.IsAuthenticated)
-                {
-                    string userId = User.Identity.GetUserId();
-                    bool userAlreadyRatedProduct = false;
-                    string userRatingOnProduct = "";
-
-                    foreach (var item in Model.Comment)
-                    {
-                        if (item.UserID == userId && item.ProductID == Model.Id)
-                        {
-                            userAlreadyRatedProduct = true;
-                            userRatingOnProduct = item.Rating.ToString();
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    <text>Vous devez être authentifié pour pouvoir Évaluer un produit</text>
-                }*@
-
-                <h4>Commentaires</h4>
+                <h1>Comments</h1>
                 @if (Model.Comment.Any())
                 {
                     foreach (var commentaire in Model.Comment)
                     {
-                        @commentaire.AspNetUsers.UserName <br />
-                        @commentaire.DateCreated<br />
+                        <div class="media">
+                            <a href="#" class="pull-left">
+                                <img src="~/Pictures/avatar-tiny.jpg" class="media-object" alt="Sample Image">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">@commentaire.AspNetUsers.UserName</h4> 
+                                <small><i>@commentaire.DateCreated</i></small>
 
-                        @Html.DisplayFor(comment => commentaire.Comment1);
+                                @Html.DisplayFor(comment => commentaire.Comment1)
+                            </div>
+                        </div>
                     }
                 }
                 else
