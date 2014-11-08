@@ -17,8 +17,8 @@
             </li>
             <li>
                 @*@Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
-                <p style="color: #ffffff">@User.Identity.Name</p>
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { style = "color: #ffffff" })*@
+                <p style="color: #ffffff">Hello @User.Identity.Name !</p>
             </li>
         </ul>
     }

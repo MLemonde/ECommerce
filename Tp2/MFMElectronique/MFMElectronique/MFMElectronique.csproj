@@ -567,6 +567,7 @@
     <Content Include="Images\Static\arrow1.png" />
     <Content Include="Images\Static\arrow2.gif" />
     <Content Include="Images\Static\arrows.png" />
+    <Content Include="Images\Static\avatar.png" />
     <Content Include="Images\Static\b-arrow.png" />
     <Content Include="Images\Static\banner.jpg" />
     <Content Include="Images\Static\banner1.jpg" />

@@ -32,15 +32,28 @@
                     {
                         decimal total = 0;
                         decimal moyenne = 0;
+                        int count = 0;
                         //Retourner la moyenne des commentaires!
                         foreach (var evaluation in Model.Comment)
                         {
                             total += evaluation.Rating;
-                        }
-                        moyenne = total / Model.Comment.Count;
 
-                        <text>Moyenne : </text> <b>@String.Format("{0:0.00}", moyenne)</b> <br />
-                        <text>Nombre d'évalutions : </text>    <b>@Model.Comment.Count.ToString()</b>
+                            if (evaluation.Rating > 0)
+                            {
+                                count++;
+                            }
+                        }
+                        if (count > 0)
+                        {
+                            moyenne = total / count;
+                            <text>Moyenne : </text> <b>@String.Format("{0:0.00}", moyenne) / 5</b> <br />
+                            <text>Nombre d'évalutions : </text>    <b>@count.ToString()</b>
+                        }
+                        else
+                        {
+                            <text>Ce produit n'a aucune évaluation pour le moment!</text>
+
+                        }
                     }
                     else
                     {
@@ -50,9 +63,6 @@
                         @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
                         {
                             <form>
-                                @*<p class="button">
-                                        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }, "")
-                                    </p>*@
                                 <input type="submit" value="buy" title="">
                             </form>
                         }
@@ -126,17 +136,31 @@
                 {
                     foreach (var commentaire in Model.Comment)
                     {
-                        <div class="media">
-                            <a href="#" class="pull-left">
-                                <img src="~/Pictures/avatar-tiny.jpg" class="media-object" alt="Sample Image">
+                        <div class="cke_colorbox" style="background-color: lightgray">
+                            @if(commentaire.Rating > 0)
+                            {
+                                <div class="pull-right" style="background-color: white; margin-right: 15px; margin-top: 15px; width: 5em">
+                                    <h4 style="text-align:center">@commentaire.Rating / 5</h4>
+                                </div>
+                            }
+                            <a href="#" class="pull-left" style="margin-left: 15px; margin-top: 15px">
+                                <img src="~/Images/Static/avatar.png" class="media-object" alt="Sample Image">
+                                <!-- Permettre à l'utilisateur ou au mod de supprimer le message -->
+                                @if (User.Identity.GetUserId() == @commentaire.AspNetUsers.Id)
+                                {
+                                    @Html.ActionLink("Supprimer", "Delete", "Comments", new { id = commentaire.Id, returnUrl = Request.RawUrl }, null)
+                                }
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading">@commentaire.AspNetUsers.UserName</h4> 
+                                <h4 class="media-heading" style="margin-top: 15px">@commentaire.AspNetUsers.FirstName @commentaire.AspNetUsers.Lastname</h4>
+
                                 <small><i>@commentaire.DateCreated</i></small>
 
                                 @Html.DisplayFor(comment => commentaire.Comment1)
                             </div>
                         </div>
+                        <div class="clear"></div>
+                    <br />
                     }
                 }
                 else
@@ -154,12 +178,13 @@
 
                     foreach (var item in Model.Comment)
                     {
-                        if (item.UserID == userId && item.ProductID == Model.Id)
-                        {
-                            userAlreadyRatedProduct = true;
-                            userRatingOnProduct = item.Rating.ToString();
-                            break;
-                        }
+                            if (item.UserID == userId && item.ProductID == Model.Id && item.Rating > 0)
+                            {
+                                userAlreadyRatedProduct = true;
+                                userRatingOnProduct = item.Rating.ToString();
+                                break;
+                            }
+
                     }
 
                     using (Html.BeginForm("Create", "Comments", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))

@@ -57,7 +57,7 @@ namespace MFMElectronique.Controllers
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction(returnUrl);
+                return Redirect(returnUrl);
             }
 
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", comment.UserID);
@@ -101,7 +101,7 @@ namespace MFMElectronique.Controllers
         }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, string returnUrl)
         {
             if (id == null)
             {
@@ -112,7 +112,11 @@ namespace MFMElectronique.Controllers
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            Comment commentToDelete = db.Comments.Find(id);
+            db.Comments.Remove(commentToDelete);
+            db.SaveChanges();
+            //return View(comment);
+            return Redirect(returnUrl);
         }
 
         // POST: Comments/Delete/5
