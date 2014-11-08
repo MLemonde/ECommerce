@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CheckoutPaypalController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaypalNVAPICaller.cs" />
@@ -460,7 +461,6 @@
     <Content Include="ckeditor\samples\uicolor.html" />
     <Content Include="ckeditor\samples\uilanguages.html" />
     <Content Include="ckeditor\samples\xhtmlstyle.html" />
-<<<<<<< HEAD
     <Content Include="ckeditor\skins\office2013\dialog.css" />
     <Content Include="ckeditor\skins\office2013\editor.css" />
     <Content Include="ckeditor\skins\office2013\icons.png" />
@@ -474,7 +474,6 @@
     <Content Include="ckeditor\skins\office2013\images\lock-open.png" />
     <Content Include="ckeditor\skins\office2013\images\lock.png" />
     <Content Include="ckeditor\skins\office2013\images\refresh.png" />
-=======
     <Content Include="ckeditor\skins\bootstrapck\.temp\css\dialog.css" />
     <Content Include="ckeditor\skins\bootstrapck\.temp\css\dialog_ie.css" />
     <Content Include="ckeditor\skins\bootstrapck\.temp\css\dialog_ie7.css" />
@@ -539,10 +538,10 @@
     <Content Include="ckeditor\skins\moono\images\lock-open.png" />
     <Content Include="ckeditor\skins\moono\images\lock.png" />
     <Content Include="ckeditor\skins\moono\images\refresh.png" />
->>>>>>> origin/master
     <Content Include="ckeditor\styles.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MFMCSS\media.css" />
     <Content Include="Content\MFMCSS\default.css" />
     <Content Include="Content\MFMCSS\form.css" />
     <Content Include="Content\MFMCSS\fwslider.css" />
@@ -636,8 +635,6 @@
     <Content Include="ckeditor\samples\assets\posteddata.php" />
     <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="ckeditor\samples\sample_posteddata.php" />
-<<<<<<< HEAD
-=======
     <Content Include="ckeditor\skins\bootstrapck\dev\locations.json" />
     <Content Include="ckeditor\skins\bootstrapck\readme.md" />
     <Content Include="ckeditor\skins\bootstrapck\scss\browser-specific\gecko\editor_gecko.scss" />
@@ -670,7 +667,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
->>>>>>> origin/master
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -753,6 +749,15 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Upload.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Products\SearchIndex.cshtml" />
+    <Content Include="Views\Products\Tablets.cshtml" />
+    <Content Include="Views\Products\Phones.cshtml" />
+    <Content Include="Views\Products\Watches.cshtml" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
