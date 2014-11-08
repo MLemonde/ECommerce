@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MFMElectronique.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MFMElectronique_EstimatingProxy_EstimatingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://devwebservices.purolator.com/EWS/V1/Estimating/EstimatingService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
