@@ -22,7 +22,14 @@ namespace MFMElectronique.Controllers
             {
                 CartItems = cart.GetCartItems(),
                 CartTotal = cart.GetTotal()
+                
             };
+
+
+            //PUROLATOR ET POSTE CANADA
+            EstimatingPuro puroClient = new EstimatingPuro();
+            puroClient.CallGetQuickEstimate();
+
             // Return the view
             return View(viewModel);
         }
@@ -46,6 +53,7 @@ namespace MFMElectronique.Controllers
         // GET: /Store/AddToCart/5
         public ActionResult AddToCart(int id, string returnUrl)
         {
+            
             // Retrieve the album from the database
             var addedProduct = storeDB.Products
             .Single(produit => produit.Id == id);

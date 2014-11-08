@@ -45,7 +45,7 @@ namespace MFMElectronique.Controllers
             {
                 return Redirect("APIError?ErrorCode=AmtMissing");
             }
-            return View();
+            
         }
 
         /// <summary>
