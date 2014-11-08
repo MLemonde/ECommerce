@@ -47,3 +47,19 @@
 .pull-left {
   float: left !important;
 }
+
+.text-info {
+  color: #3a87ad;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
