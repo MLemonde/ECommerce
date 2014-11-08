@@ -56,7 +56,7 @@ namespace MFMElectronique.Controllers
         {
             if (ModelState.IsValid)
             {
-                CreateImage(product);
+                CreateProduct(product);
                 //db.Products.Add(product);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
@@ -67,7 +67,7 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        private void CreateImage(ProductAdminViewModel model)
+        private void CreateProduct(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
             {
@@ -92,6 +92,7 @@ namespace MFMElectronique.Controllers
                 var product = new Product
                 {
                     Name = model.Name,
+                    Price = model.Price,
                     CategoryID = model.CategoryID,
                     BrandID = model.BrandID,
                     DescriptionEN = model.DescriptionEN,
@@ -123,9 +124,20 @@ namespace MFMElectronique.Controllers
             {
                 return HttpNotFound();
             }
+
+            var model = new ProductAdminViewModel
+            {
+                Name = product.Name,
+                CategoryID = product.CategoryID,
+                BrandID = product.BrandID,
+                discontinued = product.discontinued,
+                DescriptionEN = product.DescriptionEN,
+                DescriptionFR = product.DescriptionFR
+            };
+
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
-            return View(product);
+            return View(model);
         }
 
         // POST: Admin/Edit/5
@@ -133,17 +145,52 @@ namespace MFMElectronique.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,DescriptionFR,DescriptionEN,discontinued,PictureURL,Price,CategoryID,BrandID")] Product product)
+        public ActionResult Edit(ProductAdminViewModel model)
         {
+            var validImageTypes = new string[]
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (model.ImageUpload != null)
+            {
+                if (model.ImageUpload != null || model.ImageUpload.ContentLength > 0 && !validImageTypes.Contains(model.ImageUpload.ContentType))
+                {
+                    ModelState.AddModelError("ImageUpload", "Please choose either a GIF, JPG or PNG image.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                var product = db.Products.Find(model.Id);
+                if (product == null)
+                {
+                    return new HttpNotFoundResult();
+                }
+
+                product.Name = model.Name;
+                product.Price = model.Price;
+                product.BrandID = model.BrandID;
+                product.CategoryID = model.CategoryID;
+
+                if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+                {
+                    var uploadDir = "~/uploads";
+                    var imagePath = Path.Combine(Server.MapPath(uploadDir), model.ImageUpload.FileName);
+                    var imageUrl = Path.Combine(uploadDir, model.ImageUpload.FileName);
+                    model.ImageUpload.SaveAs(imagePath);
+                    product.PictureURL = imageUrl;
+                }
+
+                db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
-            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
-            return View(product);
+
+            return View(model);
         }
 
         // GET: Admin/Delete/5

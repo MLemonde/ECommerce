@@ -1,12 +1,11 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿@using Microsoft.AspNet.Identity
+@if (User.Identity.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        Html.AntiForgeryToken();
+        @Html.AntiForgeryToken();
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
+
             <li>
                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourPassword, "ChangePassword", "Manage")
             </li>
@@ -14,9 +13,12 @@
                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourInformations, "ChangeInformations", "Manage")
             </li>
             <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">
-                    @MFMElectronique.Views.Shared.Resources.LogOff
-                </a>
+                <a href="javascript:document.getElementById('logoutForm').submit()">@MFMElectronique.Views.Shared.Resources.LogOff</a>
+            </li>
+            <li>
+                @*@Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                <p style="color: #ffffff">@User.Identity.Name</p>
             </li>
         </ul>
     }

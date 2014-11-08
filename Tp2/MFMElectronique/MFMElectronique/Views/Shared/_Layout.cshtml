@@ -13,7 +13,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="~/Content/MFMCSS/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/MFMCSS/form.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Content/MFMCSS/table.css" rel=" stylesheet" type="text/css" media="all" />
+    <link href="~/Content/MFMCSS/table.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/MFMCSS/media.css" rel="stylesheet" type="text/css" media="all" />
+
     <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="~/Scripts/MFMScripts/jquery1.min.js"></script>
     <!-- start menu -->
@@ -28,8 +30,20 @@
     <script src="~/Scripts/MFMScripts/fwslider.js"></script>
     <!--end slider -->
     <script src="~/Scripts/MFMScripts/jquery.easydropdown.js"></script>
+
+    <script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
 </head>
 <body>
+    @* FACEBOOK SCRIPT *@
+    <div id="fb-root"></div>
+    <script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     @{
         if (Context.Session["Culture"] == null)
         {
@@ -78,110 +92,45 @@
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Home, "Index", "Home")
                         </li>
                         <li>
-                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Phones, "Index", "Products")
-                            <div class="megapanel">
-                                <div class="row">
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Android</h4>
-                                            <ul>
-                                                @*TODO*@
-                                                <li><a href="category.html">Nexus 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col1">
-                                        <div class="h_nav">
-                                            <h4>Windows Phone</h4>
-                                            <ul>
-                                                @*TODO*@
-                                                <li><a href="category.html">Nokia</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Phones, "Phones", "Products")
                         </li>
                         <li>
-                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Tablets, "Index", "Products")
-                            <div class="megapanel">
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Android</h4>
-                                        <ul>
-                                            <li>
-                                                @*TODO*@
-                                                <a href="category.html">Nexus 7</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Windows</h4>
-                                        <ul>
-                                            <li>
-                                                @*TODO*@
-                                                <a href="category.html">Surface</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Tablets, "Tablets", "Products")
                         </li>
                         <li>
-                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Watches, "Index", "Products")
-                            <div class="megapanel">
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>LG</h4>
-                                        <ul>
-                                            <li>
-                                                @*TODO*@
-                                                <a href="category.html">LG G Watch</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>Samsung</h4>
-                                        <ul>
-                                            <li>
-                                                @*TODO*@
-                                                <a href="category.html">Samsung Gear watch</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Watches, "Watches", "Products")
                         </li>
                         <li>
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Purchases, "Index", "Products")
+                        </li>
+                        <li>
+                            @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Admin", "Index", "Admin")
+                            }
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="header-bottom-right">
                 <div class="search">
-                    @using (Html.BeginForm("Search", "Product", FormMethod.Post))
+                    @using (Html.BeginForm("SearchIndex", "Products", FormMethod.Post))
                     {
-                        <input type="text" name="text" class="textbox" value="@MFMElectronique.Views.Shared.Resources.Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                        @Html.TextBox("SearchString", "", new { @class = "textbox", Value = "Search", onfocus = "this.value = '';", onblur = "if (this.value == '') {this.value = 'Search';}" })
                         <input type="submit" value="Search" id="submit" name="submit">
                     }
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="tag-list">
-                        <ul class="last">
-                            <li>
-                                @{
-                    Html.RenderAction("CartSummary", "ShoppingCart");
-                                }
-                            </li>
-                        </ul>
+
+                <div class="tag-list">
+                    <ul class="last">
+                        <li>
+                            @{
+                                Html.RenderAction("CartSummary", "ShoppingCart");
+                            }
+                        </li>
+                    </ul>
                     </div>
-                }
+                
             </div>
             <div class="clear"></div>
         </div>
@@ -229,7 +178,8 @@
                                     <div class="col_1_of_f_2 span_1_of_f_2">
                                         <h3>Facebook</h3>
                                         <div class="like_box">
-                                            <div class="fb-like-box" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+                                            @*<div class="fb-like-box" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>*@
+                                            <div class="fb-like-box" data-href="https://www.facebook.com/pages/sitedemardeorg/226901070703744" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
                                         </div>
                                     </div>
                                     <div class="col_1_of_f_2 span_1_of_f_2">
@@ -314,7 +264,7 @@
                 <div class="footer-bottom">
                     <div class="wrap">
                         <div class="copy">
-                            <p>&copy; @DateTime.Now.Year</p>
+                            <p>3am-eternal &copy; @DateTime.Now.ToLongDateString() | <a href="http://w3layouts.com/">w3layouts</a></p>
                         </div>
                         <div class="f-list2">
                             <ul>
@@ -327,11 +277,26 @@
                             </ul>
                         </div>
                         <div class="clear"></div>
+
+                        <script type="text/javascript">
+                            var LHCChatOptions = {};
+                            LHCChatOptions.opt = { widget_height: 340, widget_width: 300, popup_height: 520, popup_width: 500, domain: '3am-eternal.org' };
+                            (function () {
+                                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                var refferer = (document.referrer) ? encodeURIComponent(document.referrer.substr(document.referrer.indexOf('://') + 1)) : '';
+                                var location = (document.location) ? encodeURIComponent(window.location.href.substring(window.location.protocol.length)) : '';
+                                po.src = 'http://support.3am-eternal.org/index.php/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(check_operator_messages)/true/(top)/350/(units)/pixels/(leaveamessage)/true/(noresponse)/true?r=' + refferer + '&l=' + location;
+                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        @RenderSection("scripts", required: false)
     </footer>
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MFMElectronique.Models.Product>
+
+@{
+    ViewBag.Title = "SearchIndex";
+}
+
+<div class="mens">
+    <div class="main">
+        <div class="wrap">
+            <div class="cont span_2_of_3">
+                <h2 class="head">Phones</h2>
+                <div class="top-box">
+                @foreach (var item in Model)
+                {
+                    <div class="col_1_of_3 span_1_of_3">
+                        <div class="inner_content clearfix">
+                            <a href="@Url.Action("Details", "Products", new { id = item.Id })">
+                                <div class="product_image">
+                                    <img src="@Url.Content(item.PictureURL)" alt="" />
+                                </div>
+                                @*<div class="sale-box"><span class="on_sale title_shop">New</span></div>*@
+                                <div class="price">
+                                    <div class="cart-left">
+                                        <p class="title">@item.Name</p>
+                                        <div class="price1">
+                                            <span class="actual">$@String.Format("{0:0.00}", item.Price)</span><br />
+                                        </div>
+                                    </div>
+                                    <div class="cart-right"> </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                }
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

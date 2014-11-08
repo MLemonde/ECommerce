@@ -110,7 +110,6 @@ C:\Users\asus\Desktop\MFMElectronique\MFMElectronique\bin\Microsoft.Owin.Securit
 C:\Users\asus\Desktop\MFMElectronique\MFMElectronique\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\asus\Desktop\MFMElectronique\MFMElectronique\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\asus\Desktop\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
-C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.dll.config
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.dll
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.pdb
@@ -174,3 +173,10 @@ C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.resources
 C:\Users\Francis\Documents\GitHub\Nouveau dossier\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.en.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Shared.Resources.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Products.Resources.en.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Shared.Resources.en.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\en\MFMElectronique.resources.dll
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\en\MFMElectronique.resources.dll
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
