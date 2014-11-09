@@ -7,7 +7,7 @@
 <div class="mens">
     <div class="main">
         <div class="wrap">
-            <ul class="breadcrumb breadcrumb__t"><a class="home" href="Vente-Telephone-Phoneland.html">Home</a> / <a href="category.html">Category</a> / ItemName</ul>
+            <ul class="breadcrumb breadcrumb__t"><a href="/" class="home">Home</a> / @Html.ActionLink(@Model.ProductCategory.Name.ToString(), @Model.ProductCategory.Name.ToString())</a> / @Model.Name</ul>
             <div class="cont span_2_of_3">
                 <div class="grid images_3_of_2">
                     <div id="container">
@@ -17,7 +17,7 @@
                                     <a href="#">@*<img class="a" id="img1" src="@Url.Content(Model.PictureURL)" alt="" rel="images/LGG.jpg" />*@</a>
                                 </div>
                                 <a href="#"><img src="@Url.Content(Model.PictureURL)" alt="1144953 3 2x"></a>
-                                <ul class="pagination">
+                                <ul class="pagination"></ul>
                                 @*@Html.ActionLink("Back to List", "Index")</ul>*@
                                 <div class="clear"></div>
                             </div>
@@ -77,7 +77,9 @@
                     <p>@Html.DisplayFor(model => model.DescriptionEN)</p>
                 </div>
                 <div class="clear"></div>
-                <div class="clients">
+
+                <!-- LE SCRIPT POUR VOIR D'AUTRES PRODUITS DANS LA MÊME CATÉGORIE... MANQUE DE TEMPS!!-->
+                @*<div class="clients">
                     <h3 class="m_3">Other Products in the same category</h3>
                     <ul id="flexiselDemo3">
                         <li><img src="images/Lumia520.png" /><a href="#">Category</a><p>Rs 600</p></li>
@@ -130,7 +132,9 @@
                         });
                     </script>
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-                </div>
+                </div>*@
+
+
                 <h1>Comments</h1>
                 @if (Model.Comment.Any())
                 {

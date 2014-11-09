@@ -25,7 +25,7 @@ namespace MFMElectronique.Controllers
         /// GET : Liste des téléphones
         /// </summary>
         /// <returns></returns>
-        public ActionResult Phones()
+        public ActionResult Cellphone()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
 
@@ -40,7 +40,7 @@ namespace MFMElectronique.Controllers
         /// GET : Liste des tablettes
         /// </summary>
         /// <returns></returns>
-        public ActionResult Tablets()
+        public ActionResult Tablet()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
 
@@ -55,7 +55,7 @@ namespace MFMElectronique.Controllers
         /// GET : Liste des montres
         /// </summary>
         /// <returns></returns>
-        public ActionResult Watches()
+        public ActionResult Watch()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
 

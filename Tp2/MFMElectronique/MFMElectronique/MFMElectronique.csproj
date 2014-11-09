@@ -759,9 +759,9 @@
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Products\SearchIndex.cshtml" />
-    <Content Include="Views\Products\Tablets.cshtml" />
-    <Content Include="Views\Products\Phones.cshtml" />
-    <Content Include="Views\Products\Watches.cshtml" />
+    <Content Include="Views\Products\Tablet.cshtml" />
+    <Content Include="Views\Products\Cellphone.cshtml" />
+    <Content Include="Views\Products\Watch.cshtml" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
