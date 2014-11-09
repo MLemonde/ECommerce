@@ -175,6 +175,8 @@ namespace MFMElectronique.Controllers
                 product.Price = model.Price;
                 product.BrandID = model.BrandID;
                 product.CategoryID = model.CategoryID;
+                product.DescriptionFR = model.DescriptionFR;
+                product.DescriptionEN = model.DescriptionEN;
 
                 if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
                 {

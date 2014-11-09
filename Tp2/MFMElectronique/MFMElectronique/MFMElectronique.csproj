@@ -584,9 +584,12 @@
     <Content Include="Images\Static\left-banner1.jpg" />
     <Content Include="Images\Static\list_marker.png" />
     <Content Include="Images\Static\logo.png" />
+    <Content Include="Images\Static\logo_paypal.png" />
     <Content Include="Images\Static\magnify-alt.png" />
     <Content Include="Images\Static\minus.gif" />
     <Content Include="Images\Static\MS-Surface-Keyboard 129,99.jpg" />
+    <Content Include="Images\Static\paypal-logo1.jpg" />
+    <Content Include="Images\Static\paypal_logo.png" />
     <Content Include="Images\Static\pic.jpg" />
     <Content Include="Images\Static\pic1.jpg" />
     <Content Include="Images\Static\pic2.jpg" />

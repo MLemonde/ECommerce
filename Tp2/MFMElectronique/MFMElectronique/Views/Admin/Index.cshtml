@@ -8,10 +8,13 @@
     <div class="main">
         <div class="wrap">
             <div class="cont span_2_of_3">
-                <h2 class="head">Phones</h2>
+                <h2 class="head">Welcome mister Admin</h2>
+
+                @*<a href="~/Views/Admin/Create.cshtml"><h5 class="m_5">Click me to create a new item</h5></a>*@
+                <a href="@Url.Action("Create", "Admin")"><span class="actual">Click me to create a new item</span></a>
 
 
-                <div class="mens-toolbar">
+                @*<div class="mens-toolbar">
                     <div class="sort">
                         <div class="sort-by">
                             <label>Sort By</label>
@@ -52,7 +55,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="clear"></div>
-                </div>
+                </div>*@
 
 
                 <div class="top-box">
@@ -69,7 +72,7 @@
                                     <div class="product_image">
                                         <img src="@Url.Content(item.PictureURL)" alt="" />
                                     </div>
-                                    <div class="sale-box"><span class="on_sale title_shop">New</span></div>
+                                    @*<div class="sale-box"><span class="on_sale title_shop">New</span></div>*@
                                     <div class="price">
                                         <div class="cart-left">
                                             <p class="title">@item.Name</p>

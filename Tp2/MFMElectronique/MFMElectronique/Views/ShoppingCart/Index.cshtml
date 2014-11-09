@@ -60,11 +60,13 @@
                     {
                         <input type='submit' name="payment_amt" value="CheckOut" />
                     }
+                    <a href="https://www.paypal.com/ca/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/ca/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+                    <img src="~/Images/Static/paypal-logo1.jpg" align="right" /></a>
                 </div>
             }   
             else
             {
-                < class="alert-danger">You must be connected to buy the product(s)</>
+                <p class="alert-danger">You must be connected to buy the product(s)</p>
             }
             <div class="clear"></div>
         }
