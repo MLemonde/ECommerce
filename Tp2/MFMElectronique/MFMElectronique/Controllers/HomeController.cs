@@ -11,6 +11,8 @@ namespace MFMElectronique.Controllers
 {
     public class HomeController : Controller
     {
+        ElectroniqueEntities storeDB = new ElectroniqueEntities();
+
         /// <summary>
         /// Page d'accueil du site...
         /// </summary>
@@ -42,6 +44,16 @@ namespace MFMElectronique.Controllers
         public ActionResult About()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult History()
+        {
+            var Orderlist = storeDB.Orders.Where(c => c.AspNetUsers.Email == User.Identity.Name);
+            if (Orderlist.Count() != 0 && Orderlist != null)
+                return View();
+            else
+                return RedirectToAction("Index");
         }
     }
 }

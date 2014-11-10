@@ -11,6 +11,9 @@ namespace MFMElectronique.Controllers
 {
     public class CheckOutPaypalController : Controller
     {
+        ElectroniqueEntities storeDB = new ElectroniqueEntities();
+        string shippingAdress = "";
+
         /// <summary>
         /// Permet de transmettre une requête d'achat à Paypal.
         /// Une fois accepté, il sera redigiré vers la page de 
@@ -19,7 +22,6 @@ namespace MFMElectronique.Controllers
         /// <returns></returns>
         public ActionResult Checkout()
         {
-            ElectroniqueEntities storeDB = new ElectroniqueEntities();
             PaypalNVPAPICaller test = new PaypalNVPAPICaller();
             string retMsg = "";
             string token = "";
@@ -67,7 +69,6 @@ namespace MFMElectronique.Controllers
             PaypalNVPAPICaller test = new PaypalNVPAPICaller();
 
             string retMsg = "";
-            string shippingAdress = "";
 
             bool ret = test.GetShippingDetails(token, ref payerID, ref shippingAdress, ref retMsg);
             if (ret)
@@ -132,7 +133,44 @@ namespace MFMElectronique.Controllers
                 //' Exchange rate if a currency conversion occurred. Relevant only if your are billing in their non-primary currency. If 
                 string exchangeRate = decoder["PAYMENTINFO_0_EXCHANGERATE"];
                 var cart = ShoppingCart.GetCart(this.HttpContext);
+
+
+                //If it gets here, the order went all succesful, and it will now create the order in the database, in order to keep a history
+                Order order = new Order();
+                AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
+                order.AspNetUsers = aUser;
+                string[] addr = shippingAdress.Split(':', '.');
+                order.FirstName = addr[1];
+                order.LastName = addr[3];
+                order.City = addr[10];
+                order.Address = addr[6] + addr[8];
+                order.State = addr[12];
+                order.PostalCode = addr[14];
+                order.OrderDate = DateTime.Now;
+                order.Country = aUser.Country;
+                order.Phone = aUser.PhoneNumber;
+                order.Total = (decimal)Session["payment_amt"];
+
+                var lstitem = cart.GetCartItems();
+                foreach(var i in lstitem)
+                {
+                    OrderDetail detail = new OrderDetail();
+                    detail.ProductId = i.ProductID;
+                    detail.Quantity = i.Count;
+                    detail.UnitPrice = i.TotalPerItem;
+                    detail.Order = order;
+                    order.OrderDetail.Add(detail);
+                }
+
+
+                storeDB.Orders.Add(order);
                 cart.EmptyCart();
+                storeDB.SaveChanges();
+
+
+
+
+
                 return RedirectToAction("Index", "Home");
             }
             else

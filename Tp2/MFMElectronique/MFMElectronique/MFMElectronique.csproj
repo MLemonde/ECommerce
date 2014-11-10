@@ -762,6 +762,7 @@
     <Content Include="Views\Products\Tablet.cshtml" />
     <Content Include="Views\Products\Cellphone.cshtml" />
     <Content Include="Views\Products\Watch.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>

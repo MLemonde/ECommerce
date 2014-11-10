@@ -227,15 +227,15 @@ namespace MFMElectronique.Controllers
             if (strAck != null && (strAck == "success" || strAck == "successwithwarning"))
             {
                 ShippingAddress = "<table><tr>";
-                ShippingAddress += "<td> First Name </td><td>" + decoder["FIRSTNAME"] + "</td></tr>";
-                ShippingAddress += "<td> Last Name </td><td>" + decoder["LASTNAME"] + "</td></tr>";
+                ShippingAddress += "<td> First Name </td><td>" + ":" + decoder["FIRSTNAME"] + "." + "</td></tr>";
+                ShippingAddress += "<td> Last Name </td><td>" + ":" + decoder["LASTNAME"] + "." + "</td></tr>";
                 ShippingAddress += "<td colspan='2'> Shipping Address</td></tr>";
-                ShippingAddress += "<td> Name </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTONAME"] + "</td></tr>";
-                ShippingAddress += "<td> Street1 </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTOSTREET"] + "</td></tr>";
-                ShippingAddress += "<td> Street2 </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTOSTREET2"] + "</td></tr>";
-                ShippingAddress += "<td> City </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTOCITY"] + "</td></tr>";
-                ShippingAddress += "<td> State </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTOSTATE"] + "</td></tr>";
-                ShippingAddress += "<td> Zip </td><td>" + decoder["PAYMENTREQUEST_0_SHIPTOZIP"] + "</td>";
+                ShippingAddress += "<td> Name </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTONAME"] + "." + "</td></tr>";
+                ShippingAddress += "<td> Street1 </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOSTREET"] + "." + "</td></tr>";
+                ShippingAddress += "<td> Street2 </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOSTREET2"] + "." + "</td></tr>";
+                ShippingAddress += "<td> City </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOCITY"] + "." + "</td></tr>";
+                ShippingAddress += "<td> State </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOSTATE"] + "." + "</td></tr>";
+                ShippingAddress += "<td> Zip </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOZIP"] + "." + "</td>";
                 ShippingAddress += "</tr>";
 
                 return true;

@@ -105,7 +105,10 @@
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Watches, "Watch", "Products")
                         </li>
                         <li>
-                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Purchases, "Index", "Products")
+                            @if(User.Identity.IsAuthenticated)
+                            {
+                            @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Purchases, "History", "Home")
+                            }
                         </li>
                         <li>
                             @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
