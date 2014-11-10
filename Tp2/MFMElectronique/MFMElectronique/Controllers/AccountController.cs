@@ -140,6 +140,8 @@ namespace MFMElectronique.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Error = "";
+
             return View();
         }
 
@@ -169,6 +171,7 @@ namespace MFMElectronique.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
+                ViewBag.Error = result.Errors.First().ToString();
             }
 
             // If we got this far, something failed, redisplay form
