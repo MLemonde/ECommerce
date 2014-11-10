@@ -37,5 +37,11 @@ namespace MFMElectronique.Controllers
             HttpContext.Session["Culture"] = language;
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
