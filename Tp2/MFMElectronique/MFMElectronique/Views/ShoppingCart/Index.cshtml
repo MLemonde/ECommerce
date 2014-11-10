@@ -22,7 +22,6 @@
                     <th>Quantity</th>
                     <th>GST</th>
                     <th>QST</th>
-                    <th>Shipping</th>
                     <th>Total</th>
                     <th>Remove</th>
                 </tr>
@@ -36,7 +35,6 @@
                         <td id="item-count-@item.RecordID"><center>@item.Count</center></td>
                         <td>@item.GST</td>
                         <td>@item.QST</td>
-                        <td>@item.Shipping</td>
                         <td>@item.TotalPerItem</td>
                         <td><a href="#" class="RemoveLink" data-id="@item.RecordID">[X]</a></td>
                     </tr>
@@ -50,6 +48,18 @@
                     <td></td>
                     <td>Total</td>
                     <td id="cart-total">@Model.CartTotal</td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Livraison</td>
+                    <td>@Model.Shipping</td>
+
                 </tr>
             </table>
 

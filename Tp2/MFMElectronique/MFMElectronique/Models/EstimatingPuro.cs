@@ -52,7 +52,7 @@ namespace MFMElectronique.Models
             }
         }
 
-        public void CallGetQuickEstimate()
+        public decimal CallGetQuickEstimate(AspNetUser User)
         {
             EstimatingProxy.EstimatingService service = CreateEstimatingService();
             EstimatingProxy.GetQuickEstimateRequestContainer request = new EstimatingProxy.GetQuickEstimateRequestContainer();
@@ -65,10 +65,10 @@ namespace MFMElectronique.Models
             request.SenderPostalCode = "J2S1H9";
             //TODO : Populate the Desination Information
             request.ReceiverAddress = new EstimatingProxy.ShortAddress();
-            request.ReceiverAddress.City = "Matane";
+            request.ReceiverAddress.City = User.City;
             request.ReceiverAddress.Country = "CA";
-            request.ReceiverAddress.Province = "QC";
-            request.ReceiverAddress.PostalCode = "G4W1M5";
+            request.ReceiverAddress.Province = User.State;
+            request.ReceiverAddress.PostalCode = User.PostalCode;
             request.PackageType = "ExpressEnvelope";
             request.TotalWeight = new EstimatingProxy.TotalWeight();
             request.TotalWeight.Value = 1;
@@ -82,11 +82,13 @@ namespace MFMElectronique.Models
                 // Display the response
                 Display(response.ResponseInformation);
                 Display("ShipmentEstimates:", response.ShipmentEstimates);
+                return response.ShipmentEstimates[0].TotalPrice;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(" EXCEPTION: {0}", ex.Message);
             }
+            return 0;
         }
 
         private EstimatingProxy.Shipment CreateSampleShipment()

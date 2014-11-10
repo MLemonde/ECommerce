@@ -14,6 +14,7 @@ namespace MFMElectronique.Controllers
         ElectroniqueEntities storeDB = new ElectroniqueEntities();
         //
         // GET: /ShoppingCart/
+        [Authorize]
         public ActionResult Index()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -27,9 +28,10 @@ namespace MFMElectronique.Controllers
 
 
             //PUROLATOR ET POSTE CANADA
-            EstimatingPuro puroClient = new EstimatingPuro();
-            puroClient.CallGetQuickEstimate();
-
+            EstimatingPuro puroClient = new EstimatingPuro();            
+            AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
+            viewModel.Shipping = puroClient.CallGetQuickEstimate(aUser);
+            
             // Return the view
             return View(viewModel);
         }
