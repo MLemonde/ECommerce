@@ -42,14 +42,27 @@
 
         @Html.LabelFor(m => m.Country)
         <div>
-            @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            @Html.DropDownList("Country",
+                new SelectListItem[]
+                {
+                    new SelectListItem() { Text = "Canada", Value = "CA" },
+                    new SelectListItem() { Text = "États-Unis", Value = "US" }
+                }
+            )
             @Html.ValidationMessageFor(m => m.Country)
         </div><br>
 
 
         @Html.LabelFor(m => m.State)
         <div>
-            @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+           @Html.DropDownList("State",
+                new SelectListItem[]
+                {
+                    new SelectListItem() { Text = "Québec", Value = "QC" },
+                    new SelectListItem() { Text = "Ontario", Value = "ON" },
+                    new SelectListItem() { Text = "Vermont", Value = "VR" },
+                    new SelectListItem() { Text = "Manitoba", Value = "MN" }
+                })
             @Html.ValidationMessageFor(m => m.State)
         </div><br>
 
