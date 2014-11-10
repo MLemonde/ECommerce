@@ -30,6 +30,10 @@
     <script src="~/Scripts/MFMScripts/fwslider.js"></script>
     <!--end slider -->
     <script src="~/Scripts/MFMScripts/jquery.easydropdown.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <script type="text/javascript">
+        window.twttr = (function (d, s, id) { var t, js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return } js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } }) }(document, "script", "twitter-wjs"));
+    </script>
 
     <script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
 </head>
@@ -183,27 +187,7 @@
                                         </div>
                                     </div>
                                     <div class="col_1_of_f_2 span_1_of_f_2">
-                                        <h3>Twitter</h3>
-                                        <div class="recent-tweet">
-                                            <div class="recent-tweet-icon">
-                                                <span> </span>
-                                            </div>
-                                            <div class="recent-tweet-info">
-                                                @*TODO*@
-                                                <p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-                                            </div>
-                                            <div class="clear"> </div>
-                                        </div>
-                                        <div class="recent-tweet">
-                                            <div class="recent-tweet-icon">
-                                                <span> </span>
-                                            </div>
-                                            <div class="recent-tweet-info">
-                                                @*TODO*@
-                                                <p>Ds which don't look even slightly believable. If you are <a href="#">going to use nibh euismod</a> tincidunt ut laoreet adipisicing</p>
-                                            </div>
-                                            <div class="clear"> </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -252,12 +236,21 @@
 
                                         </div>
                                         <div class="social-media">
-                                            <ul>
-                                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Google"><a href="#" target="_blank"> </a></span></li>
-                                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Linked in"><a href="#" target="_blank"> </a> </span></li>
-                                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Rss"><a href="#" target="_blank"> </a></span></li>
-                                                <li><span class="simptip-position-bottom simptip-movable" data-tooltip="Facebook"><a href="#" target="_blank"> </a></span></li>
-                                            </ul>
+                                            
+                                                
+                                              
+                                                <fb:like href="www.google.com" layout="standard" action="like" show_faces="true" share="true"></fb:like>
+                                                
+                                                <a class="twitter-share-button" href="https://twitter.com/share"
+                                                   data-related="twitterdev"
+                                                   data-size="large"
+                                                   data-count="none">
+                                                    Tweet
+                                                </a>
+
+                                                <g:plusone></g:plusone>
+                                                
+                                            
 
 
                                         </div>
