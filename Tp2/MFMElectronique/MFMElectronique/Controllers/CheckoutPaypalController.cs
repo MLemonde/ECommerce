@@ -19,18 +19,24 @@ namespace MFMElectronique.Controllers
         /// <returns></returns>
         public ActionResult Checkout()
         {
+            ElectroniqueEntities storeDB = new ElectroniqueEntities();
             PaypalNVPAPICaller test = new PaypalNVPAPICaller();
             string retMsg = "";
             string token = "";
             var cart = ShoppingCart.GetCart(this.HttpContext);
             decimal dMontantTotal = cart.GetTotal();
+            decimal dshipping = 0;
+
+            EstimatingPuro puroClient = new EstimatingPuro();
+            AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
+            dshipping = puroClient.CallGetQuickEstimate(aUser);
 
             if (dMontantTotal > 0)
             {
-                decimal twoDec = Math.Round(dMontantTotal, 2);
+                decimal twoDec = Math.Round(dMontantTotal + dshipping, 2);
                 string amt = twoDec.ToString().Replace(",", ".");
                 Session["payment_amt"] = amt;
-                bool ret = test.ShortcutExpressCheckout(amt, ref token, ref retMsg, cart.GetCartItems());
+                bool ret = test.ShortcutExpressCheckout(amt, ref token, ref retMsg, cart.GetCartItems(),dshipping);
                 if (ret)
                 {
                     HttpContext.Session["token"] = token;

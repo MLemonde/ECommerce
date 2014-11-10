@@ -32,6 +32,7 @@ namespace MFMElectronique.Controllers
             AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
             viewModel.Shipping = puroClient.CallGetQuickEstimate(aUser);
             
+            
             // Return the view
             return View(viewModel);
         }

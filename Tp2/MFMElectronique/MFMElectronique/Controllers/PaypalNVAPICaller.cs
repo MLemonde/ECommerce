@@ -64,7 +64,7 @@ namespace MFMElectronique.Controllers
         /// <param ref name="token"></param>
         /// <param ref name="retMsg"></param>
         /// <returns></returns>
-        public bool ShortcutExpressCheckout(string amt, ref string token, ref string retMsg, List<Cart> cartItems)
+        public bool ShortcutExpressCheckout(string amt, ref string token, ref string retMsg, List<Cart> cartItems, decimal dshipping)
         {
             string host = "www.paypal.com";
             if (bSandbox)
@@ -97,6 +97,11 @@ namespace MFMElectronique.Controllers
                 i++;
 
             }
+
+            encoder["L_PAYMENTREQUEST_0_NAME" + i] = "Shipping";
+            string sshipping = dshipping.ToString("0.00").Replace(',','.');
+            encoder["L_PAYMENTREQUEST_0_AMT" + i] = sshipping;
+            encoder["L_PAYMENTREQUEST_0_QTY" + i] = "1";
 
             string pStrrequestforNvp = encoder.Encode();
             string pStresponsenvp = HttpCall(pStrrequestforNvp);
