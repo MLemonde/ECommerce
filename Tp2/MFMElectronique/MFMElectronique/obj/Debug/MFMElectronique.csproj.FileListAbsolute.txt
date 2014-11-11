@@ -243,3 +243,4 @@ C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\en\MFMElectronique.resources.dll
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.dll
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.ShoppingCart.Resources.resources
