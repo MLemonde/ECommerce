@@ -1,14 +1,14 @@
 ﻿
 @{
-    ViewBag.Title = "ConfirmPaiement";
+    ViewBag.Title = MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmPaiement;
 }
 
-<h2>ConfirmPaiement</h2>
+<h2>@MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmPaiement</h2>
 <p>
     @ViewBag.shipping
 </p>
 @using(Html.BeginForm("ConfirmerTransaction", "CheckoutPaypal", FormMethod.Post))
 {
    
-    <input type="submit" name="ConfirmationPaiement" value="Confirmation Ultime" />
+    <input type="submit" name="ConfirmationPaiement" value="@MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmationUltime" />
 }
