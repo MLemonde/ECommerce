@@ -121,10 +121,10 @@
     <value>Addresse et paiement</value>
   </data>
   <data name="CheckoutComplete" xml:space="preserve">
-    <value>Checkout Complete</value>
+    <value>Checkout Completé</value>
   </data>
   <data name="MoreShipping" xml:space="preserve">
-    <value>How about shopping for some more cellphone in our </value>
+    <value>Continuez a acheter d'autre téléphones dans notre </value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>Paiement</value>
@@ -133,12 +133,12 @@
     <value>Information de livraison</value>
   </data>
   <data name="store" xml:space="preserve">
-    <value>magasin</value>
+    <value>magasin en ligne!</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Envoyer</value>
   </data>
   <data name="ThanksMessage" xml:space="preserve">
-    <value>Thanks for your order! Your order number is:</value>
+    <value>Merci pour votre commande! votre numéro de commande est:</value>
   </data>
 </root>

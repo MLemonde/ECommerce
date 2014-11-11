@@ -1,7 +1,7 @@
 ﻿@model MFMElectronique.Models.Order
 
 @{
-    ViewBag.Title = "Address And Payment";
+    ViewBag.Title = MFMElectronique.Views.Checkout.Resources.AddressAndPayment;
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -9,15 +9,16 @@
 
 @using (Html.BeginForm()) {
     
-    <h2>Address And Payment</h2>
+    <h2>
+        @MFMElectronique.Views.Checkout.Resources.AddressAndPayment
+    </h2>
     <fieldset>
-        <legend>Shipping Information</legend>
+        <legend>@MFMElectronique.Views.Checkout.Resources.ShippingInformation</legend>
 
         @Html.EditorForModel()
     </fieldset>
     <fieldset>
-        <legend>Payment</legend>
-        <p>@*We're running a promotion: all music is free with the promo code: "FREE"*@</p>
+        <legend>@MFMElectronique.Views.Checkout.Resources.Payment</legend>
 
         <div class="editor-label">
             @Html.Label("Promo Code")
@@ -27,5 +28,5 @@
         </div>
     </fieldset>
     
-    <input type="submit" value="Submit Order" />
+    <input type="submit" value="@MFMElectronique.Views.Checkout.Resources.Submit" />
 }

@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmationUltime" xml:space="preserve">
-    <value>Confirmation Ultime</value>
+    <value>Ultimate Confirmation</value>
   </data>
   <data name="ConfirmPaiement" xml:space="preserve">
-    <value>Confirm Paiement</value>
+    <value>Confirm Payment</value>
   </data>
 </root>

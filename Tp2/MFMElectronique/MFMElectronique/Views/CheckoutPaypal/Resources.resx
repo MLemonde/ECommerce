@@ -121,6 +121,6 @@
     <value>Confirmation Ultime</value>
   </data>
   <data name="ConfirmPaiement" xml:space="preserve">
-    <value>Confirm Paiement</value>
+    <value>Confirmer le paiement</value>
   </data>
 </root>

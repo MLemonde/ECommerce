@@ -118,34 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Cart" xml:space="preserve">
-    <value>Panier</value>
+    <value>Cart</value>
   </data>
   <data name="Checkout" xml:space="preserve">
-    <value>Payer</value>
+    <value>Checkout</value>
   </data>
   <data name="Empty" xml:space="preserve">
     <value>Shopping cart is empty</value>
   </data>
   <data name="Livraison" xml:space="preserve">
-    <value>Livraison</value>
+    <value>Shipping</value>
   </data>
   <data name="NotConnected" xml:space="preserve">
     <value>You must be connected to buy the product(s)</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Price</value>
   </data>
   <data name="Product" xml:space="preserve">
-    <value>Produit</value>
+    <value>Product</value>
   </data>
   <data name="Quantity" xml:space="preserve">
-    <value>Quantité</value>
+    <value>Quantity</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Remove</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>Grand Total</value>
   </data>
   <data name="UrCart" xml:space="preserve">
     <value>Your shopping cart</value>
