@@ -32,12 +32,6 @@ namespace MFMElectronique.Controllers
         [HttpPost]
         public ActionResult SelectLanguage(string language, string returnUrl)
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    ElectroniqueEntities context = new ElectroniqueEntities();
-            //    AspNetUser user = context.AspNetUsers.First(u => u.Email == User.Identity.Name);
-            //    context.Dispose();
-            //}
             HttpContext.Session["Culture"] = language;
             return RedirectToAction("Index", "Home");
         }

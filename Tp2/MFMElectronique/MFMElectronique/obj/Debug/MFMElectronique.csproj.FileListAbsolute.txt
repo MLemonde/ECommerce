@@ -244,3 +244,9 @@ C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.dll
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.pdb
 C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.ShoppingCart.Resources.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Account.Resources.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.CheckoutPaypal.Resources.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Checkout.Resources.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.CheckoutPaypal.Resources.en.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Checkout.Resources.en.resources
+C:\Users\Francis\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.ShoppingCart.Resources.en.resources

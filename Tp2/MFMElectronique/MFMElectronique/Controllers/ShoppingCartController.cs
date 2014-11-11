@@ -91,8 +91,8 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("EmptyCard");
         }
 
-        [HttpGet]
-        [ChildActionOnly]
+        //[HttpGet]
+        //[ChildActionOnly]
         public ActionResult CartSummary()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
