@@ -228,6 +228,14 @@ namespace MFMElectronique.Controllers
             return View(user);
         }
 
+        //
+        // POST: /Manage/ChangeInformations
+        /// <summary>
+        /// Permet a l'utilisateur de changer ses informations.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangeInformations(ApplicationUser model)

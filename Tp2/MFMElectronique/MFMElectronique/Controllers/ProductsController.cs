@@ -75,6 +75,7 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
+
         [HttpGet]
         [Authorize(Roles="Admin")]
         public ActionResult Create()
@@ -191,7 +192,8 @@ namespace MFMElectronique.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(s => s.Name.Contains(searchString) || s.ProductBrand.Name.Contains(searchString));
+                products = products.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper()) 
+                    || s.ProductBrand.Name.ToUpper().Contains(searchString.ToUpper()));
 
             }
 

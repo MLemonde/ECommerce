@@ -53,6 +53,27 @@
                 <td>@MFMElectronique.Views.ShoppingCart.Resources.Livraison</td>
                 <td>@Model.Shipping</td>
 
+                </tr>
+            </table>
+            <a href="https://www.paypal.com/ca/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/ca/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+            <img src="~/Images/Static/paypal-logo1.jpg" align="right"/></a><div class="clear"></div>
+
+            if(User.Identity.IsAuthenticated)
+            { 
+                <div class="button1" style="padding-top:0px;">
+                    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
+                    {
+                        <input type='submit' name="payment_amt" value="CheckOut" />
+                    }
+                </div>
+            }   
+            else
+            {
+                <p class="alert-danger">You must be connected to buy the product(s)</p>
+            }
+            <div class="clear"></div>
+        }
+
             </tr>
         </table>
 

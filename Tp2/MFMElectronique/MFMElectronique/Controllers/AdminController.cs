@@ -12,11 +12,25 @@ using System.IO;
 
 namespace MFMElectronique.Controllers
 {
+
+    /// <summary>
+    /// Class ADMIN : l'administrateur peut gérer les produits ici.
+    /// Auteur du controlleur : MA
+    /// </summary>
+
     [Authorize(Roles = "Admin")]
+
     public class AdminController : Controller
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
+
+        // GET: Admin
+        /// <summary>
+        /// Retourne l'index de l'admin...
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public ActionResult Index()
         {
@@ -24,6 +38,13 @@ namespace MFMElectronique.Controllers
             return View(products.ToList());
         }
 
+        // GET: Admin/Details/5
+        /// <summary>
+        /// On ne va pas l'utiliser mais retourne les détails d'un produit.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Details(int? id)
         {
@@ -39,6 +60,12 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
+        // GET: Admin/Create
+        /// <summary>
+        /// Retourne la page pour créer un nouveau produit
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
@@ -48,8 +75,15 @@ namespace MFMElectronique.Controllers
             return View();
         }
 
+        // POST: Admin/Create
+        /// <summary>
+        /// Créer le produit, si on ne réussi retourne message d'erreur
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(ProductAdminViewModel product)
         {
             if (ModelState.IsValid)
@@ -64,7 +98,12 @@ namespace MFMElectronique.Controllers
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
             return View(product);
         }
-
+        /// <summary>
+        /// Lors de la création du produit, la méthode pour uploader une photo est un peu longue,
+        /// je l'ai donc séparée.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
         [HttpPost]
         private void CreateProduct(ProductAdminViewModel model)
         {
@@ -111,6 +150,14 @@ namespace MFMElectronique.Controllers
             }
         }
 
+        // GET: Admin/Edit/5
+        /// <summary>
+        /// Retourne les composantes de la page pour updater un produit.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -139,8 +186,16 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
+        // POST: Admin/Edit/5
+        /// <summary>
+        /// Controleur pour updater le produit. (incluant le changement de photo)
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
@@ -191,6 +246,15 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
+        // GET: Admin/Delete/5
+        /// <summary>
+        /// En temps normal, un produit ne devrait jamais être supprimée.
+        /// Il devrait plutôt être mis comme discontinué. Pour l'instant je n'ai donc pas touché à cette méthode.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Delete(int? id)
         {
@@ -209,6 +273,7 @@ namespace MFMElectronique.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);

@@ -45,6 +45,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -188,6 +189,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ElectroniqueEntities.cs" />
     <Compile Include="Models\EstimatingPuro.cs" />
+    <Compile Include="Models\GetShipmentPrice.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -203,6 +205,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PosteCanadaRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ProductAdminViewModel.cs" />
@@ -732,6 +739,60 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\PosteCanadaRef\configuration91.svcinfo" />
+    <None Include="Service References\PosteCanadaRef\configuration.svcinfo" />
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.createshipmentresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.CreateShipmentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getgroupsresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetGroupsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getshipmentdetailsresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetShipmentDetailsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getshipmentpriceresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetShipmentPriceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getshipmentreceiptresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetShipmentReceiptResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getshipmentresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetShipmentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.getshipmentsresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.GetShipmentsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.voidshipmentresponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PosteCanadaRef\MFMElectronique.PosteCanadaRef.VoidShipmentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\PosteCanadaRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -799,6 +860,7 @@
     <Content Include="Views\Products\Cellphone.cshtml" />
     <Content Include="Views\Products\Watch.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
+    <None Include="Service References\PosteCanadaRef\shipment.wsdl" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -888,6 +950,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>MFMElectronique_EstimatingProxy_EstimatingService</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PosteCanadaRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
