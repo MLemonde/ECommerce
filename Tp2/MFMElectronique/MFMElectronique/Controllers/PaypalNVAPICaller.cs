@@ -73,8 +73,8 @@ namespace MFMElectronique.Controllers
                 host = "www.sandbox.paypal.com";
             }
 
-            string returnURL = "http://localhost:4521/CheckoutPaypal/ConfirmPaiement";
-            string cancelURL = "http://localhost:4521/CheckoutPaypal/CancelPaiement";
+            string returnURL = "http://localhost:4521/CheckOutPaypal/ConfirmPaiement";
+            string cancelURL = "http://localhost:4521/CheckOutPaypal/CancelPaiement";
 
             NVPCodec encoder = new NVPCodec();
             encoder["METHOD"] = "SetExpressCheckout";
@@ -149,8 +149,8 @@ namespace MFMElectronique.Controllers
                 host = "www.sandbox.paypal.com";
             }
 
-            string returnURL = "http://localhost:4521/CheckoutPaypal/ConfirmPaiement";
-            string cancelURL = "http://localhost:4521/CheckoutPaypal/CancelPaiement";
+            string returnURL = "http://localhost:4521/CheckOutPaypal/ConfirmPaiement";
+            string cancelURL = "http://localhost:4521/CheckOutPaypal/CancelPaiement";
 
             NVPCodec encoder = new NVPCodec();
             encoder["METHOD"] = "SetExpressCheckout";
