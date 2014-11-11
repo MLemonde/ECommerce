@@ -124,13 +124,13 @@
     <value>Payer</value>
   </data>
   <data name="Empty" xml:space="preserve">
-    <value>Shopping cart is empty</value>
+    <value>Votre panier est vide.</value>
   </data>
   <data name="Livraison" xml:space="preserve">
     <value>Livraison</value>
   </data>
   <data name="NotConnected" xml:space="preserve">
-    <value>You must be connected to buy the product(s)</value>
+    <value>Vous devez être connecter pour acheter des produits</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Prix</value>
@@ -148,6 +148,6 @@
     <value>Total</value>
   </data>
   <data name="UrCart" xml:space="preserve">
-    <value>Your shopping cart</value>
+    <value>Vote panier</value>
   </data>
 </root>

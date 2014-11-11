@@ -61,7 +61,16 @@ namespace MFMElectronique.Views.Checkout {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Checkout Complete.
+        ///   Recherche une chaîne localisée semblable à Addresse et paiement.
+        /// </summary>
+        public static string AddressAndPayment {
+            get {
+                return ResourceManager.GetString("AddressAndPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Checkout Completé.
         /// </summary>
         public static string CheckoutComplete {
             get {
@@ -70,7 +79,7 @@ namespace MFMElectronique.Views.Checkout {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à How about shopping for some more cellphone in our .
+        ///   Recherche une chaîne localisée semblable à Continuez a acheter d&apos;autre téléphones dans notre .
         /// </summary>
         public static string MoreShipping {
             get {
@@ -79,7 +88,25 @@ namespace MFMElectronique.Views.Checkout {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à magasin.
+        ///   Recherche une chaîne localisée semblable à Paiement.
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Information de livraison.
+        /// </summary>
+        public static string ShippingInformation {
+            get {
+                return ResourceManager.GetString("ShippingInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à magasin en ligne!.
         /// </summary>
         public static string store {
             get {
@@ -88,7 +115,16 @@ namespace MFMElectronique.Views.Checkout {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Thanks for your order! Your order number is:.
+        ///   Recherche une chaîne localisée semblable à Envoyer.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Merci pour votre commande! votre numéro de commande est:.
         /// </summary>
         public static string ThanksMessage {
             get {

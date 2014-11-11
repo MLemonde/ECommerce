@@ -70,7 +70,7 @@ namespace MFMElectronique.Views.CheckoutPaypal {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Confirm Paiement.
+        ///   Recherche une chaîne localisée semblable à Confirmer le paiement.
         /// </summary>
         public static string ConfirmPaiement {
             get {

@@ -79,7 +79,7 @@ namespace MFMElectronique.Views.ShoppingCart {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Shopping cart is empty.
+        ///   Recherche une chaîne localisée semblable à Votre panier est vide..
         /// </summary>
         public static string Empty {
             get {
@@ -97,7 +97,7 @@ namespace MFMElectronique.Views.ShoppingCart {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à You must be connected to buy the product(s).
+        ///   Recherche une chaîne localisée semblable à Vous devez être connecter pour acheter des produits.
         /// </summary>
         public static string NotConnected {
             get {
@@ -151,7 +151,7 @@ namespace MFMElectronique.Views.ShoppingCart {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Your shopping cart.
+        ///   Recherche une chaîne localisée semblable à Vote panier.
         /// </summary>
         public static string UrCart {
             get {

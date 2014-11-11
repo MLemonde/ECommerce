@@ -117,28 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressAndPayment" xml:space="preserve">
-    <value>Addresse et paiement</value>
+  <data name="Cart" xml:space="preserve">
+    <value>Panier</value>
   </data>
-  <data name="CheckoutComplete" xml:space="preserve">
-    <value>Checkout Complete</value>
+  <data name="Checkout" xml:space="preserve">
+    <value>Payer</value>
   </data>
-  <data name="MoreShipping" xml:space="preserve">
-    <value>How about shopping for some more cellphone in our </value>
+  <data name="Empty" xml:space="preserve">
+    <value>Shopping cart is empty</value>
   </data>
-  <data name="Payment" xml:space="preserve">
-    <value>Paiement</value>
+  <data name="Livraison" xml:space="preserve">
+    <value>Livraison</value>
   </data>
-  <data name="ShippingInformation" xml:space="preserve">
-    <value>Information de livraison</value>
+  <data name="NotConnected" xml:space="preserve">
+    <value>You must be connected to buy the product(s)</value>
   </data>
-  <data name="store" xml:space="preserve">
-    <value>magasin</value>
+  <data name="Price" xml:space="preserve">
+    <value>Prix</value>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Envoyer</value>
+  <data name="Product" xml:space="preserve">
+    <value>Produit</value>
   </data>
-  <data name="ThanksMessage" xml:space="preserve">
-    <value>Thanks for your order! Your order number is:</value>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantité</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="UrCart" xml:space="preserve">
+    <value>Your shopping cart</value>
   </data>
 </root>

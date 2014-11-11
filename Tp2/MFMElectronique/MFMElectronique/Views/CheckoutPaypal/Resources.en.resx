@@ -117,28 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressAndPayment" xml:space="preserve">
-    <value>Addresse et paiement</value>
+  <data name="ConfirmationUltime" xml:space="preserve">
+    <value>Confirmation Ultime</value>
   </data>
-  <data name="CheckoutComplete" xml:space="preserve">
-    <value>Checkout Complete</value>
-  </data>
-  <data name="MoreShipping" xml:space="preserve">
-    <value>How about shopping for some more cellphone in our </value>
-  </data>
-  <data name="Payment" xml:space="preserve">
-    <value>Paiement</value>
-  </data>
-  <data name="ShippingInformation" xml:space="preserve">
-    <value>Information de livraison</value>
-  </data>
-  <data name="store" xml:space="preserve">
-    <value>magasin</value>
-  </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Envoyer</value>
-  </data>
-  <data name="ThanksMessage" xml:space="preserve">
-    <value>Thanks for your order! Your order number is:</value>
+  <data name="ConfirmPaiement" xml:space="preserve">
+    <value>Confirm Paiement</value>
   </data>
 </root>
