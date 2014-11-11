@@ -12,18 +12,19 @@ using System.IO;
 
 namespace MFMElectronique.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
-        // GET: Admin
+        [HttpGet]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
             return View(products.ToList());
         }
 
-        // GET: Admin/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,7 +39,7 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // GET: Admin/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
@@ -47,9 +48,6 @@ namespace MFMElectronique.Controllers
             return View();
         }
 
-        // POST: Admin/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductAdminViewModel product)
@@ -67,6 +65,7 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
+        [HttpPost]
         private void CreateProduct(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
@@ -112,7 +111,7 @@ namespace MFMElectronique.Controllers
             }
         }
 
-        // GET: Admin/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -140,9 +139,6 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductAdminViewModel model)
@@ -195,7 +191,7 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        // GET: Admin/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -210,8 +206,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

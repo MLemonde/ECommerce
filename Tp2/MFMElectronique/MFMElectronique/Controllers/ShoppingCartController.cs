@@ -10,11 +10,9 @@ namespace MFMElectronique.Controllers
 {
     public class ShoppingCartController : Controller
     {
-
         ElectroniqueEntities storeDB = new ElectroniqueEntities();
-        //
-        // GET: /ShoppingCart/
-        [Authorize]
+        
+        [HttpGet]
         public ActionResult Index()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -37,8 +35,7 @@ namespace MFMElectronique.Controllers
             return View(viewModel);
         }
 
-        //
-        // GET /EmptyCard/
+        [HttpGet]
         public ActionResult EmptyCard()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -52,8 +49,7 @@ namespace MFMElectronique.Controllers
             return View(viewModel);
         }
 
-        //
-        // GET: /Store/AddToCart/5
+        [HttpGet]
         public ActionResult AddToCart(int id, string returnUrl)
         {
             
@@ -68,7 +64,6 @@ namespace MFMElectronique.Controllers
             return Redirect(returnUrl);
         }
 
-        //
         // AJAX: /ShoppingCart/RemoveFromCart/5
         [HttpPost]
         public ActionResult RemoveFromCart(int id)
@@ -98,13 +93,15 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("EmptyCard");
         }
 
-        //
-        // GET: /ShoppingCart/CartSummary
+        [HttpGet]
         [ChildActionOnly]
         public ActionResult CartSummary()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
-            ViewData["CartCount"] = cart.GetCount();
+            if (cart == null)
+                ViewData["CartCount"] = 0;
+            else
+                ViewData["CartCount"] = cart.GetCount();
             return PartialView("CartSummary");
         }
     }

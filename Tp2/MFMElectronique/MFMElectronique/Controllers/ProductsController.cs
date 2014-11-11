@@ -14,17 +14,15 @@ namespace MFMElectronique.Controllers
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
-        // GET: Products
+        [HttpGet]
         public ActionResult Index()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
             return View(product.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des téléphones
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Cellphone()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -36,10 +34,8 @@ namespace MFMElectronique.Controllers
             return View(phoneQuery.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des tablettes
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Tablet()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -51,10 +47,8 @@ namespace MFMElectronique.Controllers
             return View(tabletQuery.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des montres
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Watch()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -66,7 +60,7 @@ namespace MFMElectronique.Controllers
             return View(watchQuery.ToList());
         }
 
-        // GET: Products/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -81,7 +75,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        [HttpGet]
+        [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
@@ -89,10 +84,8 @@ namespace MFMElectronique.Controllers
             return View();
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,DescriptionFR,DescriptionEN,discontinued,PictureURL,Price,CategoryID,BrandID")] Product product)
         {
@@ -108,7 +101,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -125,10 +119,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,DescriptionFR,DescriptionEN,discontinued,PictureURL,Price,CategoryID,BrandID")] Product product)
         {
@@ -143,7 +135,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -158,8 +151,9 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -168,7 +162,6 @@ namespace MFMElectronique.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         /// <summary>
         /// Permet de faire la recherche des produits à partir du textbox recherche.

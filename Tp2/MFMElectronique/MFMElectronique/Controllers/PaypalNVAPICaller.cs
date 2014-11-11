@@ -434,7 +434,6 @@ namespace MFMElectronique.Controllers
             }
         }
 
-
         #region Array methods
         public void Add(string name, string value, int index)
         {
