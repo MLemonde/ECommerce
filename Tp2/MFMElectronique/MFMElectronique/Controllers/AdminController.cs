@@ -12,13 +12,18 @@ using System.IO;
 
 namespace MFMElectronique.Controllers
 {
+
     /// <summary>
     /// Class ADMIN : l'administrateur peut gérer les produits ici.
     /// Auteur du controlleur : MA
     /// </summary>
+
+    [Authorize(Roles = "Admin")]
+
     public class AdminController : Controller
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
+
 
         // GET: Admin
         /// <summary>
@@ -26,6 +31,7 @@ namespace MFMElectronique.Controllers
         /// </summary>
         /// <returns></returns>
         [Authorize(Roles="Admin")]
+        [HttpGet]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -39,6 +45,7 @@ namespace MFMElectronique.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -59,6 +66,7 @@ namespace MFMElectronique.Controllers
         /// </summary>
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
@@ -90,13 +98,13 @@ namespace MFMElectronique.Controllers
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
             return View(product);
         }
-
         /// <summary>
         /// Lors de la création du produit, la méthode pour uploader une photo est un peu longue,
         /// je l'ai donc séparée.
         /// Auteur : MA
         /// </summary>
         /// <param name="model"></param>
+        [HttpPost]
         private void CreateProduct(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
@@ -150,6 +158,7 @@ namespace MFMElectronique.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -246,6 +255,7 @@ namespace MFMElectronique.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Authorize(Roles = "Admin")]
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -260,8 +270,8 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)

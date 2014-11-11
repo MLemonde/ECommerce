@@ -1,13 +1,19 @@
 ﻿@model int
 
 @{
-    ViewBag.Title = "Checkout Complete";
+    ViewBag.Title = MFMElectronique.Views.Checkout.Resources.CheckoutComplete;
 }
 
-<h2>Checkout Complete</h2>
+<h2>
+    @MFMElectronique.Views.Checkout.Resources.CheckoutComplete
+</h2>
 
-<p>Thanks for your order! Your order number is: @Model</p>
+<p>
+    @MFMElectronique.Views.Checkout.Resources.ThanksMessage    
+    @Model
+</p>
 
-<p>How about shopping for some more cellphone in our 
-    @Html.ActionLink("store", "Index", "Home")
+<p>
+    @MFMElectronique.Views.Checkout.Resources.MoreShipping 
+    @Html.ActionLink(MFMElectronique.Views.Checkout.Resources.store, "Index", "Home")
 </p>

@@ -19,14 +19,14 @@ namespace MFMElectronique.Controllers
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
-        // GET: Comments
+        [HttpGet]
         public ActionResult Index()
         {
             var comments = db.Comments.Include(c => c.AspNetUsers).Include(c => c.Product);
             return View(comments.ToList());
         }
 
-        // GET: Comments/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,7 +41,7 @@ namespace MFMElectronique.Controllers
             return View(comment);
         }
 
-        // GET: Comments/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
@@ -74,7 +74,7 @@ namespace MFMElectronique.Controllers
             return View(comment);
         }
 
-        // GET: Comments/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,9 +91,6 @@ namespace MFMElectronique.Controllers
             return View(comment);
         }
 
-        // POST: Comments/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Rating,Comment1,DateCreated,ProductID,UserID")] Comment comment)
@@ -109,7 +106,7 @@ namespace MFMElectronique.Controllers
             return View(comment);
         }
 
-        // GET: Comments/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id, string returnUrl)
         {
             if (id == null)
@@ -128,8 +125,8 @@ namespace MFMElectronique.Controllers
             return Redirect(returnUrl);
         }
 
-        // POST: Comments/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

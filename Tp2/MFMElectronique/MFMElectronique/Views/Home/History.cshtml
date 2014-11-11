@@ -46,6 +46,7 @@
         </th>
         <th></th>
     </tr>
+    
 
 @foreach (var item in Model) {
     <tr>
@@ -82,8 +83,49 @@
         <td>
             @Html.DisplayFor(modelItem => item.Total)
         </td>
-        
     </tr>
+    <tr>
+        <td>
+            Nom du Produit
+
+        </td>
+        <td>
+           Quantité
+
+
+        </td>
+        <td>
+           Prix
+
+
+        </td>
+
+
+
+    </tr>
+        foreach(var i in item.OrderDetail)
+        {
+            <tr>
+            <td>               
+                @i.Product.Name
+
+            </td>
+                <td>
+                    @i.Quantity
+
+
+                </td>
+                <td>
+                    @i.UnitPrice
+
+
+                </td>
+              
+
+
+            </tr>
+        }
+    <tr></tr>
 }
 
 </table>

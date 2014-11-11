@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MFMElectronique.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         ElectroniqueEntities storeDB = new ElectroniqueEntities();
@@ -17,6 +18,7 @@ namespace MFMElectronique.Controllers
         /// Page d'accueil du site...
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -27,15 +29,9 @@ namespace MFMElectronique.Controllers
         /// </summary>
         /// <param name="language"></param>
         /// <returns></returns>
-        [HttpPost, AllowAnonymous]
+        [HttpPost]
         public ActionResult SelectLanguage(string language, string returnUrl)
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    ElectroniqueEntities context = new ElectroniqueEntities();
-            //    AspNetUser user = context.AspNetUsers.First(u => u.Email == User.Identity.Name);
-            //    context.Dispose();
-            //}
             HttpContext.Session["Culture"] = language;
             return RedirectToAction("Index", "Home");
         }
@@ -51,7 +47,7 @@ namespace MFMElectronique.Controllers
         {
             var Orderlist = storeDB.Orders.Where(c => c.AspNetUsers.Email == User.Identity.Name);
             if (Orderlist.Count() != 0 && Orderlist != null)
-                return View();
+                return View(Orderlist);
             else
                 return RedirectToAction("Index");
         }

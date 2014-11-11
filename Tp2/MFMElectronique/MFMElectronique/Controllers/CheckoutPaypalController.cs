@@ -12,8 +12,8 @@ namespace MFMElectronique.Controllers
     public class CheckOutPaypalController : Controller
     {
         ElectroniqueEntities storeDB = new ElectroniqueEntities();
-        string shippingAdress = "";
-
+        string shippingAdress;
+        
         /// <summary>
         /// Permet de transmettre une requête d'achat à Paypal.
         /// Une fois accepté, il sera redigiré vers la page de 
@@ -75,7 +75,8 @@ namespace MFMElectronique.Controllers
             {
                 Session["payerId"] = payerID;
                 Session["token"] = token;
-                ViewBag.ShippingAdress = shippingAdress;
+                Session["shipping"] = shippingAdress;
+                ViewBag.shipping = shippingAdress;
             }
             else
             {
@@ -86,7 +87,7 @@ namespace MFMElectronique.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ConfirmerTransaction()
+        public ActionResult ConfirmerTransaction(string shipping)
         {
             PaypalNVPAPICaller test = new PaypalNVPAPICaller();
 
@@ -139,17 +140,20 @@ namespace MFMElectronique.Controllers
                 Order order = new Order();
                 AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
                 order.AspNetUsers = aUser;
-                string[] addr = shippingAdress.Split(':', '.');
+                string[] addr = Session["shipping"].ToString().Split(':','.');
                 order.FirstName = addr[1];
                 order.LastName = addr[3];
-                order.City = addr[10];
-                order.Address = addr[6] + addr[8];
-                order.State = addr[12];
-                order.PostalCode = addr[14];
+                order.City = addr[11];
+                order.Address = addr[7] + addr[9];
+                order.State = addr[13];
+                order.PostalCode = addr[15];
                 order.OrderDate = DateTime.Now;
                 order.Country = aUser.Country;
                 order.Phone = aUser.PhoneNumber;
-                order.Total = (decimal)Session["payment_amt"];
+                string stotal = Session["payment_amt"].ToString();
+                stotal = stotal.Replace('.', ',');
+                float itotal = float.Parse(stotal);
+                order.Total = (decimal)itotal;
 
                 var lstitem = cart.GetCartItems();
                 foreach(var i in lstitem)
@@ -177,6 +181,12 @@ namespace MFMElectronique.Controllers
             {
                 return Redirect("APIError?" + retMsg);
             }
+        }
+        
+        [HttpGet]
+        public ActionResult CancelPaiement(string token)
+        {
+            return RedirectToAction("Index", "Home");
         }
 
         /// <summary>

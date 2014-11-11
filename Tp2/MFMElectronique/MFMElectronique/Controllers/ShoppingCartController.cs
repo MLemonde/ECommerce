@@ -10,11 +10,9 @@ namespace MFMElectronique.Controllers
 {
     public class ShoppingCartController : Controller
     {
-
         ElectroniqueEntities storeDB = new ElectroniqueEntities();
-        //
-        // GET: /ShoppingCart/
-        [Authorize]
+        
+        [HttpGet]
         public ActionResult Index()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -26,19 +24,16 @@ namespace MFMElectronique.Controllers
                 
             };
 
-
             //PUROLATOR ET POSTE CANADA
-            EstimatingPuro puroClient = new EstimatingPuro();            
-            AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
-            viewModel.Shipping = puroClient.CallGetQuickEstimate(aUser);
+            AspNetUser aUser = storeDB.AspNetUsers.FirstOrNull(c => c.Email == User.Identity.Name);
             
+            viewModel.Shipping = aUser == null ? 10 : new EstimatingPuro().CallGetQuickEstimate(aUser);
             
             // Return the view
             return View(viewModel);
         }
 
-        //
-        // GET /EmptyCard/
+        [HttpGet]
         public ActionResult EmptyCard()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -52,8 +47,7 @@ namespace MFMElectronique.Controllers
             return View(viewModel);
         }
 
-        //
-        // GET: /Store/AddToCart/5
+        [HttpPost]
         public ActionResult AddToCart(int id, string returnUrl)
         {
             
@@ -68,7 +62,6 @@ namespace MFMElectronique.Controllers
             return Redirect(returnUrl);
         }
 
-        //
         // AJAX: /ShoppingCart/RemoveFromCart/5
         [HttpPost]
         public ActionResult RemoveFromCart(int id)
@@ -98,13 +91,15 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("EmptyCard");
         }
 
-        //
-        // GET: /ShoppingCart/CartSummary
-        [ChildActionOnly]
+        //[HttpGet]
+        //[ChildActionOnly]
         public ActionResult CartSummary()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
-            ViewData["CartCount"] = cart.GetCount();
+            if (cart == null)
+                ViewData["CartCount"] = 0;
+            else
+                ViewData["CartCount"] = cart.GetCount();
             return PartialView("CartSummary");
         }
     }

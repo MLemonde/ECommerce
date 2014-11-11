@@ -3,62 +3,55 @@
     ViewBag.Title = "Shopping Cart";
 }
 
-@*<h3>
-    <em>Review</em> your cart:
-</h3>*@
+<div class="wrap">
+    @if (Model.CartItems.Any())
+    {
+        <h4 class="title">@MFMElectronique.Views.ShoppingCart.Resources.UrCart</h4>
+        <div id="update-message">
+        </div>
+        <table class="table">
+            <tr>
+                <th>@MFMElectronique.Views.ShoppingCart.Resources.Product</th>
+                <th>@MFMElectronique.Views.ShoppingCart.Resources.Price</th>
+                <th>@MFMElectronique.Views.ShoppingCart.Resources.Quantity</th>
+                <th>GST</th>
+                <th>QST</th>
+                <th>@MFMElectronique.Views.ShoppingCart.Resources.Total</th>
+                <th>@MFMElectronique.Views.ShoppingCart.Resources.Remove</th>
+            </tr>
+            @foreach (var item in Model.CartItems)
+            {
 
-
-@*<div class="register_account">*@
-    <div class="wrap">
-        @if (Model.CartItems.Any())
-        {
-            <h4 class="title">Your shopping cart</h4>
-            <div id="update-message">
-            </div>
-            <table class="table">
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>GST</th>
-                    <th>QST</th>
-                    <th>Total</th>
-                    <th>Remove</th>
+                @*<tr id="trCart">*@
+                <tr id="row-@item.RecordID">
+                    <td>@Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)</td>
+                    <td>@item.Product.Price</td>
+                    <td id="item-count-@item.RecordID"><center>@item.Count</center></td>
+                    <td>@item.GST</td>
+                    <td>@item.QST</td>
+                    <td>@item.TotalPerItem</td>
+                    <td><a href="#" class="RemoveLink" data-id="@item.RecordID">[X]</a></td>
                 </tr>
-                @foreach (var item in Model.CartItems)
-                {
-
-                    @*<tr id="trCart">*@
-                    <tr id="row-@item.RecordID">
-                        <td>@Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)</td>
-                        <td>@item.Product.Price</td>
-                        <td id="item-count-@item.RecordID"><center>@item.Count</center></td>
-                        <td>@item.GST</td>
-                        <td>@item.QST</td>
-                        <td>@item.TotalPerItem</td>
-                        <td><a href="#" class="RemoveLink" data-id="@item.RecordID">[X]</a></td>
-                    </tr>
-                }
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Total</td>
-                    <td id="cart-total">@Model.CartTotal</td>
-                    
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Livraison</td>
-                    <td>@Model.Shipping</td>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@MFMElectronique.Views.ShoppingCart.Resources.Total</td>
+                <td id="cart-total">@Model.CartTotal</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@MFMElectronique.Views.ShoppingCart.Resources.Livraison</td>
+                <td>@Model.Shipping</td>
 
                 </tr>
             </table>
@@ -80,11 +73,31 @@
             }
             <div class="clear"></div>
         }
+
+            </tr>
+        </table>
+
+        if(User.Identity.IsAuthenticated)
+        { 
+            <div class="button1">
+                @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
+                {
+                    <input type='submit' name="payment_amt" value="@MFMElectronique.Views.ShoppingCart.Resources.Checkout" />
+                }
+                <a href="https://www.paypal.com/ca/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/ca/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
+                <img src="~/Images/Static/paypal-logo1.jpg" align="right" /></a>
+            </div>
+        }   
         else
         {
-            Response.Redirect("~/ShoppingCart/emptycard");
+            <p class="alert-danger">@MFMElectronique.Views.ShoppingCart.Resources.NotConnected</p>
         }
-    </div>
+        <div class="clear"></div>
+    }
+    else
+    {
+        Response.Redirect("~/ShoppingCart/emptycard");
+    }
 </div>
 
 <script src="~/Scripts/MFMScripts/jquery-ui.min.js" type="text/javascript"></script>

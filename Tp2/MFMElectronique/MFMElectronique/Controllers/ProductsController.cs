@@ -14,17 +14,15 @@ namespace MFMElectronique.Controllers
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
-        // GET: Products
+        [HttpGet]
         public ActionResult Index()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
             return View(product.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des téléphones
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Cellphone()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -36,10 +34,8 @@ namespace MFMElectronique.Controllers
             return View(phoneQuery.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des tablettes
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Tablet()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -51,10 +47,8 @@ namespace MFMElectronique.Controllers
             return View(tabletQuery.ToList());
         }
 
-        /// <summary>
         /// GET : Liste des montres
-        /// </summary>
-        /// <returns></returns>
+        [HttpGet]
         public ActionResult Watch()
         {
             var product = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -66,7 +60,7 @@ namespace MFMElectronique.Controllers
             return View(watchQuery.ToList());
         }
 
-        // GET: Products/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -81,6 +75,95 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
+
+        [HttpGet]
+        [Authorize(Roles="Admin")]
+        public ActionResult Create()
+        {
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,DescriptionFR,DescriptionEN,discontinued,PictureURL,Price,CategoryID,BrandID")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
+            return View(product);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
+            return View(product);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name,DescriptionFR,DescriptionEN,discontinued,PictureURL,Price,CategoryID,BrandID")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name", product.BrandID);
+            ViewBag.CategoryID = new SelectList(db.ProductCategories, "Id", "Name", product.CategoryID);
+            return View(product);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         /// <summary>
         /// Permet de faire la recherche des produits à partir du textbox recherche.
         /// </summary>
@@ -90,7 +173,6 @@ namespace MFMElectronique.Controllers
         /// <returns></returns>
         public ActionResult SearchIndex(string productCategory, string productPrice, string searchString)
         {
-
             var GenreLst = new List<string>();
             var GenreQry = from d in db.Products
                            orderby d.ProductCategory.Name
