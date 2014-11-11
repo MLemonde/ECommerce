@@ -182,12 +182,12 @@ namespace MFMElectronique.Controllers
                 return Redirect("APIError?" + retMsg);
             }
         }
-
+        
+        [HttpGet]
         public ActionResult CancelPaiement(string token)
         {
             return RedirectToAction("Index", "Home");
         }
-
 
         /// <summary>
         /// Lorsqu'une erreur s'est produite avec Paypal

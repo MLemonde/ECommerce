@@ -172,7 +172,6 @@ namespace MFMElectronique.Controllers
         /// <returns></returns>
         public ActionResult SearchIndex(string productCategory, string productPrice, string searchString)
         {
-
             var GenreLst = new List<string>();
             var GenreQry = from d in db.Products
                            orderby d.ProductCategory.Name
