@@ -53,7 +53,7 @@ namespace MFMElectronique.Controllers
         {
             var Orderlist = storeDB.Orders.Where(c => c.AspNetUsers.Email == User.Identity.Name);
             if (Orderlist.Count() != 0 && Orderlist != null)
-                return View();
+                return View(Orderlist);
             else
                 return RedirectToAction("Index");
         }
