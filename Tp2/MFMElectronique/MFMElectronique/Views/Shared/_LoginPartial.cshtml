@@ -13,12 +13,12 @@
                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.ChangeYourInformations, "ChangeInformations", "Manage")
             </li>
             <li>
-                <a href="javascript:document.getElementById('logoutForm').submit()">@MFMElectronique.Views.Shared.Resources.LogOff</a>
+                <a href="javascript:document.getElementById('logoutForm').submit()">[@MFMElectronique.Views.Shared.Resources.LogOff]</a>
             </li>
             <li>
                 @*@Html.ActionLink(MFMElectronique.Views.Shared.Resources.Hello + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
                 @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { style = "color: #ffffff" })*@
-                <p style="color: #ffffff">Hello @User.Identity.Name !</p>
+                <p style="color: #ffffff">@MFMElectronique.Views.Shared.Resources.Hello @User.Identity.Name !</p>
             </li>
         </ul>
     }

@@ -211,7 +211,7 @@ namespace MFMElectronique.Controllers
                 {
                     await SignInAsync(user, isPersistent: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", "Home", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
             return View(model);
@@ -247,6 +247,7 @@ namespace MFMElectronique.Controllers
                 if (result.Succeeded)
                 {
                     ViewBag.Message = "Profile updated successfully.";
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

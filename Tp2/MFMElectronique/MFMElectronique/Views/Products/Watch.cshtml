@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<MFMElectronique.Models.Product>
 
 @{
-    ViewBag.Title = "Watches";
+    ViewBag.Title = MFMElectronique.Views.Shared.Resources.Watches;
 }
 
 <div class="mens">
     <div class="main">
         <div class="wrap">
             <div class="cont span_2_of_3">
-                <h2 class="head">Watches</h2>
+                <h2 class="head">@MFMElectronique.Views.Shared.Resources.Watches</h2>
                 <div class="top-box">
                 @foreach (var item in Model)
                 {

@@ -212,6 +212,11 @@
     <Compile Include="ViewModels\ShoppingCartViewModel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Account\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\CheckoutPaypal\Resources.en.Designer.cs">
       <DependentUpon>Resources.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -819,6 +824,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411060047174_InitialMigrations.resx">
       <DependentUpon>201411060047174_InitialMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CheckoutPaypal\Resources.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
