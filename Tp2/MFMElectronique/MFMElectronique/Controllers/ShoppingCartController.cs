@@ -24,12 +24,10 @@ namespace MFMElectronique.Controllers
                 
             };
 
-
             //PUROLATOR ET POSTE CANADA
-            EstimatingPuro puroClient = new EstimatingPuro();            
-            AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
-            viewModel.Shipping = puroClient.CallGetQuickEstimate(aUser);
+            AspNetUser aUser = storeDB.AspNetUsers.FirstOrNull(c => c.Email == User.Identity.Name);
             
+            viewModel.Shipping = aUser == null ? 10 : new EstimatingPuro().CallGetQuickEstimate(aUser);
             
             // Return the view
             return View(viewModel);
@@ -49,7 +47,7 @@ namespace MFMElectronique.Controllers
             return View(viewModel);
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult AddToCart(int id, string returnUrl)
         {
             

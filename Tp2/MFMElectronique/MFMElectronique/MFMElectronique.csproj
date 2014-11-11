@@ -188,6 +188,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\ElectroniqueEntities.cs" />
     <Compile Include="Models\EstimatingPuro.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />

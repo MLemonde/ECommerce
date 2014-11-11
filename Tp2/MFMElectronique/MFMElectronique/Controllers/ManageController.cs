@@ -35,8 +35,7 @@ namespace MFMElectronique.Controllers
             }
         }
 
-        //
-        // GET: /Manage/Index
+        [HttpGet]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -61,8 +60,7 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/RemoveLogin
+        [HttpGet]
         public ActionResult RemoveLogin()
         {
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
@@ -70,8 +68,6 @@ namespace MFMElectronique.Controllers
             return View(linkedAccounts);
         }
 
-        //
-        // POST: /Manage/RemoveLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
@@ -94,15 +90,12 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("ManageLogins", new { Message = message });
         }
 
-        //
-        // GET: /Manage/AddPhoneNumber
+        [HttpGet]
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/AddPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -125,8 +118,6 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
-        //
-        // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
@@ -139,8 +130,6 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("Index", "Manage");
         }
 
-        //
-        // POST: /Manage/DisableTwoFactorAuthentication
         [HttpPost]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
@@ -153,8 +142,7 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("Index", "Manage");
         }
 
-        //
-        // GET: /Manage/VerifyPhoneNumber
+        [HttpGet]
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
@@ -162,8 +150,6 @@ namespace MFMElectronique.Controllers
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
-        //
-        // POST: /Manage/VerifyPhoneNumber
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -187,8 +173,7 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/RemovePhoneNumber
+        [HttpGet]
         public async Task<ActionResult> RemovePhoneNumber()
         {
             var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
@@ -204,15 +189,12 @@ namespace MFMElectronique.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
-        //
-        // GET: /Manage/ChangePassword
+        [HttpGet]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -235,8 +217,7 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/ChangeInformations
+        [HttpGet]
         public ActionResult ChangeInformations()
         {
             //var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
@@ -247,8 +228,6 @@ namespace MFMElectronique.Controllers
             return View(user);
         }
 
-        //
-        // POST: /Manage/ChangeInformations
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangeInformations(ApplicationUser model)
@@ -277,15 +256,12 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/SetPassword
+        [HttpGet]
         public ActionResult SetPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
@@ -309,8 +285,7 @@ namespace MFMElectronique.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/ManageLogins
+        [HttpGet]
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -332,8 +307,6 @@ namespace MFMElectronique.Controllers
             });
         }
 
-        //
-        // POST: /Manage/LinkLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
@@ -342,8 +315,7 @@ namespace MFMElectronique.Controllers
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
 
-        //
-        // GET: /Manage/LinkLoginCallback
+        [HttpGet]
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
@@ -355,7 +327,7 @@ namespace MFMElectronique.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
