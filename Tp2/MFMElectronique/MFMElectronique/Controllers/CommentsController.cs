@@ -10,6 +10,11 @@ using MFMElectronique.Models;
 
 namespace MFMElectronique.Controllers
 {
+    /// <summary>
+    /// Controleur pour les commentaires et les ratings sur les produits.
+    /// J'ai juste modifié la méthode create pour rajouter le return url.
+    /// Auteur du controleur : MA
+    /// </summary>
     public class CommentsController : Controller
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
@@ -45,8 +50,12 @@ namespace MFMElectronique.Controllers
         }
 
         // POST: Comments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// La création du commentaire
+        /// </summary>
+        /// <param name="comment">le commentaire</param>
+        /// <param name="returnUrl">l'URL à laquelle on retourne après avoir créer le commentaire</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Rating,Comment1,DateCreated,ProductID,UserID")] Comment comment, string returnUrl)

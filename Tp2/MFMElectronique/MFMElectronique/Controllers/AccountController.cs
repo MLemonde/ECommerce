@@ -9,12 +9,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MFMElectronique.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MFMElectronique.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ElectroniqueEntities db = new ElectroniqueEntities();
         private ApplicationUserManager _userManager;
 
         public AccountController()
@@ -147,6 +149,14 @@ namespace MFMElectronique.Controllers
 
         //
         // POST: /Account/Register
+        /// <summary>
+        /// Description : inscription au site. MVC 5 fonctione avec un "UserManager" 
+        /// donc ce qu'on a vu en classe pour mettre celui qui s'incrit directement dans list "user"
+        /// ne fonctionne pas. J'ai corrigé ça.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -158,6 +168,14 @@ namespace MFMElectronique.Controllers
                 Address = model.Address, City = model.City, Country = model.Country,State = model.State, PostalCode = model.PostalCode,
                 FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone};
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+                var roleStore = new RoleStore<IdentityRole>(db);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+                var userStore = new UserStore<ApplicationUser>(db);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                UserManager.AddToRole(user.Id, "User");
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

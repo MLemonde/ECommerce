@@ -12,11 +12,20 @@ using System.IO;
 
 namespace MFMElectronique.Controllers
 {
+    /// <summary>
+    /// Class ADMIN : l'administrateur peut gérer les produits ici.
+    /// Auteur du controlleur : MA
+    /// </summary>
     public class AdminController : Controller
     {
         private ElectroniqueEntities db = new ElectroniqueEntities();
 
         // GET: Admin
+        /// <summary>
+        /// Retourne l'index de l'admin...
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.ProductBrand).Include(p => p.ProductCategory);
@@ -24,6 +33,12 @@ namespace MFMElectronique.Controllers
         }
 
         // GET: Admin/Details/5
+        /// <summary>
+        /// On ne va pas l'utiliser mais retourne les détails d'un produit.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,6 +54,11 @@ namespace MFMElectronique.Controllers
         }
 
         // GET: Admin/Create
+        /// <summary>
+        /// Retourne la page pour créer un nouveau produit
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.BrandID = new SelectList(db.ProductBrands, "Id", "Name");
@@ -48,10 +68,14 @@ namespace MFMElectronique.Controllers
         }
 
         // POST: Admin/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Créer le produit, si on ne réussi retourne message d'erreur
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(ProductAdminViewModel product)
         {
             if (ModelState.IsValid)
@@ -67,6 +91,12 @@ namespace MFMElectronique.Controllers
             return View(product);
         }
 
+        /// <summary>
+        /// Lors de la création du produit, la méthode pour uploader une photo est un peu longue,
+        /// je l'ai donc séparée.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
         private void CreateProduct(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
@@ -113,6 +143,13 @@ namespace MFMElectronique.Controllers
         }
 
         // GET: Admin/Edit/5
+        /// <summary>
+        /// Retourne les composantes de la page pour updater un produit.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -141,10 +178,15 @@ namespace MFMElectronique.Controllers
         }
 
         // POST: Admin/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Controleur pour updater le produit. (incluant le changement de photo)
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(ProductAdminViewModel model)
         {
             var validImageTypes = new string[]
@@ -196,6 +238,14 @@ namespace MFMElectronique.Controllers
         }
 
         // GET: Admin/Delete/5
+        /// <summary>
+        /// En temps normal, un produit ne devrait jamais être supprimée.
+        /// Il devrait plutôt être mis comme discontinué. Pour l'instant je n'ai donc pas touché à cette méthode.
+        /// Auteur : MA
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -213,6 +263,7 @@ namespace MFMElectronique.Controllers
         // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
