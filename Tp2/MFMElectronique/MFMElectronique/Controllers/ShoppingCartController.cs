@@ -27,8 +27,12 @@ namespace MFMElectronique.Controllers
             //PUROLATOR ET POSTE CANADA
             AspNetUser aUser = storeDB.AspNetUsers.FirstOrNull(c => c.Email == User.Identity.Name);
             
-            viewModel.Shipping = aUser == null ? 10 : new EstimatingPuro().CallGetQuickEstimate(aUser);
-            
+            viewModel.Shipping = aUser == null ? 0 : new EstimatingPuro().CallGetQuickEstimate(aUser);
+            decimal Pcanada = new GetShipmentPrice().GetPrice(aUser.PostalCode);
+            if (viewModel.Shipping > Pcanada)
+            {
+                viewModel.Shipping = Pcanada;
+            }
             // Return the view
             return View(viewModel);
         }

@@ -4,9 +4,9 @@
 }
 
 <h2>@MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmPaiement</h2>
-<p>
-    @ViewBag.shipping
-</p>
+
+    @Html.Raw(ViewBag.shipping)
+
 @using(Html.BeginForm("ConfirmerTransaction", "CheckoutPaypal", FormMethod.Post))
 {
    

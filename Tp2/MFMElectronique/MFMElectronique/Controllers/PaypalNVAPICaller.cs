@@ -73,8 +73,8 @@ namespace MFMElectronique.Controllers
                 host = "www.sandbox.paypal.com";
             }
 
-            string returnURL = "http://localhost:4521/CheckOutPaypal/ConfirmPaiement";
-            string cancelURL = "http://localhost:4521/CheckOutPaypal/CancelPaiement";
+            string returnURL = "http://localhost:5032/CheckOutPaypal/ConfirmPaiement";
+            string cancelURL = "http://localhost:5032/CheckOutPaypal/CancelPaiement";
 
             NVPCodec encoder = new NVPCodec();
             encoder["METHOD"] = "SetExpressCheckout";
@@ -236,7 +236,7 @@ namespace MFMElectronique.Controllers
                 ShippingAddress += "<td> City </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOCITY"] + "." + "</td></tr>";
                 ShippingAddress += "<td> State </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOSTATE"] + "." + "</td></tr>";
                 ShippingAddress += "<td> Zip </td><td>" + ":" + decoder["PAYMENTREQUEST_0_SHIPTOZIP"] + "." + "</td>";
-                ShippingAddress += "</tr>";
+                ShippingAddress += "</tr></table>";
 
                 return true;
             }

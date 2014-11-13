@@ -5,30 +5,38 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using System.ServiceModel;
 using System.Web;
+using MFMElectronique.PosteCanadaRef;
 
 namespace MFMElectronique.Models
 {
     public class GetShipmentPrice
     {
         
-            static void Main(string[] args)
+            public decimal GetPrice(string PostalCode)
             {
-                
-                // Your username, password and customer number are imported from the following file
-                // CPCWS_SOAP_Shipping_DotNet_Samples\SOAP\shipping\user.xml 
-                var username = "Mathewl01";
-                var password = "test1!";
-                var mailedBy = "2004381";
 
-                PosteCanadaRef.ShipmentPortTypeClient server = new PosteCanadaRef.ShipmentPortTypeClient("ShipmentPort", "https://ct.soa-gw.canadapost.ca/rs/soap/shipment/v6");
+                var username = "304c3d10815056ce";
+                var password = "44987ecf42dce1cff0c066";
+                var mailedBy = "0008307695";
+                decimal dprix = 0;
+                RatingPortTypeClient server = new RatingPortTypeClient("RatingPort", "https://ct.soa-gw.canadapost.ca/rs/soap/rating/v3");
                 server.ClientCredentials.UserName.UserName = username;
                 server.ClientCredentials.UserName.Password = password;
 
                 // Create Request
-                PosteCanadaRef.getshipmentpricerequest request = new PosteCanadaRef.getshipmentpricerequest();
-                request.locale = "EN";
-                request.mailedby = mailedBy;
-                request.shipmentid = "932091379418015924";
+                getratesrequest request = new getratesrequest();
+                request.locale = "FR";
+
+                request.mailingscenario = new getratesrequestMailingscenario();
+                request.mailingscenario.parcelcharacteristics = new getratesrequestMailingscenarioParcelcharacteristics();
+                request.mailingscenario.destination = new getratesrequestMailingscenarioDestination();
+                getratesrequestMailingscenarioDestinationDomestic destDom = new getratesrequestMailingscenarioDestinationDomestic();
+                request.mailingscenario.destination.Item = destDom;
+
+                request.mailingscenario.customernumber = mailedBy;
+                request.mailingscenario.parcelcharacteristics.weight = 1;
+                request.mailingscenario.originpostalcode = "J2S0A1";
+                destDom.postalcode = PostalCode;
 
                 // Disable timestamp on request
                 BindingElementCollection elements = server.Endpoint.Binding.CreateBindingElements();
@@ -40,18 +48,25 @@ namespace MFMElectronique.Models
                 try
                 {
                     // Execute Request
-                    server.Open();
-                    PosteCanadaRef.getshipmentpriceresponse response = server.GetShipmentPrice(request);
+                    getratesresponse response = server.GetRates(request);
+
                     // Retrieve values from response object
-                    if (response.Item.GetType() == typeof(PosteCanadaRef.ShipmentPriceType))
+                    if (response.Item.GetType() == typeof(getratesresponsePricequotes))
                     {
-                        PosteCanadaRef.ShipmentPriceType shipmentPrice = (PosteCanadaRef.ShipmentPriceType)response.Item;
-                        responseAsString += "Service Code: " + shipmentPrice.servicecode + "\r\n";
-                        responseAsString += "Due amount: " + shipmentPrice.dueamount + "\r\n";
+                        getratesresponsePricequotes priceQuotes = (getratesresponsePricequotes)response.Item;
+                        foreach (var priceQuote in priceQuotes.pricequote)
+                        {
+                            responseAsString += "Service Name: " + priceQuote.servicename + "\r\n";
+                            responseAsString += "Reception time: " + priceQuote.servicestandard.expecteddeliverydate + "\r\n";
+
+                            responseAsString += "Price Name: $" + priceQuote.pricedetails.due + "\r\n\r\n";
+                            if (dprix == 0 || dprix > priceQuote.pricedetails.due)
+                                dprix = priceQuote.pricedetails.due;
+                        }
                     }
                     else
                     {
-                        PosteCanadaRef.messages msgs = (PosteCanadaRef.messages)response.Item;
+                        messages msgs = (messages)response.Item;
                         foreach (var item in msgs.message)
                         {
                             responseAsString += "Error Code: " + item.code + "\r\n";
@@ -64,7 +79,6 @@ namespace MFMElectronique.Models
                     // SOAP Fault
                     responseAsString += "Fault Code: " + faultEx.Code.Name + "\r\n";
                     responseAsString += "Fault String: " + faultEx.Message + "\r\n";
-                    Console.WriteLine(faultEx);
                 }
                 catch (Exception ex)
                 {
@@ -72,11 +86,10 @@ namespace MFMElectronique.Models
                     responseAsString += "ERROR: " + ex.Message + "\r\n";
                 }
 
-                server.Close();
-
                 Console.WriteLine(responseAsString);
                 Console.WriteLine("Press any key to continue...");
-                Console.ReadKey(true);
+                
+                return dprix;
 
             }
         

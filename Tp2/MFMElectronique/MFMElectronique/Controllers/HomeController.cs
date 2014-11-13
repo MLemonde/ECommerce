@@ -43,11 +43,16 @@ namespace MFMElectronique.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult History()
         {
+            
             var Orderlist = storeDB.Orders.Where(c => c.AspNetUsers.Email == User.Identity.Name);
-            if (Orderlist.Count() != 0 && Orderlist != null)
+            if (Orderlist != null)
+            {
+               
                 return View(Orderlist);
+            }
             else
                 return RedirectToAction("Index");
         }

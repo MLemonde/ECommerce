@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a0b3042-fa98-427c-9eda-33af5e2d0e43" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eeea44c2-e4bb-4402-8195-1f21e426adc6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="I:\Session5\Ecommerce\ECommerce\Tp2\MFMElectronique\MFMElectronique\shipment.wsdl" Protocol="file" SourceId="1" />
+    <MetadataSource Address="D:\Session5\Ecommerce\ECommerce\Tp2\MFMElectronique\MFMElectronique\rating.wsdl" Protocol="file" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="shipment.wsdl" MetadataType="Wsdl" ID="424068f6-c955-41ce-b0b7-d14a2686b491" SourceId="1" SourceUrl="file:///I:/Session5/Ecommerce/ECommerce/Tp2/MFMElectronique/MFMElectronique/shipment.wsdl" />
+    <MetadataFile FileName="rating.wsdl" MetadataType="Wsdl" ID="506035c3-e0ea-479f-992d-ff4d68682513" SourceId="1" SourceUrl="file:///D:/Session5/Ecommerce/ECommerce/Tp2/MFMElectronique/MFMElectronique/rating.wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

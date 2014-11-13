@@ -32,6 +32,11 @@ namespace MFMElectronique.Controllers
             EstimatingPuro puroClient = new EstimatingPuro();
             AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
             dshipping = puroClient.CallGetQuickEstimate(aUser);
+            decimal Pcanada = new GetShipmentPrice().GetPrice(aUser.PostalCode);
+            if (dshipping > Pcanada)
+            {
+                dshipping = Pcanada;
+            }
 
             if (dMontantTotal > 0)
             {
