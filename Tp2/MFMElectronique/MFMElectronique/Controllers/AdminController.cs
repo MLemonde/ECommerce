@@ -134,7 +134,8 @@ namespace MFMElectronique.Controllers
                     CategoryID = model.CategoryID,
                     BrandID = model.BrandID,
                     DescriptionEN = model.DescriptionEN,
-                    DescriptionFR = model.DescriptionFR
+                    DescriptionFR = model.DescriptionFR,
+                    discontinued = false
                 };
 
                 if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
@@ -176,6 +177,7 @@ namespace MFMElectronique.Controllers
                 Name = product.Name,
                 CategoryID = product.CategoryID,
                 BrandID = product.BrandID,
+                Price = product.Price,
                 discontinued = product.discontinued,
                 DescriptionEN = product.DescriptionEN,
                 DescriptionFR = product.DescriptionFR
@@ -228,6 +230,7 @@ namespace MFMElectronique.Controllers
                 product.CategoryID = model.CategoryID;
                 product.DescriptionFR = model.DescriptionFR;
                 product.DescriptionEN = model.DescriptionEN;
+                product.discontinued = model.discontinued;
 
                 if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
                 {

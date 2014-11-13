@@ -22,31 +22,38 @@ namespace MFMElectronique.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Name")]
         public string Name { get; set; }
 
         [Required]
         [DefaultValue("")]
         [AllowHtml]
         [DataType(DataType.Html)]
+        [Display(Name = "Description in French")]
         public string DescriptionFR { get; set; }
 
         [Required]
         [DefaultValue("")]
         [AllowHtml]
         [DataType(DataType.Html)]
+        [Display(Name = "Description in English")]
         public string DescriptionEN { get; set; }
 
+        [Display(Name = "Product is discontinued")]
         public bool discontinued { get; set; }
 
         [Required]
+        [Display(Name = "The pictures")]
         public string PictureURL { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
-        [UIHint("Currency")]
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Price")]
         public decimal Price { get; set; }
 
+        [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
+        [Display(Name = "Brand")]
         public int BrandID { get; set; }
 
         public virtual ICollection<Cart> Cart { get; set; }

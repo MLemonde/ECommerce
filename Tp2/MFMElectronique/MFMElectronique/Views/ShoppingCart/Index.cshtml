@@ -58,14 +58,22 @@
             <a href="https://www.paypal.com/ca/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/ca/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;">
             <img src="~/Images/Static/paypal-logo1.jpg" align="right"/></a><div class="clear"></div>
 
-            if(User.Identity.IsAuthenticated)
-            { 
-                <div class="button1" style="padding-top:0px;">
+        if (User.Identity.IsAuthenticated)
+        {
+                <div class="btn_form pull-right">
+                    @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
+                    {
+                        <form>
+                            <input type='submit' name="payment_amt" value="CheckOut" />
+                        </form>
+                    }
+                </div>
+                @*<div class="button1">
                     @using (Html.BeginForm("Checkout", "CheckoutPaypal", FormMethod.Post))
                     {
                         <input type='submit' name="payment_amt" value="CheckOut" />
                     }
-                </div>
+                </div>*@
             }   
             else
             {
@@ -73,8 +81,11 @@
             }
             <div class="clear"></div>
         }
-
-            </tr>
+        else
+        {
+            Response.Redirect("~/ShoppingCart/emptycard");
+        }
+            @*</tr>
         </table>
 
         if(User.Identity.IsAuthenticated)
@@ -92,12 +103,7 @@
         {
             <p class="alert-danger">@MFMElectronique.Views.ShoppingCart.Resources.NotConnected</p>
         }
-        <div class="clear"></div>
-    }
-    else
-    {
-        Response.Redirect("~/ShoppingCart/emptycard");
-    }
+        <div class="clear"></div>*@
 </div>
 
 <script src="~/Scripts/MFMScripts/jquery-ui.min.js" type="text/javascript"></script>

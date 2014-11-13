@@ -15,14 +15,14 @@
                 <h4 class="title">Create a new item</h4>
                 <div>
                     @Html.LabelFor(m => m.Name)
-                    @Html.TextBoxFor(m => m.Name, new { @class = "inputbox" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "inputbox"})
                     @Html.ValidationMessageFor(m => m.Name, "")
                 </div>
                 <br />
 
                 <div>
-                    @Html.LabelFor(m => m.Price)
-                    @Html.TextBoxFor(m => m.Price, "{0:c}", new { OnTextChanged = "javascript:formatCurrency();" })
+                    @Html.LabelFor(m => m.Price) $
+                    @Html.EditorFor(m => m.Price, "{0:0.00}")
                     @Html.ValidationMessageFor(m => m.Price)
                     |
                     @Html.LabelFor(m => m.CategoryID)

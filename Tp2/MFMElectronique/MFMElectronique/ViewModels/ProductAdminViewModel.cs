@@ -12,25 +12,25 @@ namespace MFMElectronique.ViewModels
     {
         public int Id { get; set; }
 
-
+        [DisplayName("Name")]
         public string Name { get; set; }
 
         [AllowHtml]
+        [DisplayName("Description of the product in French")]
         public string DescriptionFR { get; set; }
-
         [AllowHtml]
+        [DisplayName("Description of the product in English")]
         public string DescriptionEN { get; set; }
-
+        [DisplayName("Is the produt discontinued?")]
         public bool discontinued { get; set; }
-
-        [DisplayName("Uploader une photo")]
+        [DisplayName("Would you kindly upload a picture please")]
         [DataType(DataType.Upload)]
         public HttpPostedFileBase ImageUpload { get; set; }
-
+        [DisplayName("Price")]
         public decimal Price { get; set; }
-
+        [DisplayName("Category")]
         public int CategoryID { get; set; }
-
+        [DisplayName("Brand")]
         public int BrandID { get; set; }
 
     }

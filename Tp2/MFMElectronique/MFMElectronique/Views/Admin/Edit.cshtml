@@ -21,8 +21,8 @@
                 <br />
 
                 <div>
-                    @Html.LabelFor(m => m.Price)
-                    @Html.TextBoxFor(m => m.Price, "{0:c}")
+                    @Html.LabelFor(m => m.Price) $
+                    @Html.EditorFor(m => m.Price)
                     @Html.ValidationMessageFor(m => m.Price)
                     |
                     @Html.LabelFor(m => m.CategoryID)
@@ -34,28 +34,24 @@
                     @Html.ValidationMessageFor(m => m.BrandID)
                 </div>
                 <br />
-
+                <div>
+                    @Html.LabelFor(m => m.discontinued)
+                    @Html.EditorFor(m => m.discontinued)
+                    @Html.ValidationMessageFor(m => m.discontinued)
+                </div>
+                <br />
                 <div>
                     @Html.LabelFor(m => m.DescriptionFR)
                     @Html.TextAreaFor(m => m.DescriptionFR, new { @class = "ckeditor", @id = "text-details" })
                     @Html.ValidationMessageFor(m => m.DescriptionFR)
                 </div>
                 <br />
-
                 <div>
                     @Html.LabelFor(m => m.DescriptionEN)
                     @Html.TextAreaFor(m => m.DescriptionEN, new { @class = "ckeditor", @id = "text-details" })
                     @Html.ValidationMessageFor(m => m.DescriptionEN)
                 </div>
                 <br />
-
-                @*<div>
-                        @Html.LabelFor(m => m.discontinued)
-                        @Html.EditorFor(m => m.discontinued)
-                        @Html.ValidationMessageFor(m => m.discontinued)
-                    </div>
-                    <br />*@
-
                 <div>
                     @Html.LabelFor(m => m.ImageUpload)
                     @Html.EditorFor(m => m.ImageUpload)

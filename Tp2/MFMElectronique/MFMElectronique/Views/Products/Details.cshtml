@@ -8,6 +8,7 @@
     <div class="main">
         <div class="wrap">
             <ul class="breadcrumb breadcrumb__t"><a href="/" class="home">Home</a> / @Html.ActionLink(@Model.ProductCategory.Name.ToString(), @Model.ProductCategory.Name.ToString())</a> / @Model.Name</ul>
+            
             <div class="cont span_2_of_3">
                 <div class="grid images_3_of_2">
                     <div id="container">
@@ -18,6 +19,7 @@
                                 </div>
                                 <a href="#"><img src="@Url.Content(Model.PictureURL)" alt="1144953 3 2x"></a>
                                 <ul class="pagination"></ul>
+
                                 @*@Html.ActionLink("Back to List", "Index")</ul>*@
                                 <div class="clear"></div>
                             </div>
@@ -26,6 +28,14 @@
                 </div>
                 <div class="desc1 span_3_of_2">
                     <h3 class="m_3">@Model.Name by @Model.ProductBrand.Name</h3>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="price1">
+                            @*POUR L'INTERFACE ADMINISTRATEUR*@
+                            <a href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><span class="actual">[EDIT]</span></a>
+                            <a href="@Url.Action("Delete", "Admin", new { id = Model.Id })"><span class="actual">[DELETE]</span></a>
+                        </div><br />
+                    }
                     <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />
                     <p class="m_5">$@Model.Price @*<span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a>*@</p><br />
                     @if (Model.Comment.Any())
@@ -59,14 +69,25 @@
                     {
                         <text>Ce produit n'a aucune évaluation pour le moment!</text>
                     }
-                    <div class="btn_form">
-                        @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
-                        {
+                    @if (!Model.discontinued)
+                    {
+                        <div class="btn_form">
+                            @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
+                            {
+                                <form>
+                                    <input type="submit" value="buy" title="">
+                                </form>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn_form">
                             <form>
-                                <input type="submit" value="buy" title="">
+                                <h3>discontinued items</h3>
                             </form>
-                        }
-                    </div>
+                        </div>
+                    }
 
                     @*<p class="m_text2">@Html.DisplayFor(model => model.DescriptionEN)</p>*@
 
@@ -76,6 +97,14 @@
                 <div>
                     <p>@Html.DisplayFor(model => model.DescriptionEN)</p>
                 </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="price1">
+                        @*POUR L'INTERFACE ADMINISTRATEUR*@
+                        <a href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><span class="actual">[EDIT]</span></a>
+                        <a href="@Url.Action("Delete", "Admin", new { id = Model.Id })"><span class="actual">[DELETE]</span></a>
+                    </div><br />
+                }
                 <div class="clear"></div>
 
                 <!-- LE SCRIPT POUR VOIR D'AUTRES PRODUITS DANS LA MÊME CATÉGORIE... MANQUE DE TEMPS!!-->
@@ -150,7 +179,7 @@
                             <a href="#" class="pull-left" style="margin-left: 15px; margin-top: 15px">
                                 <img src="~/Images/Static/avatar.png" class="media-object" alt="Sample Image">
                                 <!-- Permettre à l'utilisateur ou au mod de supprimer le message -->
-                                @if (User.Identity.GetUserId() == @commentaire.AspNetUsers.Id)
+                                @if (User.Identity.GetUserId() == @commentaire.AspNetUsers.Id || User.IsInRole("Mod"))
                                 {
                                     @Html.ActionLink("Supprimer", "Delete", "Comments", new { id = commentaire.Id, returnUrl = Request.RawUrl }, null)
                                 }
