@@ -33,7 +33,7 @@ namespace MFMElectronique.Controllers
             AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
             dshipping = puroClient.CallGetQuickEstimate(aUser);
             decimal Pcanada = new GetShipmentPrice().GetPrice(aUser.PostalCode);
-            if (dshipping > Pcanada)
+            if (dshipping > Pcanada && Pcanada != 0)
             {
                 dshipping = Pcanada;
             }

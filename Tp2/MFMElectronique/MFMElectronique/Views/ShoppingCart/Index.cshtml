@@ -51,7 +51,14 @@
                 <td></td>
                 <td></td>
                 <td>@MFMElectronique.Views.ShoppingCart.Resources.Livraison</td>
-                <td>@Model.Shipping</td>
+                @if(User.Identity.IsAuthenticated)
+                {
+                    <td>@Model.Shipping</td>
+                }else
+                {
+                    <td>XX.XX</td>
+                }
+                
 
                 </tr>
             </table>
@@ -77,7 +84,7 @@
             }   
             else
             {
-                <p class="alert-danger">You must be connected to buy the product(s)</p>
+                <h3 style="text-align:center">You must be connected to buy the product and to get the shipping price</h3>
             }
             <div class="clear"></div>
         }

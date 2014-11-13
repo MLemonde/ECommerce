@@ -160,8 +160,14 @@ namespace MFMElectronique.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, 
-                Address = model.Address, City = model.City, Country = model.Country,State = model.State, PostalCode = model.PostalCode,
+                string PostalCode = model.PostalCode.ToString().Replace(" ", ""); // On enlève l'espace dans le code postal sinon PostCanada aime pas ça.
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
+                                                 Address = model.Address,
+                                                 City = model.City,
+                                                 Country = model.Country,
+                                                 State = model.State,
+                                                 PostalCode = PostalCode,
                 FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone};
                 var result = await UserManager.CreateAsync(user, model.Password);
 
