@@ -2,12 +2,23 @@
     ViewBag.Title = "Home Page";
 }
 
-
-
 <div class="row">
-    <div class="col-md-4">
-        Welcome
+    <div style="text-align:center">
+        @*<h2>@MFMElectronique.Views.Home.Resources.WelcomeMessage</h2>
+        <br />*@
 
+        @if (Session["Culture"] != null && Session["Culture"].ToString().Contains("en"))
+        {
+            <h2>Welcome at 3am-Eternals!</h2>
+    <br />
+            <img src="@Url.Content("~/Images/Static/ChristmasEn.jpg")" style="width:100%; max-width:600px" alt="Image" />
+        }
+        else
+        {
+            <h2>Bienvenue sur 3am-Eternals!</h2>
+    <br />
+            <img src="@Url.Content("~/Images/Static/ChristmasFr.jpg")" style="width:100%; max-width:600px" alt="Image" />
+        }
     </div>
+    <br />
 </div>
-    
