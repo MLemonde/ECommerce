@@ -146,12 +146,12 @@ namespace MFMElectronique.Controllers
                 AspNetUser aUser = storeDB.AspNetUsers.First(c => c.Email == User.Identity.Name);
                 order.AspNetUsers = aUser;
                 string[] addr = Session["shipping"].ToString().Split(':','.');
-                order.FirstName = addr[1];
-                order.LastName = addr[3];
-                order.City = addr[11];
-                order.Address = addr[7] + addr[9];
-                order.State = addr[13];
-                order.PostalCode = addr[15];
+                order.FirstName = aUser.FirstName;
+                order.LastName = aUser.Lastname;
+                order.City = aUser.City;
+                order.Address = aUser.Address;
+                order.State = aUser.State;
+                order.PostalCode = aUser.PostalCode;
                 order.OrderDate = DateTime.Now;
                 order.Country = aUser.Country;
                 order.Phone = aUser.PhoneNumber;
