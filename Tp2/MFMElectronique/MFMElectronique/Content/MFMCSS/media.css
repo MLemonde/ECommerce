@@ -64,3 +64,5 @@
 .text-center {
   text-align: center;
 }
+
+#recaptcha_area { margin: auto}

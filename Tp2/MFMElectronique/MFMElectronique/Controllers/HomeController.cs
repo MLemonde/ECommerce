@@ -19,6 +19,7 @@ namespace MFMElectronique.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        //[Throttle(Name = "TestThrottle", Message = "You must wait {n} seconds before accessing this url again.", Seconds = 5)]
         public ActionResult Index()
         {
             return View();

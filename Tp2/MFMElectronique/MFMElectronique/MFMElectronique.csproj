@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ShoppingCartController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\ThrottleAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

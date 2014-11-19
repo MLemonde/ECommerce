@@ -72,6 +72,11 @@ namespace MFMElectronique.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (TempData.Any())
+            {
+                ViewBag.Message = TempData["shortMessage"].ToString();
+            }
             return View(product);
         }
 

@@ -242,7 +242,32 @@
                                 }
                             </p>
                         </div>
-                    
+
+                        <div id="recaptcha_area">
+                            @* I Will Place Google Re-Captcha Here *@
+                            <div class="editor-label">
+                                <h4>Security Code</h4>
+                                
+                            </div>
+                            <div class="editor-label">
+                                @* You Can get the Script code from https://developers.google.com/recaptcha/docs/display *@
+                                <script type="text/javascript"
+                                        src="http://www.google.com/recaptcha/api/challenge?k=6Lfi-f0SAAAAAN0TNqzKPBp74RWheemlSKKqlOBi"> //Public Key on HERE
+                                </script>
+                                <noscript>
+                                    <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lfi-f0SAAAAAN0TNqzKPBp74RWheemlSKKqlOBi" @*Public key on Here too*@
+                                            height="300" width="500" frameborder="0"></iframe><br>
+                                    <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                    <input type="hidden" name="recaptcha_response_field"
+                                           value="manual_challenge">
+                                </noscript>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h4>@ViewBag.Message</h4>
+                                }
+                            </div>
+                        </div>
+
                         <div class="button1"><input type="submit" value="Create"></div>
                     }
                 }

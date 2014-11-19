@@ -179,7 +179,6 @@ C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Shared.Resources.en.resources
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\en\MFMElectronique.resources.dll
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\en\MFMElectronique.resources.dll
-C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
 I:\Session5\Ecommerce\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.dll.config
 I:\Session5\Ecommerce\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.dll
 I:\Session5\Ecommerce\ECommerce\Tp2\MFMElectronique\MFMElectronique\bin\MFMElectronique.pdb
@@ -257,3 +256,6 @@ C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.CheckoutPaypal.Resources.en.resources
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Checkout.Resources.en.resources
 C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.ShoppingCart.Resources.en.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Home.Resources.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.Views.Home.Resources.en.resources
+C:\Users\asus\Documents\GitHub\ECommerce\Tp2\MFMElectronique\MFMElectronique\obj\Debug\MFMElectronique.csprojResolveAssemblyReference.cache
