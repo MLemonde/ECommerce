@@ -168,7 +168,9 @@ namespace MFMElectronique.Controllers
                                                  Country = model.Country,
                                                  State = model.State,
                                                  PostalCode = PostalCode,
-                FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone};
+                                                 FirstName = model.FirstName, 
+                                                 LastName = model.LastName, 
+                                                 Phone = model.Phone};
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 var roleStore = new RoleStore<IdentityRole>(db);
@@ -176,11 +178,13 @@ namespace MFMElectronique.Controllers
 
                 var userStore = new UserStore<ApplicationUser>(db);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                UserManager.AddToRole(user.Id, "User");
 
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+
+                    UserManager.AddToRole(user.Id, "User");
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
