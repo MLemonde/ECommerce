@@ -1,0 +1,19 @@
+﻿@model int
+
+@{
+    ViewBag.Title = MFMElectronique.Views.Checkout.Resources.CheckoutComplete;
+}
+
+<h2>
+    @MFMElectronique.Views.Checkout.Resources.CheckoutComplete
+</h2>
+
+<p>
+    @MFMElectronique.Views.Checkout.Resources.ThanksMessage    
+    @Model
+</p>
+
+<p>
+    @MFMElectronique.Views.Checkout.Resources.MoreShipping 
+    @Html.ActionLink(MFMElectronique.Views.Checkout.Resources.store, "Index", "Home")
+</p>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmPaiement;
+}
+
+<h2>@MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmPaiement</h2>
+
+    @Html.Raw(ViewBag.shipping)
+
+@using(Html.BeginForm("ConfirmerTransaction", "CheckoutPaypal", FormMethod.Post))
+{
+   
+    <input type="submit" name="ConfirmationPaiement" value="@MFMElectronique.Views.CheckoutPaypal.Resources.ConfirmationUltime" />
+}

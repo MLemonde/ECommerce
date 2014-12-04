@@ -1,0 +1,115 @@
+﻿@model MFMElectronique.Models.ApplicationUser
+@{
+    ViewBag.Title = "Change Informations";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("ChangeInformations", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col_1_of_2 span_1_of_2">
+        @Html.LabelFor(m => m.FirstName)
+        <div>
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName, "")
+        </div><br />
+
+        @Html.LabelFor(m => m.LastName)
+        <div>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div><br />
+    </div>
+    <div class="col_1_of_2 ">
+        @Html.LabelFor(m => m.Address)
+        <div>
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Address)
+        </div><br>
+
+        @Html.LabelFor(m => m.City)
+        <div>
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.City)
+        </div><br>
+
+        @Html.LabelFor(m => m.PostalCode)
+        <div>
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PostalCode)
+        </div><br>
+
+        @Html.LabelFor(m => m.Country)
+        <div>
+            @Html.DropDownList("Country",
+                new SelectListItem[]
+                {
+                    new SelectListItem() { Text = "Canada", Value = "CA" },
+                    new SelectListItem() { Text = "États-Unis", Value = "US" }
+                }
+            )
+            @Html.ValidationMessageFor(m => m.Country)
+        </div><br>
+
+
+        @Html.LabelFor(m => m.State)
+        <div>
+           @Html.DropDownList("State",
+                new SelectListItem[]
+                {
+                    new SelectListItem() { Text = "Québec", Value = "QC" },
+                    new SelectListItem() { Text = "Ontario", Value = "ON" },
+                    new SelectListItem() { Text = "Vermont", Value = "VR" },
+                    new SelectListItem() { Text = "Manitoba", Value = "MN" }
+                })
+            @Html.ValidationMessageFor(m => m.State)
+        </div><br>
+
+        @Html.LabelFor(m => m.Phone)
+        <div>
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div><br>
+        <button class="grey">Submit</button>
+        @*<p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>*@
+    </div>
+    <div class="clear">
+        @*<h4>Allo test</h4>*@
+    </div>
+}
+
+@*@using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Change Password Form</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.OldPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Change password" class="btn btn-default" />
+        </div>
+    </div>
+}*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

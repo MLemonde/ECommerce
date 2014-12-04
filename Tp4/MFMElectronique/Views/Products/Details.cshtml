@@ -1,0 +1,308 @@
+﻿@model MFMElectronique.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="mens">
+    <div class="main">
+        <div class="wrap">
+            <ul class="breadcrumb breadcrumb__t"><a href="/" class="home">Home</a> / @Html.ActionLink(@Model.ProductCategory.Name.ToString(), @Model.ProductCategory.Name.ToString())</a> / @Model.Name</ul>
+            
+            <div class="cont span_2_of_3">
+                <div class="grid images_3_of_2">
+                    <div id="container">
+                        <div id="products_example">
+                            <div id="products">
+                                <div class="slides_container">
+                                    <a href="#">@*<img class="a" id="img1" src="@Url.Content(Model.PictureURL)" alt="" rel="images/LGG.jpg" />*@</a>
+                                </div>
+                                <a href="#"><img src="@Url.Content(Model.PictureURL)" alt="1144953 3 2x"></a>
+                                <ul class="pagination"></ul>
+
+                                @*@Html.ActionLink("Back to List", "Index")</ul>*@
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="desc1 span_3_of_2">
+                    <h3 class="m_3">@Model.Name by @Model.ProductBrand.Name</h3>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="price1">
+                            @*POUR L'INTERFACE ADMINISTRATEUR*@
+                            <a href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><span class="actual">[EDIT]</span></a>
+                            <a href="@Url.Action("Delete", "Admin", new { id = Model.Id })"><span class="actual">[DELETE]</span></a>
+                        </div><br />
+                    }
+                    <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div><br />
+                    <p class="m_5">$@Model.Price @*<span class="reducedfrom">Rs. 999</span> <a href="#">click for offer</a>*@</p><br />
+                    @if (Model.Comment.Any())
+                    {
+                        decimal total = 0;
+                        decimal moyenne = 0;
+                        int count = 0;
+                        //Retourner la moyenne des commentaires!
+                        foreach (var evaluation in Model.Comment)
+                        {
+                            total += evaluation.Rating;
+
+                            if (evaluation.Rating > 0)
+                            {
+                                count++;
+                            }
+                        }
+                        if (count > 0)
+                        {
+                            moyenne = total / count;
+                            <text>Moyenne : </text> <b>@String.Format("{0:0.00}", moyenne) / 5</b> <br />
+                            <text>Nombre d'évalutions : </text>    <b>@count.ToString()</b>
+                        }
+                        else
+                        {
+                            <text>Ce produit n'a aucune évaluation pour le moment!</text>
+
+                        }
+                    }
+                    else
+                    {
+                        <text>Ce produit n'a aucune évaluation pour le moment!</text>
+                    }
+                    @if (!Model.discontinued)
+                    {
+                        <div class="btn_form">
+                            @using (Html.BeginForm("AddToCart", "ShoppingCart", new { id = Model.Id, returnUrl = Request.RawUrl }))
+                            {
+                                <form>
+                                    <input type="submit" value="buy" title="">
+                                </form>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn_form">
+                            <form>
+                                <h3>discontinued items</h3>
+                            </form>
+                        </div>
+                    }
+
+                    @*<p class="m_text2">@Html.DisplayFor(model => model.DescriptionEN)</p>*@
+
+                    @*<div class="text">@Html.DisplayFor(model => model.DescriptionEN)</div>*@
+                </div>
+                <div class="clear"></div>
+                <div>
+                    <p>@Html.DisplayFor(model => model.DescriptionEN)</p>
+                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="price1">
+                        @*POUR L'INTERFACE ADMINISTRATEUR*@
+                        <a href="@Url.Action("Edit", "Admin", new { id = Model.Id })"><span class="actual">[EDIT]</span></a>
+                        <a href="@Url.Action("Delete", "Admin", new { id = Model.Id })"><span class="actual">[DELETE]</span></a>
+                    </div><br />
+                }
+                <div class="clear"></div>
+
+                <!-- LE SCRIPT POUR VOIR D'AUTRES PRODUITS DANS LA MÊME CATÉGORIE... MANQUE DE TEMPS!!-->
+                @*<div class="clients">
+                    <h3 class="m_3">Other Products in the same category</h3>
+                    <ul id="flexiselDemo3">
+                        <li><img src="images/Lumia520.png" /><a href="#">Category</a><p>Rs 600</p></li>
+
+                    </ul>
+                    <script type="text/javascript">
+                        $(window).load(function () {
+                            $("#flexiselDemo1").flexisel();
+                            $("#flexiselDemo2").flexisel({
+                                enableResponsiveBreakpoints: true,
+                                responsiveBreakpoints: {
+                                    portrait: {
+                                        changePoint: 480,
+                                        visibleItems: 1
+                                    },
+                                    landscape: {
+                                        changePoint: 640,
+                                        visibleItems: 2
+                                    },
+                                    tablet: {
+                                        changePoint: 768,
+                                        visibleItems: 3
+                                    }
+                                }
+                            });
+
+                            $("#flexiselDemo3").flexisel({
+                                visibleItems: 5,
+                                animationSpeed: 1000,
+                                autoPlay: true,
+                                autoPlaySpeed: 3000,
+                                pauseOnHover: true,
+                                enableResponsiveBreakpoints: true,
+                                responsiveBreakpoints: {
+                                    portrait: {
+                                        changePoint: 480,
+                                        visibleItems: 1
+                                    },
+                                    landscape: {
+                                        changePoint: 640,
+                                        visibleItems: 2
+                                    },
+                                    tablet: {
+                                        changePoint: 768,
+                                        visibleItems: 3
+                                    }
+                                }
+                            });
+
+                        });
+                    </script>
+                    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+                </div>*@
+
+
+                <h1>Comments</h1>
+                @if (Model.Comment.Any())
+                {
+                    foreach (var commentaire in Model.Comment)
+                    {
+                        <div class="cke_colorbox" style="background-color: lightgray">
+                            @if(commentaire.Rating > 0)
+                            {
+                                <div class="pull-right" style="background-color: white; margin-right: 15px; margin-top: 15px; width: 5em">
+                                    <h4 style="text-align:center">@commentaire.Rating / 5</h4>
+                                </div>
+                            }
+                            <a href="#" class="pull-left" style="margin-left: 15px; margin-top: 15px">
+                                <img src="~/Images/Static/avatar.png" class="media-object" alt="Sample Image">
+                                <!-- Permettre à l'utilisateur ou au mod de supprimer le message -->
+                                @if (User.Identity.GetUserId() == @commentaire.AspNetUsers.Id || User.IsInRole("Mod"))
+                                {
+                                    @Html.ActionLink("Supprimer", "Delete", "Comments", new { id = commentaire.Id, returnUrl = Request.RawUrl }, null)
+                                }
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading" style="margin-top: 15px">@commentaire.AspNetUsers.FirstName @commentaire.AspNetUsers.Lastname</h4>
+
+                                <small><i>@commentaire.DateCreated</i></small>
+
+                                @Html.DisplayFor(comment => commentaire.Comment1)
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    <br />
+                    }
+                }
+                else
+                {
+                    <text>There's not a single comment for this product at the moment :(</text>
+                }
+
+                <h4>YOUR OPINION</h4>
+                @using Microsoft.AspNet.Identity;
+                @if (Request.IsAuthenticated)
+                {
+                    string userId = User.Identity.GetUserId();
+                    bool userAlreadyRatedProduct = false;
+                    string userRatingOnProduct = "";
+
+                    foreach (var item in Model.Comment)
+                    {
+                            if (item.UserID == userId && item.ProductID == Model.Id && item.Rating > 0)
+                            {
+                                userAlreadyRatedProduct = true;
+                                userRatingOnProduct = item.Rating.ToString();
+                                break;
+                            }
+
+                    }
+
+                    using (Html.BeginForm("Create", "Comments", new { ProductID = Model.Id, UserID = userId, returnUrl = Request.RawUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <textarea class="ckeditor" name="Comment1"></textarea>
+                        var values = new SelectList(Enumerable.Range(1, 5));
+
+                        <div class="cke_bottom">
+                            <p style="color: #ffffff">
+                                Votre note du produit :
+
+                                @if (!userAlreadyRatedProduct)
+                                {
+                                    @Html.DropDownList("rating", values)
+                                }
+                                else
+                                {
+                                    @userRatingOnProduct
+                                }
+                            </p>
+                        </div>
+
+                        <div id="recaptcha_area">
+                            @* I Will Place Google Re-Captcha Here *@
+                            <div class="editor-label">
+                                <h4>Security Code</h4>
+                                
+                            </div>
+                            <div class="editor-label">
+                                @* You Can get the Script code from https://developers.google.com/recaptcha/docs/display *@
+                                <script type="text/javascript"
+                                        src="http://www.google.com/recaptcha/api/challenge?k=6Lfi-f0SAAAAAN0TNqzKPBp74RWheemlSKKqlOBi"> //Public Key on HERE
+                                </script>
+                                <noscript>
+                                    <iframe src="http://www.google.com/recaptcha/api/noscript?k=6Lfi-f0SAAAAAN0TNqzKPBp74RWheemlSKKqlOBi" @*Public key on Here too*@
+                                            height="300" width="500" frameborder="0"></iframe><br>
+                                    <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                    <input type="hidden" name="recaptcha_response_field"
+                                           value="manual_challenge">
+                                </noscript>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <h4>@ViewBag.Message</h4>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="button1"><input type="submit" value="Create"></div>
+                    }
+                }
+                else
+                {
+                    <text>Vous devez être authentifié pour pouvoir commenter</text>
+                }
+                <br />
+            </div>
+
+            @*<div class="toogle">
+                    <h3 class="m_3">Product Details</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>
+                <div class="toogle">
+                    <h3 class="m_3">More Information</h3>
+                    <p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+                </div>*@
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+    $(document).ready(function () {
+        $("p").removeClass("main");
+    });
+</script>
