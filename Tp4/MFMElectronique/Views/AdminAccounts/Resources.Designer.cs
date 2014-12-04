@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFMElectronique.Views.Checkout {
+namespace MFMElectronique.Views.AdminAccounts {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MFMElectronique.Views.Checkout {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MFMElectronique.Views.Checkout.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MFMElectronique.Views.AdminAccounts.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,65 @@ namespace MFMElectronique.Views.Checkout {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Addresse et paiement.
+        ///   Looks up a localized string similar to Adresse Courriel.
         /// </summary>
-        public static string AddressAndPayment {
+        public static string Email {
             get {
-                return ResourceManager.GetString("AddressAndPayment", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Checkout Completé.
+        ///   Looks up a localized string similar to Adresse Courriel confirmée.
         /// </summary>
-        public static string CheckoutComplete {
+        public static string EmailConfirmed {
             get {
-                return ResourceManager.GetString("CheckoutComplete", resourceCulture);
+                return ResourceManager.GetString("EmailConfirmed", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continuez a acheter d&apos;autre téléphones dans notre .
+        ///   Looks up a localized string similar to Prénom.
         /// </summary>
-        public static string MoreShipping {
+        public static string FirstName {
             get {
-                return ResourceManager.GetString("MoreShipping", resourceCulture);
+                return ResourceManager.GetString("FirstName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paiement.
+        ///   Looks up a localized string similar to Nom.
         /// </summary>
-        public static string Payment {
+        public static string LastName {
             get {
-                return ResourceManager.GetString("Payment", resourceCulture);
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Information de livraison.
+        ///   Looks up a localized string similar to Téléphone.
         /// </summary>
-        public static string ShippingInformation {
+        public static string Phone {
             get {
-                return ResourceManager.GetString("ShippingInformation", resourceCulture);
+                return ResourceManager.GetString("Phone", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to magasin en ligne!.
+        ///   Looks up a localized string similar to Enlever.
         /// </summary>
-        public static string store {
+        public static string Remove {
             get {
-                return ResourceManager.GetString("store", resourceCulture);
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Envoyer.
+        ///   Looks up a localized string similar to TOUTES VOS COMPTES NOUS APPARTIENNENT.
         /// </summary>
-        public static string Submit {
+        public static string Title {
             get {
-                return ResourceManager.GetString("Submit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Merci pour votre commande! votre numéro de commande est:.
-        /// </summary>
-        public static string ThanksMessage {
-            get {
-                return ResourceManager.GetString("ThanksMessage", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

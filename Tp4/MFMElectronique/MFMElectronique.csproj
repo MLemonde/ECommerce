@@ -163,6 +163,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminAccountsController.cs" />
+    <Compile Include="Controllers\AdminOrdersController.cs" />
     <Compile Include="Controllers\CheckoutPaypalController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -224,6 +226,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminAccounts\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminAccounts\Resources.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.en.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\CheckoutPaypal\Resources.en.Designer.cs">
       <DependentUpon>Resources.en.resx</DependentUpon>
@@ -850,6 +862,16 @@
     <Content Include="Views\Products\Watch.cshtml" />
     <Content Include="Views\Home\History.cshtml" />
     <None Include="Service References\PosteCanadaRef\rating.wsdl" />
+    <Content Include="Views\AdminAccounts\Create.cshtml" />
+    <Content Include="Views\AdminAccounts\Delete.cshtml" />
+    <Content Include="Views\AdminAccounts\Details.cshtml" />
+    <Content Include="Views\AdminAccounts\Edit.cshtml" />
+    <Content Include="Views\AdminAccounts\Index.cshtml" />
+    <Content Include="Views\AdminOrders\Create.cshtml" />
+    <Content Include="Views\AdminOrders\Delete.cshtml" />
+    <Content Include="Views\AdminOrders\Details.cshtml" />
+    <Content Include="Views\AdminOrders\Edit.cshtml" />
+    <Content Include="Views\AdminOrders\Index.cshtml" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -878,6 +900,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Account\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminAccounts\Resources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminAccounts\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CheckoutPaypal\Resources.en.resx">

@@ -97,7 +97,7 @@
                     </a>
                 </div>
                 <div class="menu">
-                    <ul class="megamenu skyblue">
+                    <ul class="megamenu skyblue: text-center">
                         @*<li class="active grid">
                             @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Home, "Index", "Home")
                         </li>*@
@@ -116,12 +116,15 @@
                                 @Html.ActionLink(MFMElectronique.Views.Shared.Resources.Purchases, "History", "Home")
                             }
                         </li>
-                        <li>
                             @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                             {
+                                <br />
+                                <li>
                                 @Html.ActionLink("Admin", "Index", "Admin")
+                                @Html.ActionLink("Liste des comptes", "Index", "AdminAccounts")
+                                @Html.ActionLink("Liste des commandes", "Index", "AdminOrders")
+                                </li>
                             }
-                        </li>
                     </ul>
                 </div>
             </div>

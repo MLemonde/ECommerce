@@ -18,6 +18,9 @@ namespace MFMElectronique.Models
 
         public DateTime OrderDate { get; set; }
 
+        [StringLength(50)]
+        public string OrderStatut { get; set; }
+
         [StringLength(255)]
         public string FirstName { get; set; }
 

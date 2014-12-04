@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MFMElectronique.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    if (Context.Session["Culture"] == null)
+    {
+        Context.Session["Culture"] = UICulture.Contains("en") ? "en" : "fr";
+    }
+    UICulture = Culture = Context.Session["Culture"].ToString();
+}
+
+<div class="wrap">
+
+    <h4 class="title">@MFMElectronique.Views.AdminAccounts.Resources.Title</h4>
+    <table class="table">
+        <tr>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.Email</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.EmailConfirmed</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.FirstName</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.LastName</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.Phone</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.Remove</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr id="row-@item.Id">
+                <td>@Html.ActionLink(item.Email, "Details", "AdminAccounts", new { id = item.Id }, null)</td>
+                <td>@item.EmailConfirmed</td>
+                <td>@item.FirstName</td>
+                <td>@item.Lastname</td>
+                <td>@item.Phone</td>
+                <td>@Html.ActionLink("[X]", "Delete", new { id = item.Id })</td>
+            </tr>
+        }
+    </table>
+</div>
