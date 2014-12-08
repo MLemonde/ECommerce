@@ -210,4 +210,7 @@
   <data name="Watches" xml:space="preserve">
     <value>Watches</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
 </root>
