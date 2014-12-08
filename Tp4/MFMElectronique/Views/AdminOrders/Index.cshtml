@@ -4,9 +4,53 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
+<div class="wrap">
+
+    @*<h4 class="title">@MFMElectronique.Views.AdminAccounts.Resources.Title</h4>*@
+    <h4 class="title">☺ALL OUR ORDERS☺$$$$$$$$$$$$$ ☺</h4>
+
+    <table class="table">
+        <tr>
+            @*<th>@MFMElectronique.Views.AdminAccounts.Resources.Email</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.EmailConfirmed</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.FirstName</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.LastName</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.Phone</th>
+            <th>@MFMElectronique.Views.AdminAccounts.Resources.Remove</th>*@
+
+            <th>Order's ID</th>
+            <th>Email</th>
+            <th class="text-center">Total $ (including taxes)</th>
+            <th>Customer's City</th>
+            <th>State</th>
+            <th class="text-center">Edit Order</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr id="row-@item.Id">
+                <td>@item.Id</td>
+                <td>@item.AspNetUsers.Email</td>
+                <th class="text-center">@item.Total</th>
+                <td>@item.City</td>
+                <td>@item.State</td>
+                <td class="text-center">@Html.ActionLink("[!]", "Edit", new { id = item.Id })</td>
+
+
+
+
+                @*<td>@Html.ActionLink(item.Email, "Details", "AdminAccounts", new { id = item.Id }, null)</td>
+                <td>@item.EmailConfirmed</td>
+                <td>@item.FirstName</td>
+                <td>@item.Lastname</td>
+                <td>@item.Phone</td>
+                <td>@Html.ActionLink("[X]", "Delete", new { id = item.Id })</td>*@
+            </tr>
+        }
+    </table>
+</div>
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -94,6 +138,6 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
-}
+}*@
 
 </table>
