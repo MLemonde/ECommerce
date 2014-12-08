@@ -174,6 +174,7 @@
     <Compile Include="Controllers\ShoppingCartController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Courriel.cs" />
     <Compile Include="Models\ThrottleAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -872,6 +873,8 @@
     <Content Include="Views\AdminOrders\Details.cshtml" />
     <Content Include="Views\AdminOrders\Edit.cshtml" />
     <Content Include="Views\AdminOrders\Index.cshtml" />
+    <Content Include="Views\Account\ResetPass.cshtml" />
+    <Content Include="Views\Account\EmailSend.cshtml" />
     <None Include="Web References\EstimatingProxy\EstimatingService.wsdl" />
     <Content Include="Web References\EstimatingProxy\GetFullEstimateResponseContainer.datasource">
       <DependentUpon>Reference.map</DependentUpon>

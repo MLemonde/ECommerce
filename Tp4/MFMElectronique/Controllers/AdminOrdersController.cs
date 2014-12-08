@@ -88,10 +88,21 @@ namespace MFMElectronique.Controllers
             {
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
+                CourrielModified(order);
                 return RedirectToAction("Index");
             }
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", order.UserID);
             return View(order);
+        }
+
+
+        private void CourrielModified(Order order)
+        {
+            var orders = db.Orders.Include(o => o.AspNetUsers);
+            var test = orders.First(c => c.Id == order.Id);
+            Courriel d = new Courriel(test.AspNetUsers.Email, test.AspNetUsers.FirstName + " " + test.AspNetUsers.Lastname);
+           
+            d.CourrielHTMLModified(order);
         }
 
         // GET: AdminOrders/Delete/5

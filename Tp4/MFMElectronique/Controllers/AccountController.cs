@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MFMElectronique.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Text;
 
 namespace MFMElectronique.Controllers
 {
@@ -191,7 +192,7 @@ namespace MFMElectronique.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    CourrielValidate(user.Email);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -211,6 +212,7 @@ namespace MFMElectronique.Controllers
             {
                 return View("Error");
             }
+            code = code.Replace("Replacement", "+");
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -262,6 +264,29 @@ namespace MFMElectronique.Controllers
             return code == null ? View("Error") : View();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ResetPass()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ResetPass(string email)
+        {
+            var user =  UserManager.FindByName(email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+            var test = UserManager.GeneratePasswordResetToken(user.Id);
+            test = test.Replace("+","Replacement");
+            CourrielReset(user,test);
+            return View("EmailSend");
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -277,7 +302,8 @@ namespace MFMElectronique.Controllers
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            model.Code = model.Code.Replace("Replacement", "+");
+            var result = UserManager.ResetPassword(user.Id,model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -286,12 +312,69 @@ namespace MFMElectronique.Controllers
             return View();
         }
 
+
+        private void CourrielReset(ApplicationUser user, string token)
+        {
+
+            
+            Courriel c = new Courriel(user.Email, user.FirstName + " " + user.LastName);
+            string link = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port) + "/Account/ResetPassword?code=" + token;
+              c.CourrielHTMLAsyncReset(link);
+
+
+        }
+
+        ///// <summary>
+        ///// Generate token and send email to validate email
+        ///// </summary>
+        ///// <param name="cand"></param>
+        private void CourrielValidate(string email)
+        {
+            var user = UserManager.FindByName(email);
+            if (user == null)
+            {
+                return;
+            }
+
+            string token = UserManager.GenerateEmailConfirmationToken(user.Id);
+            token = token.Replace("+", "Replacement");
+            Courriel c = new Courriel(user.Email, user.FirstName + " " + user.LastName);
+            string link = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port) + "/Account/ConfirmEmail?code=" + token + "&userid="+user.Id;
+            c.CourrielHTMLAsyncValidate(link);
+        }
+
+
+
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
         }
+
+        private static Random random = new Random((int)DateTime.Now.Ticks);
+
+        /// <summary>
+        /// Random token generator
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        private string RandomString(int size)
+        {
+            StringBuilder builder = new StringBuilder();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+
+            return builder.ToString();
+        }
+
+      
+
 
         [HttpPost]
         [AllowAnonymous]
